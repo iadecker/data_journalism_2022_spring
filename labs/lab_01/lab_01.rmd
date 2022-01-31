@@ -95,7 +95,7 @@ wv_ppp_loans %>%
 ```
 
 **Q6** What West Virginia politician (with his family) owns the company identified in question 5? What's your source for that information? Hint: this will require web research, you won't be able to answer this purely from the data set.  You do not need to write any code for this question, so no codeblock is provided.  
-**A6** [write your answer here] Randy Parrotta. My source was first the company's website. I then 
+**A6** [write your answer here] The Parrotta family own the company.
 
 **Q7**. Produce a summary table that has the following information for West Virginia as a whole (the whole state, not by county):
 * count of loans
