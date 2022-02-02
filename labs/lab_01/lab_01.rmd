@@ -109,16 +109,15 @@ Store it as a variable object called `wv_summary` so that you can examine it wit
 
 **A7** [write your answer here] I'm going to be completely honest. I have absolutely no idea how to create a variable object and read a table based on that code, so I can't asnwer this portion of the question. Sorry to let you down.
 ```{r}
-wv_ppp_loans %>%
-  group_by(project_state) %>%
-  summarise(
-    count_loans = n(),
-    total_loans_amount = sum(amount),
-    mean_loan_amount = mean(amount),
-    median_loan_amount = median(amount),
-    min_loan_amount = min(amount),
-    max_loan_amount = max(amount)
-  ) %>%
+wv_summary <- wv_ppp_loans %>% 
+  group_by(project_state) %>% 
+  summarise( 
+    count_loans = n(), 
+    total_loans_amount = sum(amount), 
+    mean_loan_amount = mean(amount), 
+    median_loan_amount = median(amount), 
+    min_loan_amount = min(amount), 
+    max_loan_amount = max(amount) ) %>% 
   arrange(desc(max_loan_amount))
-var('wv_summary')
+var
 ```
