@@ -100,5 +100,11 @@ west_virginia_ppp %>%
 
 ```{r}
 # Write the code to produce your answer here
-
+west_virginia_ppp %>% 
+   mutate(
+    in_out = if_else(
+        jobs_retained == 'WV', "IN", "OUT"
+      )
+  )
+  
 ```
