@@ -116,7 +116,7 @@ One common use of mutate is to create a new column and then populate it based on
 
 ```{r}
 # case_when example
-maryland_jobs_categories <- maryland_ppp %>%
+maryland_ppp %>%
 mutate(
   jobs_retained_category = case_when(
     jobs_retained < 10 ~ 'under_10',
@@ -124,9 +124,10 @@ mutate(
     jobs_retained >= 50 & jobs_retained < 100 ~ '50_to_100',
     jobs_retained >= 100 & jobs_retained < 250 ~ '100_to_250',
     jobs_retained >= 250 & jobs_retained < 500 ~ '250_to_500',
-    jobs_retained == 500 ~ '500'
-  )
-)
+    jobs_retained == 500 ~ '500')) %>% 
+  group_by(jobs_retained_category) %>%
+  summarize(count = n())
+
 ```
 
 There's a lot going on here, so let's unpack it. It starts out as a typical mutate statement, but like our if_else example, case_when introduces some new things. Each line is basically a filter followed by `~` and then a value for the new column for records that match that filter. Here is [more detail](https://www.sharpsightlabs.com/blog/case-when-r/) on using `case_when`.
