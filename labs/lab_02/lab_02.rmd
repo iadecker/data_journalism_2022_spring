@@ -48,7 +48,7 @@ west_virginia_ppp <- read_rds("data/lab_02.rds")
 
 **Q1** Create a new column that divides the loan amounts into the following options - under_10k, 10k_50k, 50k_100k, 100k_500k, 500k_1m, 1m_plus - and calculates how many loans are in each group. How would you describe the distribution of loans in a sentence?
 Hint: You will need to use `case_when` to make this work.
-**A1** [write your answer here] The most loans are in the 10000_to_50000 range (15089). The lowest group was laons above 1 million (356).
+**A1** [write your answer here] The most loans are in the 10000_to_50000 range (15089). The lowest group was loans above 1 million (356).
 
 ```{r}
 # Write the code to produce your answer here
@@ -78,7 +78,7 @@ west_virginia_ppp %>% filter(undisbursed_amount > 0) %>%
 ```
 
 **Q3** What are some potential reasons why a loan might not be paid out? What questions does that circumstance raise for you? 
-**A3** [write your answer here] 1. The main issue I can think of is that the lender ran out of funds/did not have enough to give all of the applicants. The primary question this raises is why certain lenders agree to be a part of the program. In other words, why would Davis Trust Company agree to give out loans if it did not have the funds?
+**A3** [write your answer here] The main issue I can think of is that the lender ran out of funds/did not have enough to give all of the applicants. The primary question this raises is why certain lenders agree to be a part of the program. In other words, why would Davis Trust Company agree to give out loans if it did not have the funds to pay the full amounts?
 
 
 **Q4** Which month in 2021 had the most loans approved?
@@ -96,7 +96,7 @@ west_virginia_ppp %>%
 ```
 
 **Q5** How many loans went to West Virginia applicants that listed the maximum number of jobs retained (500)? Which one had the earliest approved date?
-**A5** [write your answer here]
+**A5** [write your answer here] Of the loans that went to West Virginia applicants, 10 were for applicants that listed the maximum number of jobs retained (500). J. AUSTIN HEATING & COOLING, INC. had the earliest approved date, which was on 2020-04-08.
 
 ```{r}
 # Write the code to produce your answer here
