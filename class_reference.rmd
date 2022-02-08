@@ -32,3 +32,4 @@ The command to set a working directory is setwd(). For example:
   library(tidyverse)
 ```
 
+#how to filter for when a certain result is "NA": filter(is.na(forgiveness_date)) %>%
