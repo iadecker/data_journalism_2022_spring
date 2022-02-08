@@ -91,7 +91,7 @@ west_virginia_ppp %>%
   group_by(Month) %>%
   summarise(total = n()) %>%
   arrange(desc(total)) %>%
-  filter(Month > "2020-12-01")
+  filter(Month > "2020-12-01") #could also write as: filter(date_approved > '2020-12-31')
 #for filters(column (Month) comparison (>) value ("2020-12-01"))
 ```
 
