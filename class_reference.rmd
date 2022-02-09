@@ -50,3 +50,19 @@ ppp_maryland_loans %>%
   ) %>%
   arrange(month_year_approved)
 
+#For cleaning datasets with inconsistencies
+# cleaning function
+cleaned_arnold_md_loans <- arnold_md_loans %>%
+  clean_names()
+# display the cleaned dataset
+cleaned_arnold_md_loans
+
+#Change "x1_id" to "id"
+# cleaning function
+cleaned_arnold_md_loans <- arnold_md_loans %>%
+  clean_names() %>%
+  rename(id = x1_id)
+# display the cleaned dataset
+cleaned_arnold_md_loans
+
+

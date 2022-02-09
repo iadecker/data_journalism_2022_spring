@@ -207,7 +207,7 @@ library(janitor)
 
 ### Task 3: Load Arnold, Maryland demonstration data
 **Task** Run the following codeblock to load a demonstration slice of the data for Arnold, Maryland. How many rows are in this demonstration data set?
-**Answer**
+**Answer** 6.
 
 ```{r}
 arnold_md_loans <- read_rds("arnold_md_loans.rds")
@@ -215,7 +215,7 @@ arnold_md_loans <- read_rds("arnold_md_loans.rds")
 
 ### Task 4: Examine the data with glimpse
 **Task** Run the following codeblock to glimpse the data.  What data type is the "amount" field? Answer below.
-**Answer**
+**Answer** "<chr>" or Character.
 ```{r}
 glimpse(arnold_md_loans)
 ```
@@ -224,7 +224,10 @@ And let's examine the full data set.
 
 ### Task 5: Examine the data table
 **Task** Run the following codeblock to examine the data. Name three problems the book chapter says exist in this data set that could prevent us from answering questions?  Answer below
-**Answer**
+**Answer** 
+1. The column headers are inconsistently styled. The first column “1_id” starts with a number. The “NAME” column is all caps, while the rest are lowercase. And “street address” has a space in it. Those problems will make them hard to analyze, to refer to in functions we write.
+2. The street address field is inconsistent. It has multiple variations of Ritchie Hwy.
+3. The city field has five different forms – including misspellings – of Arnold. If we wanted to group and count the number of loans in Arnold, this inconsistency would not let us do that correctly.
 
 ```{r}
 arnold_md_loans
@@ -232,7 +235,7 @@ arnold_md_loans
 
 ### Task 6: Use clean_names()
 **Task** Run the following codeblock to use the `clean_names()` function from janitor to standardize column names. How does the function change the name of the column "1_id"? Answer below. Add a description of what this code does to your reference notebook.
-**Answer**
+**Answer** It puts a lowercase x in front of "1_id," making it "x1_id".
 
 
 ```{r}
