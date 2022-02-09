@@ -147,7 +147,7 @@ library(lubridate)
 
 ### Task 13: Look for date gaps in data
 **Task** Run the following codeblock to create a new column called "month_year_approved" that extracts the month and year from the "date_approved" column.  Group by the new "month_year_approved" column, count, and sort by "month_year_approved". How many loans are there in the data for October 2020? Answer below. Add a description of what this code does to your reference notebook.
-**Answer**
+**Answer** There are no loans in the data for October 2020. For 2020, we have data from April to August.
 ```{r}
 ppp_maryland_loans %>%
   mutate(month_year_approved = floor_date(date_approved, "month")) %>%
@@ -160,7 +160,7 @@ ppp_maryland_loans %>%
 
 ### Task 14: Check for suspicious outliers
 **Task** Run the following codeblock to find the largest and smallest loans in the data, by using summarise() without grouping. How much is the largest loan for? How much is the smallest loan for? Are either of these suspicious to you? Why or why not? Answer below.
-**Answer**
+**Answer** Largest: 10000000. This isn't suspicious because the maximum loan a business could apply for was 10 million dollars. Smallest: 6. This isn't as much suspicious as it is odd. Who would spend the time to fill out the form for a 6 dollar loan? I'm just speculating here, but this might have been a clerical error. For example, the business might have received 600 dollars. If that is the case, however, it raises some serious questions about the tracking of funds with regards to the program.
 ```{r}
 
 ppp_maryland_loans %>%
@@ -171,7 +171,7 @@ ppp_maryland_loans %>%
 
 ### Task 15: Look at smallest loans
 **Task** Run the following codeblock to examine all loans under $100. How many are there? Answer below.
-**Answer**
+**Answer** 2.
 ```{r}
 
 ppp_maryland_loans %>%
@@ -180,7 +180,7 @@ ppp_maryland_loans %>%
 
 ### Task 16: Look for internal consistency
 **Task** Run the following codeblock to examine all loans under $100 and look at whether the various fields with amounts align. Do they? Answer below.
-**Answer**
+**Answer** Yes, all four amount categories align: 78 for LEGACY SPINE AND PAIN LLC and 6 for GETGFTD LLC.
 
 ```{r}
 
