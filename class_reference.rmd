@@ -33,3 +33,10 @@ The command to set a working directory is setwd(). For example:
 ```
 
 #how to filter for when a certain result is "NA": filter(is.na(forgiveness_date)) %>%
+
+# we changed the data type of the "id" field from a number (dbl) to a character (chr).
+ppp_maryland_loans <- ppp_maryland_loans %>%
+  mutate(id = as.character(id))
+
+glimpse(ppp_maryland_loans)
+

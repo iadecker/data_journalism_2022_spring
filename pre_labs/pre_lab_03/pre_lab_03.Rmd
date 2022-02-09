@@ -63,7 +63,7 @@ ppp_maryland_loans <- read_csv("ppp_loans_md.csv.zip", guess_max=195865)
 
 ### Task 5: Examine the data with glimpse
 **Task** Run the following codeblock to glimpse the data.  What data type is the "amount" field?  What data type is the "name" field? What data type is the id column? Answer below.
-**Answer**
+**Answer** The data type for "amount" is "<dbl>," double or number. The data type for "name" is "<chr>," character. The data type for "id" is also "<dbl>".
 ```{r}
 glimpse(ppp_maryland_loans)
 ```
@@ -75,11 +75,12 @@ ppp_maryland_loans <- ppp_maryland_loans %>%
   mutate(id = as.character(id))
 
 glimpse(ppp_maryland_loans)
+# we changed the data type of the "id" field from a number (dbl) to a character (chr).
 ```
 
 ### Task 7: Examine the franchise column for missing values.
 **Task** Run the following codeblock to group by franchise_name, count the number of loans, then sort from highest to lowest on count. How many loans are there where franchise_name is NA? How many loans are there where the franchise_name is "Subway"? Answer below.
-**Answer**:
+**Answer**: For NA: 192959 loans. For "Subway": 275
 
 ```{r}
 
@@ -92,7 +93,7 @@ ppp_maryland_loans %>%
 ```
 ### Task 8: Examine the forgiveness_amount column for missing values.
 **Task** Run the following codeblock to group by forgiveness_amount, count the number of loans, then sort from highest to lowest on count. How many loans are there where forgiveness_amount is NA? Answer below.
-**Answer**:
+**Answer**: 135073
 
 ```{r}
 ppp_maryland_loans %>%
@@ -105,7 +106,7 @@ ppp_maryland_loans %>%
 
 ### Task 9: Examine the forgiveness_date column for missing values.
 **Task** Run the following codeblock to group by forgiveness_date, count the number of loans, then sort from highest to lowest on count and filter to only show NA values. How many loans are there where forgiveness_date is NA? Is it the same as the number for forgiveness_amount? Answer below.
-**Answer**:
+**Answer**: 135073. Yes, this answer is the same as what we got in Task 8.
 
 ```{r}
 ppp_maryland_loans %>%
@@ -119,7 +120,7 @@ ppp_maryland_loans %>%
 
 ### Task 10: Examine forgiveness_date and forgiveness_amount together
 **Task** Run the following codeblock to group by forgiveness_date and forgiveness_amount, count the number of loans, then sort from highest to lowest on count and filter to only show NA values. How many loans are there where forgiveness_date and forgiveness_amount is NA? Is it the same as the number for forgiveness_amount and forgiveness_amount run separately in the codeblocks above? What can you conclude from Answer below.
-**Answer**:
+**Answer**: 135073. Yes, the answer is the same as the previous two codeblocks. What I conclude from the answer is that there are multiple ways to reach the desired end result. The only difference is that certain pieces of code will make it easier to sort through the data. For example, if we had a massive data set, the code we wrote in this final block would be more useful in narrowing down what we want.
 
 ```{r}
 ppp_maryland_loans %>%
