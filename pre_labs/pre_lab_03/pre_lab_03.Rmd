@@ -264,7 +264,7 @@ cleaned_arnold_md_loans
 
 ### Task 8: Try summarizing the amount column
 **Task** Run the following codeblock to attempt to add up the amount of all loans. What does the error say when you run this code? What do you think it means? Answer below.
-**Answer**
+**Answer**We get the following error message: "Error in 'h()'. It seems like the issue has to do with the following code: "summarise(total_amount = sum(amount))." I think the issue has to do with the placement of the information within the alignment of the actual column in the dataset.
 
 ```{r}
 # cleaning function
@@ -278,7 +278,7 @@ total_arnold_md_loans
 ```
 ### Task 9: Change data type for amount
 **Task** Run the following codeblock to attempt to change the datatype for the amount field to a number. What is the new data type (three letter code) for amount? Answer below.
-**Answer**
+**Answer** <dbl>
 
 ```{r}
 # cleaning function
@@ -294,7 +294,7 @@ cleaned_arnold_md_loans
 ```
 ### Task 10: Try again to summarize the amount column
 **Task** Run the following codeblock to add up the amount of all loans in this data.  What is the total? Answer below.
-**Answer**
+**Answer** 2033179	
 ```{r}
 # cleaning function
 total_arnold_md_loans <- cleaned_arnold_md_loans %>%
@@ -308,7 +308,7 @@ total_arnold_md_loans
 
 ### Task 11: Check for duplicate rows
 **Task** Run the following codeblock to check for duplicate rows using get_dupes().  How many are there? What is the business name? Answer below.
-**Answer**
+**Answer** There are two duplicate rows. The business name is "STUART JONES LLC."
 
 ```{r}
 cleaned_arnold_md_loans %>%
@@ -317,7 +317,7 @@ cleaned_arnold_md_loans %>%
 
 ### Task 12: Check for duplicate rows
 **Task** Run the following codeblock to use distinct() to get rid of duplicate rows. How many rows does the new dataframe have? Answer below. Add a description of what this code does to your reference notebook.
-**Answer**
+**Answer** 5
 
 ```{r}
 # cleaning function
@@ -335,7 +335,7 @@ cleaned_arnold_md_loans
 
 ### Task 13: Clean up ZIP code
 **Task** Run the following codeblock to use str_sub() to convert the ZIP codes that have nine digits to five digits, standardizing the field. Add a description of what this code does to your reference notebook.
-**Answer**
+**Answer** This standarizes a specific field, "ZIP codes" in this case.
 
 ```{r}
 # cleaning function
@@ -354,7 +354,7 @@ cleaned_arnold_md_loans
 
 ### Task 14: Clean up city field
 **Task** Run the following codeblock to use str_tot_title() to standarize capitalization in the "city" field. How many mispellings of Arnold remain after running this code? Answer below. Add a description of what this code does to your reference notebook.
-
+**Answer** 2 misspellings of Arnold remain after we run this code.
 ```{r}
 # cleaning function
 cleaned_arnold_md_loans <- arnold_md_loans %>%
@@ -374,7 +374,7 @@ cleaned_arnold_md_loans
 
 ### Task 15: Clean up city field more with case_when()
 **Task** Run the following codeblock to use case_when() to fix misspellings of Arnold in the "city" field. How many mispellings of Arnold remain after running this code? Answer below.
-**Answer**
+**Answer** One misspelling remains.
 
 ```{r}
 # cleaning function
@@ -398,7 +398,7 @@ cleaned_arnold_md_loans
 
 ### Task 16: Clean up city field more with case_when()
 **Task** Run the following codeblock to use case_when() to fix misspellings of Arnold in the "city" field using both the exact match method and the str_detect() method. How many mispellings of Arnold remain after running this code? Answer below. Add a description of what this code does to your reference notebook.
-**Answer**
+**Answer** No misspellings are left! 
 ```{r}
 # cleaning function
 cleaned_arnold_md_loans <- arnold_md_loans %>%

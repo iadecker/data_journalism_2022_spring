@@ -50,14 +50,14 @@ ppp_maryland_loans %>%
   ) %>%
   arrange(month_year_approved)
 
-#For cleaning datasets with inconsistencies
+##For cleaning datasets with inconsistencies
 # cleaning function
 cleaned_arnold_md_loans <- arnold_md_loans %>%
   clean_names()
 # display the cleaned dataset
 cleaned_arnold_md_loans
 
-#Change "x1_id" to "id"
+##Change "x1_id" to "id"
 # cleaning function
 cleaned_arnold_md_loans <- arnold_md_loans %>%
   clean_names() %>%
@@ -65,4 +65,52 @@ cleaned_arnold_md_loans <- arnold_md_loans %>%
 # display the cleaned dataset
 cleaned_arnold_md_loans
 
+##For removing duplicates
+# cleaning function
+cleaned_arnold_md_loans <- arnold_md_loans %>%
+  clean_names() %>%
+  rename(id = x1_id) %>%
+  mutate(amount = as.numeric(amount)) %>%
+  distinct()
+# display the cleaned dataset
+cleaned_arnold_md_loans
 
+##For standardizing zip codes
+# cleaning function
+cleaned_arnold_md_loans <- arnold_md_loans %>%
+  clean_names() %>%
+  rename(id = x1_id) %>%
+  mutate(amount = as.numeric(amount)) %>%
+  distinct() %>%
+  mutate(zip = str_sub(zip, start=1L, end=5L))
+# display the cleaned dataset
+cleaned_arnold_md_loans
+
+##To clean up spelling
+# cleaning function
+cleaned_arnold_md_loans <- arnold_md_loans %>%
+  clean_names() %>%
+  rename(id = x1_id) %>%
+  mutate(amount = as.numeric(amount)) %>%
+  distinct() %>%
+  mutate(zip = str_sub(zip, start=1L, end=5L)) %>%
+  mutate(city = str_to_title(city))
+# display the cleaned dataset
+cleaned_arnold_md_loans
+
+##Clean up city field more with case_when()
+# cleaning function
+cleaned_arnold_md_loans <- arnold_md_loans %>%
+  clean_names() %>%
+  rename(id = x1_id) %>%
+  mutate(amount = as.numeric(amount)) %>%
+  distinct() %>%
+  mutate(zip = str_sub(zip, start=1L, end=5L)) %>%
+  mutate(city = str_to_title(city)) %>%
+  mutate(city = case_when(
+    city == "Anold" ~ "Arnold",
+    str_detect(city,"^Arnl") ~ "Arnold",
+    TRUE ~ city
+  ))
+# display the cleaned dataset
+cleaned_arnold_md_loans
