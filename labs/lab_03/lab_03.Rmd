@@ -38,6 +38,17 @@ A1:
 ```{r}
 
 # Write your code in this codeblock.
+west_virginia_ppp %>%
+  filter(project_county_name == "KANAWHA") %>%
+  mutate(city = str_to_title(city)) %>%
+  group_by (city) %>%
+  summarise(total = n()) %>%
+  arrange((city))
+
+cleaned_west_virginia_ppp <- west_virginia_ppp %>%
+  clean_names() %>%
+  
+
 
 ```
 
