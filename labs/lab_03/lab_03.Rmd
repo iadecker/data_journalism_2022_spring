@@ -115,7 +115,9 @@ Some hints to help you answer this question:
 * When you examine the disclosure forms, there may be lots of stock sales and retirement accounts mixed in.  Ignore those. In the table in the disclosure forms, look for "Partnership" or "C-Corp" in the column named "Income Type"
 * This is a link to details on passage of the [CARES ACT](https://www.congress.gov/bill/116th-congress/house-bill/748). You can find a link to how the House voted by clicking on a link from [this page](https://www.congress.gov/bill/116th-congress/house-bill/748/actions).
 
-A3:
+A3: The businesses' names are: DUTCH MILLER OF CHARLESTON, INC, DUTCH MILLER OF CHARLOTTE, INC, DUTCH MILLER SUBARU, INC, DUTCH MILLER CHEVROLET, INC. and DM MOTOR, INC. All the businesses are auto dealerships. In total, the five businesses received $3,105,300. The percentage of the total loan amount forgiven was 101.1326%, according to the data. The U.S. House member — Carol Devine Miller — voted in support of the legislation initially authorizing the PPP loan program.
+
+Source on her decision (https://www.wvnews.com/news/wvnews/miller-releases-statement-on-ppp-funding/article_02eabab5-1d4c-5135-bc32-f8a9cfec76a9.html)
 
 ```{r}
 
@@ -125,7 +127,7 @@ A3:
 
 west_virginia_house_spouse <-west_virginia_ppp %>%
   filter(
-    str_detect(name, "^DUTCH M| ^DM "))
+    str_detect(name, "^DUTCH M|^DM "))
 
 west_virginia_house_spouse %>%
   mutate(total_amount = sum(amount), total_forgiveness = sum(forgiveness_amount)) %>%
