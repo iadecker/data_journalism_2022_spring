@@ -72,7 +72,7 @@ Q2: Find the 5-digit ZIP code in West Virginia that had the highest total amount
 * How much of that loan was forgiven? [1538254.68 was the forgiven amount].
 * Which number is bigger, the loan amount or the forgiveness amount? Can you explain the discrepancy? [The forgiveness amount is larger. This is due to the added interest on the forgiveness amount, which is around 1%, thus making the forgiveness amount higher than the loan amount].
 
-A2: Located in Charleston, WV, 25301 is the zip code that had the highest total amount of loans ($160721320.88). The name of the business that got the largest loan (by dollar value) in this zip code was THE EYE AND EAR CLINIC OF CHARLESTON DBA CHARLESTON SURGICA (1520007.00). 1538254.68 was the forgiven amount. The forgiveness amount is larger. This is due to the added interest on the forgiveness amount, which is around 1%, thus making the forgiveness amount higher than the loan amount.
+A2: Located in Charleston, WV, 25301 is the zip code that had the highest total amount of loans ($160721320.88). The name of the business that got the largest loan (by dollar value) in this zip code was THE EYE AND EAR CLINIC OF CHARLESTON DBA CHARLESTON SURGICA (1,520,007.00). 1538254.68 was the forgiven amount. The forgiveness amount is larger. This is due to the added interest on the forgiveness amount, which is around 1%, thus making the forgiveness amount higher than the loan amount.
 
 
 ```{r}
