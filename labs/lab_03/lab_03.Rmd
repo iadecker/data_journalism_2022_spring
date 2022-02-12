@@ -122,15 +122,15 @@ A3:
 # First, create a dataframe that only has loans to those five companies
 # Second, use that newly created dataframe to calculate total loan amount and percentage forgiven for those companies
 
-west_virginia_rep <-west_virginia_ppp %>%
+west_virginia_house_spouse <-west_virginia_ppp %>%
   filter(
     str_detect(name, "^DUTCH M| ^DM "))
 
-west_virginia_rep %>%
+west_virginia_house_spouse %>%
   mutate(total_amount = sum(amount), total_forgiveness = sum(forgiveness_amount)) %>%
   mutate(percent_forgiven = (total_forgiveness/total_amount)*100)
 
-west_virginia_rep
+west_virginia_house_spouse
 
 
 
