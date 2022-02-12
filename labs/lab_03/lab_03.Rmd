@@ -67,17 +67,12 @@ cleaned_west_virginia_ppp <- west_virginia_ppp %>%
 
 Q2: Find the 5-digit ZIP code in West Virginia that had the highest total amount of loans (by dollar value). What is the name of the business that got the largest loan (by dollar value) in that zip code? Write up a short paragraph that also answers these questions:
 
-* Where in West Virginia is this ZIP code located?
-* How much was the business' loan for?
-* How much of that loan was forgiven?
-* Which number is bigger, the loan amount or the forgiveness amount? Can you explain the discrepancy?
+* Where in West Virginia is this ZIP code located? [It is located in Charleston].
+* How much was the business' loan for? [1520007.00].
+* How much of that loan was forgiven? [1538254.68 was the forgiven amount].
+* Which number is bigger, the loan amount or the forgiveness amount? Can you explain the discrepancy? [The forgiveness amount is larger. This is due to the added interest on the forgiveness amount, which is around 1%, thus making the forgiveness amount higher than the loan amount].
 
-A2:
-1. a) 26003
-2.
-3.
-4.
-5.
+A2: 25301 is the zip code that had the highest total amount of loans ($160721320.88). The name of the business that got the largest loan (by dollar value) in this zip code was THE EYE AND EAR CLINIC OF CHARLESTON DBA CHARLESTON SURGICA (1520007.00). 
 
 ```{r}
 # Hint
@@ -131,7 +126,11 @@ west_virginia_rep <-west_virginia_ppp %>%
   filter(
     str_detect(name, "^DUTCH M| ^DM "))
 
+west_virginia_rep %>%
+  mutate(total_amount = sum(amount), total_forgiveness = sum(forgiveness_amount)) %>%
+  mutate(percent_forgiven = (total_forgiveness/total_amount)*100)
 
+west_virginia_rep
 
 
 
