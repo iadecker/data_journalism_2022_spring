@@ -119,6 +119,7 @@ A3: The businesses' names are: DUTCH MILLER OF CHARLESTON, INC, DUTCH MILLER OF 
 
 Source on her decision (https://www.wvnews.com/news/wvnews/miller-releases-statement-on-ppp-funding/article_02eabab5-1d4c-5135-bc32-f8a9cfec76a9.html)
 
+Interesting color: Miller said she voted in support of the bill becasue it would "deliver much-needed relief to small businesses. Ironically, she was one of the biggest beneficiaries of PPP loans.
 ```{r}
 
 # Hint
