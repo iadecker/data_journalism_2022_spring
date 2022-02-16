@@ -114,3 +114,25 @@ cleaned_arnold_md_loans <- arnold_md_loans %>%
   ))
 # display the cleaned dataset
 cleaned_arnold_md_loans
+
+#Using bind rows
+
+# bind_rows with list
+```{r}
+estimates <- bind_rows(list(popestimate_2010, popestimate_2015, popestimate_2020))
+View(estimates)
+```
+
+#Assign Joined Data to New Dataframe
+
+```{r}
+maryland_ppp_with_naics <- maryland_ppp %>% left_join(naics_codes, by="naics_code")
+```
+
+Fix ZCTA Data
+
+```{r}
+maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
+```
+
+
