@@ -88,6 +88,7 @@ west_virginia_ppp %>%
   arrange(desc(total_loans_amount))
 
 wv_highest_zip <- west_virginia_ppp %>%
+  mutate(zip = str_sub(zip, start=1L, end=5L)) %>%
   filter(zip == 25301) %>%
   arrange (desc(amount))
 
