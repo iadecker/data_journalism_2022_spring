@@ -86,6 +86,11 @@ maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics_codes %>% le
 
 **Q1** What are the top 5 industries (using the NAICS title) with the most PPP applications in Maryland?
 **A1** [write your answer here]
+1. Taxi Service (7363)
+2. Beauty Salons (7275)
+3. Full-Service Restaurants (5490)
+4. Offices of Real Estate Agents and Brokers (4443)
+5. All Other Personal Services (3956)
 
 ```{r}
 # Write the code to produce your answer here
@@ -98,13 +103,19 @@ top_five_industries <- maryland_ppp_with_naics_and_demographics %>%
 **Q2** What are the top industries (using the NAICS title) with the most PPP applications in Maryland where the loan amount is more than $150,000?
 **A2** [write your answer here]
 
+
 ```{r}
 # Write the code to produce your answer here
-
+top_five_industries_ppp <- maryland_ppp_with_naics_and_demographics %>%
+  group_by(title) %>%
+  filter(amount > 150000) %>%
+  summarise (count = n()) %>%
+  arrange(desc(count))
 ```
 
 **Q3** Which Maryland zip code with at least 20 percent non-Hispanic Asian population had the largest sum of PPP loans? Also show the number (count) of loans.
 **A3** [write your answer here]
+
 
 ```{r}
 # Write the code to produce your answer here
