@@ -78,7 +78,8 @@ Now we can join the PPP data to the ZCTA data:
 
 ```{r}
 # add code here to accomplish the task
-maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics_codes %>% left_join(maryland_zcta, by=c("zip"="ZCTA5N"))
+maryland_ppp_with_naics_codes <- maryland_ppp_with_naics_codes %>% mutate(zip5 = str_sub(zip, 1, 5))
+maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics_codes %>% left_join(maryland_zcta, by=c("zip5"="ZCTA5N"))
 ```
 
 ## Answer questions
@@ -88,12 +89,10 @@ maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics_codes %>% le
 
 ```{r}
 # Write the code to produce your answer here
-top_five_industries <- maryland_ppp %>%
-  filter(some_column == "some value") %>%
-  mutate(some_column=str_to_title(some_column)) %>%
-  group_by(some_column) %>%
-  summarise(new_aggregate = n()) %>%
-  arrange(desc(new_aggregate))
+top_five_industries <- maryland_ppp_with_naics_and_demographics %>%
+  group_by(title) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
 ```
 
 **Q2** What are the top industries (using the NAICS title) with the most PPP applications in Maryland where the loan amount is more than $150,000?
