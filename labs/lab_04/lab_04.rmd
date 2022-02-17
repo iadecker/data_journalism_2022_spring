@@ -136,9 +136,9 @@ md_zip_nha <- maryland_ppp_with_naics_and_demographics %>%
 ```{r}
 # Write the code to produce your answer here
 md_zip_asian <- maryland_ppp_with_naics_and_demographics %>%
-  filter(race == "ASIAN") %>%
-  group_by(zip5) %>%
-  summarise (count = n()) %>%
+  filter(race == "Asian") %>%
+  group_by(zip5, PNHA) %>%
+  summarise (count = n(), total_loans_amount = sum(amount)) %>%
   arrange(desc(count))
 ```
 
