@@ -119,11 +119,15 @@ top_five_industries_ppp <- maryland_ppp_with_naics_and_demographics %>%
 
 **Q3** Which Maryland zip code with at least 20 percent non-Hispanic Asian population had the largest sum of PPP loans? Also show the number (count) of loans.
 **A3** [write your answer here]
-
+The zip code with at least 20 percent non-Hispanic Asian population that had the largest sum of PPP loans was 20850, with 3186 loans for a total of $474525058.
 
 ```{r}
 # Write the code to produce your answer here
-
+md_zip_nha <- maryland_ppp_with_naics_and_demographics %>%
+  filter(PNHA > 20) %>%
+  group_by(zip5) %>%
+  summarise (count = n(), total_loans_amount = sum(amount)) %>%
+  arrange(desc(count))
 ```
 
 **Q4** Which Maryland zip code had the largest sum of loans where the reported race of the applicant was "Asian", and what is the percentage of non-Hispanic Asian population in that zip code? Also show the number (count) of loans.
@@ -131,7 +135,11 @@ top_five_industries_ppp <- maryland_ppp_with_naics_and_demographics %>%
 
 ```{r}
 # Write the code to produce your answer here
-
+md_zip_asian <- maryland_ppp_with_naics_and_demographics %>%
+  filter(race == "ASIAN") %>%
+  group_by(zip5) %>%
+  summarise (count = n()) %>%
+  arrange(desc(count))
 ```
 
 **Q5** What might explain why 20850 has a significant Asian population (23.5%) and only 240 of the 3,186 loans (7.5%) are to Asian applicants?
