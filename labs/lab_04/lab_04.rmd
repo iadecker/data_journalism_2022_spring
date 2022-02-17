@@ -88,7 +88,12 @@ maryland_ppp_with_naics_and_demographics <- maryland_ppp_with_naics_codes %>% le
 
 ```{r}
 # Write the code to produce your answer here
-
+top_five_industries <- maryland_ppp %>%
+  filter(some_column == "some value") %>%
+  mutate(some_column=str_to_title(some_column)) %>%
+  group_by(some_column) %>%
+  summarise(new_aggregate = n()) %>%
+  arrange(desc(new_aggregate))
 ```
 
 **Q2** What are the top industries (using the NAICS title) with the most PPP applications in Maryland where the loan amount is more than $150,000?
