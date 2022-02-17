@@ -102,13 +102,17 @@ top_five_industries <- maryland_ppp_with_naics_and_demographics %>%
 
 **Q2** What are the top industries (using the NAICS title) with the most PPP applications in Maryland where the loan amount is more than $150,000?
 **A2** [write your answer here]
-
+1. Full-Service Restaurants (1488)
+2. Offices of Physicians (except Mental Health Specialists) (580)
+3. Plumbing, Heating, and Air-Conditioning Contractors (458)
+4. Offices of Dentists (419)
+5. Commercial and Institutional Building Construction (402)
 
 ```{r}
 # Write the code to produce your answer here
 top_five_industries_ppp <- maryland_ppp_with_naics_and_demographics %>%
-  group_by(title) %>%
   filter(amount > 150000) %>%
+  group_by(title) %>%
   summarise (count = n()) %>%
   arrange(desc(count))
 ```

@@ -135,4 +135,11 @@ Fix ZCTA Data
 maryland_zcta <- maryland_zcta %>% mutate(across(ZCTA5N, as.character))
 ```
 
-
+#Basic Syntax and Order
+my_result <- original_data %>%
+  filter(some_column == "some value") %>%
+  mutate(some_column=str_to_title(some_column)) %>%
+  group_by(some_column) %>%
+  summarise(new_aggregate = n()) %>%
+  arrange(desc(new_aggregate))
+  
