@@ -148,7 +148,7 @@ md_zip_asian <- maryland_ppp_with_naics_and_demographics %>%
 20850 is the zip code for Rockville, Maryland, which is a relatively affluent city in the state. One reason that might explain why only 240 of the 3,186 loans (7.5%) were to Asian applicants is that people did not need the PPP loans.
 
 **Q6** Check to see if any Maryland zip codes that have loans where the PPP data lists the applicant as being Asian BUT are located in a zip code that does not appear to have Asian population according to the ZCTA data. How many loans do they have and what is the total amount? Take a look at these zip codes - what could explain this?
-**A6** [write your answer here] zcta is people, ppp is businesses
+**A6** [write your answer here] zcta is people, ppp is businesses, difference btwn where people live and work
 
 ```{r}
 # Write the code to produce your answer here
