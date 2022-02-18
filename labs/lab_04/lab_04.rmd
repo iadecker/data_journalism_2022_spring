@@ -145,10 +145,11 @@ md_zip_asian <- maryland_ppp_with_naics_and_demographics %>%
 
 **Q5** What might explain why 20850 has a significant Asian population (23.5%) and only 240 of the 3,186 loans (7.5%) are to Asian applicants?
 **A5** [write your answer here]
-20850 is the zip code for Rockville, Maryland, which is a relatively affluent city in the state. One reason that might explain why only 240 of the 3,186 loans (7.5%) were to Asian applicants is that people did not need the PPP loans.
+20850 is the zip code for Rockville, Maryland, which is a relatively affluent city in the state. One reason that might explain why only 240 of the 3,186 loans (7.5%) were to Asian applicants is that people did not actually need the PPP loans.
 
 **Q6** Check to see if any Maryland zip codes that have loans where the PPP data lists the applicant as being Asian BUT are located in a zip code that does not appear to have Asian population according to the ZCTA data. How many loans do they have and what is the total amount? Take a look at these zip codes - what could explain this?
-**A6** [write your answer here] zcta is people, ppp is businesses, difference btwn where people live and work
+**A6** [write your answer here] 
+There are three zip codes that meet this criteria — 21031 (loans: six, amount: 6819563.0), 20701 (four, 75170.5) and 21240 (three, 358674.0). Explanation: While these zip codes do not appear to have an Asian population according to the ZCTA, that is because it takes data measuring individual people, while the PPP dataset looks at business locations. All three zip codes are locations where businesses are located but aren't high-density residential areas. Therefore, people might own businesses there who decided to apply for a PPP loan, but they don't live in that specific zip code, which explains the discrepancy.
 
 ```{r}
 # Write the code to produce your answer here
@@ -160,7 +161,7 @@ md_zip_zero_asian <- maryland_ppp_with_naics_and_demographics %>%
 ```
 
 **Q7** How many industries have exactly one loan in the data (hint: you can filter _after_ using `summarise` on any totals you create). From a newsworthiness standpoint, which of these is most worthy of further exploration, and why?
-**A7** [write your answer here]
+**A7** [write your answer here] 44 industries have exactly one loan in the data. I'm surprised that there was only one application for Junior Colleges. With a lot of students opting for alternative routes to post-secondary education during the pandemic, colleges really struggled during with enrollment and costs. I would have thought there would have been more applications from junior colleges or traditional four-year universities to help with various financial woes. 
 
 ```{r}
 # Write the code to produce your answer here
