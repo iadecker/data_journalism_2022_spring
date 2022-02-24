@@ -91,7 +91,7 @@ Google the street address.  Google the business names and search for their corpo
 
 Based on your research, does it seem suspicious that this collection of businesses all got loans using the same address? Why or why not. Use specific facts identified in your research to support your position.
 
-**A2.** 
+**A2.** Yes, it seems suspicious because the agent name for each address is the same man, Robert Johnson. Furthermore, Abraham Ashton is listed as a Director for all of the addresses as well. This shows that even though six different companies received loans, they all are registered to/belng to the same men, meaning they got the money that was meant for six different businesses.
 
 **Q3.** Start by using the West Virginia slice of the PPP loan data that you loaded at the start of the lab to create a subset of PPP loans in West Virginia's second largest county (which you can find in wv_population_county). And then use that table you created to answer the following questions:
 
@@ -102,7 +102,21 @@ Requirement: you MUST export a dataframe of PPP loans from R Studio at some poin
 
 ```{r}
 # write_csv accepts 2 arguments: the dataframe and the path to the file you write out
-write_csv(wv_population_county, "data\wv_population_county.csv")
+# write_csv(wv_population_county, "data\wv_population_county.csv")
+
+  wv_county_pop %>%
+  arrange(desc(population_2019))
+
+  wv_berkeley <- wv_ppp %>%
+    filter(project_county_name == "BERKELEY")
+  
+  wv_berkeley %>%
+    group_by(city) %>%
+    summarise(count = n()) %>%
+    arrange(desc(count))
+    
+  write_csv(wv_berkeley, "data/wv_berkeley.csv")
+
 ```
 
 Guidance: there are a lot of steps you'll need to take to answer this question. You may find it helpful to write out in English what you plan to do step-by-step before you start writing code.   
