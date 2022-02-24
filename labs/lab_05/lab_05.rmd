@@ -70,12 +70,19 @@ Then answer these questions:
 * How many loans are there at that street address?
 * What are the names of the businesses at that address?
 
-**A1.**
+**A1.** 126 E Burke St is the street address. It had six loans. The names are: DREW HOLDINGS LLC, BRIX27, LLC, ABRAHAM ASHTON, HUB CO-OP LLC, HUB CO-OP, LLC, RONIN PROPERTIES LLC.
 
 ```{r}
-  clean_zip <- read_csv("data/zip_25401_clean.csv")
+    clean_zip <- read_csv("data/zip_25401_clean.csv")
 
-  
+    clean_zip %>%
+    group_by (address) %>%
+    summarize(count = n()) %>%
+    arrange(desc(count))
+    
+    clean_zip %>%
+    filter(address == "126 E Burke St")
+
 ```
 
 **Q2.** Do some web research on the businesses that answered question 1.  
@@ -84,7 +91,7 @@ Google the street address.  Google the business names and search for their corpo
 
 Based on your research, does it seem suspicious that this collection of businesses all got loans using the same address? Why or why not. Use specific facts identified in your research to support your position.
 
-**A2.**
+**A2.** 
 
 **Q3.** Start by using the West Virginia slice of the PPP loan data that you loaded at the start of the lab to create a subset of PPP loans in West Virginia's second largest county (which you can find in wv_population_county). And then use that table you created to answer the following questions:
 
