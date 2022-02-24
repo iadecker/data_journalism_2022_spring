@@ -96,7 +96,7 @@ Based on your research, does it seem suspicious that this collection of business
 **Q3.** Start by using the West Virginia slice of the PPP loan data that you loaded at the start of the lab to create a subset of PPP loans in West Virginia's second largest county (which you can find in wv_population_county). And then use that table you created to answer the following questions:
 
 * Which city in that county had the highest number of loans? Martinsburg
-* In that city, which industry title had more loans than any other industry title? 
+* In that city, which industry title had more loans than any other industry title? Full-Service Restaurants
 
 Requirement: you MUST export a dataframe of PPP loans from R Studio at some point in the process (not necessarily at the beginning!), load it into Open Refine, clean the city column, export it from Open Refine, and reimport into R Studio. To export data from R Studio, you will use the write_csv() function, which works like this if we're using the wv_population_county dataframe:
 
@@ -117,10 +117,16 @@ Requirement: you MUST export a dataframe of PPP loans from R Studio at some poin
     
   write_csv(wv_berkeley, "data/wv_berkeley.csv")
   
-  wv_ppp_with_naics_codes <- wv_berkeley %>% left_join(wv_naics, by="naics_code")
+  wv_berkeley_clean <- read_csv("data/wv_berkeley_clean.csv")
   
+  wv_ppp_with_naics_codes <- wv_berkeley_clean %>% left_join(wv_naics, by="naics_code")
   
-
+  wv_ppp_with_naics_codes %>%
+    filter(city == "Martinsburg") %>%
+    group_by(title) %>%
+    summarise(count = n()) %>%
+    arrange(desc(count))
+  
 ```
 
 Guidance: there are a lot of steps you'll need to take to answer this question. You may find it helpful to write out in English what you plan to do step-by-step before you start writing code.   
@@ -145,5 +151,10 @@ Guidance: there are a lot of steps you'll need to take to answer this question. 
 * Did one of its locations close during the pandemic, either before or after it got the loan?
 
 Hint: you will not find the answers to the last three questions in the data.  You could call them directly to get that information, but I don't want you to do that for this assignment.  Instead, do some web research. I would start by Googling the company name from the data and looking at the page that comes up for the business from at http://apps.sos.wv.gov/. I would use information I found on that page and use info about the company from Google, the [Wayback machine](https://archive.org/web/) (which lets you look at older versions of a company's website), Yelp, and Facebook.
+
+```{r}
+
+
+```
 
 **A5.**
