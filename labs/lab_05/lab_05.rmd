@@ -95,8 +95,8 @@ Based on your research, does it seem suspicious that this collection of business
 
 **Q3.** Start by using the West Virginia slice of the PPP loan data that you loaded at the start of the lab to create a subset of PPP loans in West Virginia's second largest county (which you can find in wv_population_county). And then use that table you created to answer the following questions:
 
-* Which city in that county had the highest number of loans?
-* In that city, which industry title had more loans than any other industry title?
+* Which city in that county had the highest number of loans? Martinsburg
+* In that city, which industry title had more loans than any other industry title? 
 
 Requirement: you MUST export a dataframe of PPP loans from R Studio at some point in the process (not necessarily at the beginning!), load it into Open Refine, clean the city column, export it from Open Refine, and reimport into R Studio. To export data from R Studio, you will use the write_csv() function, which works like this if we're using the wv_population_county dataframe:
 
@@ -116,6 +116,10 @@ Requirement: you MUST export a dataframe of PPP loans from R Studio at some poin
     arrange(desc(count))
     
   write_csv(wv_berkeley, "data/wv_berkeley.csv")
+  
+  wv_ppp_with_naics_codes <- wv_berkeley %>% left_join(wv_naics, by="naics_code")
+  
+  
 
 ```
 
