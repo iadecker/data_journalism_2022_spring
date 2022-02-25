@@ -169,5 +169,7 @@ wv_ppp_with_naics_codes %>%
   Martinsburg, WV)
 7. Did one of its locations close during the pandemic, either before or after it got the loan?
   - According to apps.sos.wv.gov, it looks like Kitzie's of Inwood (1545 Rock Cliff Dr) closed on   5/19/2020, which was much earlier than the approved loan date of 2/17/2021.
+  
+Also of note: The name of the establishment listed in the PPP data (Christi Cottle) is the name of the owner, who is a white woman. This checks out because the race and gender in the data set are filled out as white and female.
 
 
