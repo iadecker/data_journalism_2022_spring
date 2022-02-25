@@ -136,7 +136,7 @@ Guidance: there are a lot of steps you'll need to take to answer this question. 
 
 **Q4.** What are your two best hypotheses, which you'd need to confirm with reporting and further analysis, that explain why that industry is at the top of the list?
 
-**A4.**
+**A4.** 1. The first hypothesis is the most obvious: Full-Service Restaurants were slammed during the pandemic. With most people staying at home and social distancing, very few people were going out to eat, thus crippling the food industry. 2. The second hypothesis is that even if businesses managed to attract people, ordering produce was extremely difficult during the pandemic due to supply chain issues. Thus, restaurants had to look elsewhere to acquire produce and food for their establishments. 
 
 **Q5.** Start with a dataframe of loans to all businesses in the city and industry that answered question 3. Answer the following questions:
 * What is the name of the business that got the highest approved loan amount?
