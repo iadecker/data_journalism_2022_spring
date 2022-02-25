@@ -157,3 +157,16 @@ wv_ppp_with_naics_codes %>%
 ```
 
 **A5.**
+
+1. Name of the business that got the highest approved loan amount? [COTTLE CHRISTI L LLC]
+2. How much was it for? [$280,434.00]
+3. When was it approved? [2021-02-17]
+4. How many jobs does the data say were retained? [94]
+5. Is there a difference between the business' name in the PPP data and the name its customers know it by? If so, what is that name?
+      -
+6. How many locations does this business have?
+
+7. Did one of its locations close during the pandemic, either before or after it got the loan?
+
+
+
