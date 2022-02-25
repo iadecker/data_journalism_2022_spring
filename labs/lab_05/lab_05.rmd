@@ -163,10 +163,11 @@ wv_ppp_with_naics_codes %>%
 3. When was it approved? [2021-02-17]
 4. How many jobs does the data say were retained? [94]
 5. Is there a difference between the business' name in the PPP data and the name its customers know it by? If so, what is that name?
-      -
+  - It looks like the name locals would know the restaurant by is "Kitzie's Restaurant & Lounge."
 6. How many locations does this business have?
-      -
+  - It has two locations (5623 Williamsport Pike, Martinsburg, WV and 1545 Rock Cliff Dr,
+  Martinsburg, WV)
 7. Did one of its locations close during the pandemic, either before or after it got the loan?
-      -
+  - According to apps.sos.wv.gov, it looks like Kitzie's of Inwood (1545 Rock Cliff Dr) closed on   5/19/2020, which was much earlier than the approved loan date of 2/17/2021.
 
 
