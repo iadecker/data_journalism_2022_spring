@@ -91,7 +91,7 @@ Google the street address.  Google the business names and search for their corpo
 
 Based on your research, does it seem suspicious that this collection of businesses all got loans using the same address? Why or why not. Use specific facts identified in your research to support your position.
 
-**A2.** Yes, it seems suspicious because the agent name for each address is the same man, Robert Johnson. Furthermore, Abraham Ashton is listed as a Director for all of the addresses as well. This shows that even though six different companies received loans, they all are registered to/belng to the same men, meaning they got the money that was meant for six different businesses.
+**A2.** Yes, it seems suspicious because the agent name for each address is the same man, Robert Johnson. Furthermore, Abraham Ashton is listed as a Director for all of the addresses as well. This shows that even though six different companies received loans, they all are registered/belong to the same men, meaning they got the money that was meant for six different businesses.
 
 **Q3.** Start by using the West Virginia slice of the PPP loan data that you loaded at the start of the lab to create a subset of PPP loans in West Virginia's second largest county (which you can find in wv_population_county). And then use that table you created to answer the following questions:
 
@@ -100,7 +100,7 @@ Based on your research, does it seem suspicious that this collection of business
 
 Requirement: you MUST export a dataframe of PPP loans from R Studio at some point in the process (not necessarily at the beginning!), load it into Open Refine, clean the city column, export it from Open Refine, and reimport into R Studio. To export data from R Studio, you will use the write_csv() function, which works like this if we're using the wv_population_county dataframe:
 
-**A3.**
+**A3.** The city in Berkeley County that had the highest number of loans was Martinsburg. In Martinsburg, the industry title that mad the most loans was "Full-Service Restaurants."
 
 ```{r}
 # write_csv accepts 2 arguments: the dataframe and the path to the file you write out
