@@ -165,8 +165,8 @@ wv_ppp_with_naics_codes %>%
 5. Is there a difference between the business' name in the PPP data and the name its customers know it by? If so, what is that name?
       -
 6. How many locations does this business have?
-
+      -
 7. Did one of its locations close during the pandemic, either before or after it got the loan?
-
+      -
 
 
