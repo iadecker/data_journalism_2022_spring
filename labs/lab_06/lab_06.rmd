@@ -71,7 +71,7 @@ international_migration <-international_migration %>%
 ## Answer questions
 
 **Q1** Which region and county/city _below_ the state level accounted for the largest percentage of international migration for the entire time period? You'll need to add and populate a column representing percent of total using `mutate`.
-**A1** Suburban Washington Region, Montgomery County
+**A1** Region: Suburban Washington Region. County: Montgomery County
 
 ```{r}
 # Write the code to produce your answer here
@@ -81,10 +81,10 @@ international_migration %>%
 ```
 
 **Q2** Write a sentence or two that describes the data you produced in A1. Try to convey the most important idea.
-**A2** [write your answer here]
+**A2** The data we produced in A1 shows which region and county/city accounted for the largest percentage of international migration for the time period of July 2011-July 2019. We were able to see this in the datat becasue we added a "Total" column which showed us which region/city/county had the largest % of int'l migration for July '11-'19.
 
 **Q3** Which region & jurisdiction had the largest percentage change (either negative or positive) for international migration between July 2018 and July 2017? The formula for percentage change is easy to remember: (New-Old)/Old.
-**A3** Southern Maryland Region, Calvert County
+**A3** Region: Southern Maryland Region. County: Calvert County
 
 ```{r}
 # Write the code to produce your answer here
@@ -94,7 +94,7 @@ international_migration %>%
 ```
 
 **Q4** What's your best guess as to why these changes occurred, and in those places in particular?
-**A4** [write your answer here]
+**A4** According to census.gov, Calvert County, which saw the largest decrease in international migration, is 81% white. With an overwhelming majority of the county white, it is possible that the few people were looking to move to the area due to its homogeneous makeup.
 
 
 ## Back to Tabula
@@ -120,7 +120,7 @@ Add a column for the type of migration ("domestic") and populate it:
 
 ```{r}
 # Write the code to add the column here
-domestic_migration <-international_migration %>%
+domestic_migration <-domestic_migration %>%
   mutate(migration_type=("domestic"))
 ```
 
