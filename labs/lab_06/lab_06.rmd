@@ -96,6 +96,7 @@ international_migration %>%
 **Q4** What's your best guess as to why these changes occurred, and in those places in particular?
 **A4** According to census.gov, Calvert County, which saw the largest decrease in international migration, is 81% white. With an overwhelming majority of the county white, it is possible that the few people were looking to move to the area due to its homogeneous makeup.
 
+https://www.census.gov/quickfacts/calvertcountymaryland
 
 ## Back to Tabula
 
@@ -126,7 +127,7 @@ domestic_migration <-domestic_migration %>%
 
 ## Answer questions
 **Q5** Which Maryland individual jurisdiction saw the largest net decrease in domestic migration overall?
-**A5** [write your answer here]
+**A5** The Maryland individual jurisdiction that saw the largest net decrease in domestic migration overall was Baltimore City, with a decrease of 62834 people.
 
 ```{r}
 # Write the code to produce your answer here
@@ -135,7 +136,7 @@ domestic_migration %>%
 ```
 
 **Q6** How many regions & jurisdictions had net positive migration for July 2017, July 2018 and July 2019 (not just individually but all three together)?
-**A6** [write your answer here]
+**A6** There were 14 regions & jurisdictions that had net positive migration for July 2017, July 2018 and July 2019.
 
 ```{r}
 # Write the code to produce your answer here
@@ -144,4 +145,6 @@ domestic_migration %>%
 ```
 
 **Q7** How would you describe this data? Is there a county or region that stands out, and why?
-**A7** [write your answer here]
+**A7** This data shows us which regions & jurisdictions had net positive migration for July 2017, July 2018 and July 2019.
+
+I find it interesting that Frederick County had the highest total (11310) of domestic migration. Frederick is a pretty rural area, so it's interesting that the greatest amount of people went there.
