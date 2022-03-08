@@ -42,7 +42,7 @@ Let's suppose we can't find a table like that for download, but we do see a vers
 
 ### Task 2: Go to the web page linked above
 **Task** Visit the web page linked above. Briefly describe what you see there.
-**Answer**
+**Answer** There is a table with the NAICS codes based on number (sector) and what their corresponding sectors are.
 
 ### Task 3: Load image
 **Task** Run the following code to display an image showing what you should see on the web page.
