@@ -97,7 +97,7 @@ Let's write a bit of code to tell R to go to the URL for the page and ingest all
 
 ### Task 5: Run code to read in html
 **Task** Run the following code to read in the html. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** We get a head and a body from an html document. 
 
 ```{r}
 # read in the html
@@ -117,7 +117,7 @@ If we click on the name "naics_industry" in our environment window, we can see t
 
 ### Task 6: Examine html
 **Task** Follow the directions in the previous paragraph to click on naics_industry in the environment window. Briefly describe what you see there.
-**Answer**
+**Answer** We get something that says "html" and that has a head, body and xml attributes below it.
 
 Nested within the `<html>` tag is the `<head>` and `<body>`, the two fundamental sections of most web pages. We're going to pull information out of the `<body>` tag in a bit.
 
@@ -135,7 +135,7 @@ On the page, find the data we want to grab -- "Table 2. NAICS Sectors" - and rig
 
 ### Task 8: Inspect element
 **Task** Follow the directions in the previous paragraph. Briefly describe what you see there.
-**Answer**
+**Answer** We see the code details of the portion of the page we have used the inspect element function for.
 
 ### Task 9: Load image
 **Task** Run the following code to display an image showing what you should see on the web page.
@@ -149,7 +149,7 @@ Because it's inside of a table, and not some other kind of element (like a `<div
 
 ### Task 10: Run code to process tables
 **Task** Run the following code to process tables. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** We get six different tables. 
 
 ```{r}
 # read in the html and extract all the tables
@@ -168,7 +168,7 @@ Click on it to open it up.
 
 ### Task 11: Inspect naics_industry.
 **Task** Follow the directions in the previous paragraph. Briefly describe what you see there.
-**Answer**
+**Answer** I see the following: [[1]], [[2]], [[3]], [[4]], [[5]], [[6]] with a bunch of other information in the following rows.
 
 It should look like this.
 
