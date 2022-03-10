@@ -81,13 +81,29 @@ the_answer <- 31/94*100
 
 ```
 Q6. What might explain why, according to this site, the DOJ has filed PPP-related fraud cases in less than half of the country's judicial districts?
-A6. 
+A6. 33%
 
 Q7. Which state had the most approved PPP loans per 100,000 population? [This web page](https://dwillis.github.io/jour472files/ppp_scraping_example/index.html) has links to 52 individual web pages, one for each state (plus Washington, D.C. and Puerto Rico). Each of those web pages contains a one-row html table that has the name of the state, the number of approved loans, and the 2019 population. Here's an example for [Alabama](https://dwillis.github.io/jour472files/ppp_scraping_example/states/alabama.html). You'll need to loop over the individual state urls, scrape each individual page and combine the information on each page into a single dataframe to answer this question. Don't forget to calculation the loans per 100,000.
 A7.
 ```{r}
+states_url <- "https://dwillis.github.io/jour472files/ppp_scraping_example/index.html"
+
+# Read in all html from table, store all tables on page as nested list of dataframes.
+all_states <- states_url %>%
+  read_html() %>%
+  html_table()
+
+all_states <- all_states[[1]]
+
 # Create an empty dataframe to hold results
-all_states <- tibble()
+states <- tibble()
+
+# For loop, iterating over each row in our all states dataframe
+for(row_number in 1:nrow(all_states)) {
+  
+    # Keep only the row for a given row number, get rid of every other row
+    each_row_df <- all_states %>%
+      slice(row_number)
 
 
 ```
