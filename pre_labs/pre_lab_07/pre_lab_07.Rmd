@@ -80,7 +80,7 @@ In our web browser, if we right-click anywhere on the page and select "view sour
 
 ### Task 3: View source
 **Task** Follow the directions in the previous paragraph. Briefly describe what you see there.
-**Answer**
+**Answer** The page source function lets us see the code for exactly what info we want.
 
 Here's a picture of what some of the source code looks like.
 
