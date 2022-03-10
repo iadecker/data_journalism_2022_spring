@@ -75,11 +75,10 @@ districts_accused_people <- wiki_url %>%
 
 # Just keep the second dataframe in our list
 
-naics_industry <- naics_industry[[2]]
+districts_accused_people <- districts_accused_people[[3]]
 
-# show the dataframe
+the_answer <- 31/94*100
 
-naics_industry
 ```
 Q6. What might explain why, according to this site, the DOJ has filed PPP-related fraud cases in less than half of the country's judicial districts?
 A6.
