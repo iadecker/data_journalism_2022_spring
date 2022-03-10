@@ -59,14 +59,27 @@ fraud_district_dataframe <- as_tibble(individual_districts)
 ```
 
 Q4. The website (https://www.justice.gov/criminal-fraud/cares-act-fraud) shows that the DOJ filed more cases in the Southern District of Florida than in any other district. One of those cases was filed against someone named "Diamond Blue Smith". Who is Smith, and what was he accused of, according to the criminal complaint? If you were an editor, would you have assigned a reporter to write a story about this case when the complaint was filed in court? Why or why not?
-A4.
+A4. 
 
 Q5. In what percentage of all judicial districts has the U.S. Department of Justice filed cases cases against people accused of fraud related to the PPP or EIDL loan program, according to the DOJ website listing those cases: https://www.justice.gov/criminal-fraud/cares-act-fraud? In answering this question, you should also produce a list of judicial districts where DOJ has NOT filed a case, according to this site.  Note: to answer this question, you will need to scrape a table of all district courts on this up-to-date Wikipedia page under the heading "Active Courts": https://en.wikipedia.org/wiki/List_of_United_States_district_and_territorial_courts  
 A5.
 
 
 ```{r}
+wiki_url <- "https://en.wikipedia.org/wiki/List_of_United_States_district_and_territorial_courts"
 
+# Read in all html from table, store all tables on page as nested list of dataframes.
+districts_accused_people <- wiki_url %>%
+  read_html() %>%
+  html_table()
+
+# Just keep the second dataframe in our list
+
+naics_industry <- naics_industry[[2]]
+
+# show the dataframe
+
+naics_industry
 ```
 Q6. What might explain why, according to this site, the DOJ has filed PPP-related fraud cases in less than half of the country's judicial districts?
 A6.
