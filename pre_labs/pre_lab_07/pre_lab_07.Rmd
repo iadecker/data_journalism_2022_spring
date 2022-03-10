@@ -853,7 +853,7 @@ To see how this is working, we're going to edit our print statement at the end a
 
 ### Task 30: Run code to run for loop to store url and xpath value
 **Task** Run the following for loop to store url and xpath value. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** Lots of [1] ROW NUMBER
 ```{r}
 
 # For loop, iterating over each row in our naics industry dataframe
@@ -886,7 +886,7 @@ So, when you run this code, it will print out 19 dataframes inside of nested lis
 
 ### Task 31: Run code to run for loop to get tables
 **Task** Run the following for loop to get tables. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** Again, we get a lot of dataframes.
 
 ```{r}
 
@@ -920,7 +920,7 @@ In this next step, we use employment_info <- employment_info[[1]]  to extract ea
 
 ### Task 32: Run code to run for loop to clean up tables
 **Task** Run the following for loop to clean up tables. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** We get a bunch of 1x6 dataframes.
 
 ```{r}
 
@@ -961,7 +961,7 @@ We can add that back in by using bind_cols() to reconnect the each_row_df, which
 
 ### Task 33: Run code to run for loop to add in data
 **Task** Run the following for loop to add in data. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** We get more dataframes.
 
 ```{r}
 
@@ -1003,7 +1003,7 @@ Let's use parse_number() to remove the comma from the jun_2021 number and conver
 
 ### Task 34: Run code to run for loop to clean up tables
 **Task** Run the following for loop to clean up tables. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** We get cleaned up dataframes.
 
 ```{r}
 
@@ -1056,7 +1056,7 @@ And inside our "for loop" at the end, we'll bind each employment_info dataframe 
 
 ### Task 35: Run code to run for loop to combine tables into a single table
 **Task** Run the following for loop combine tables into a single table. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** We get a single, 19x3 dataframe with all the info.
 
 ```{r}
 
@@ -1113,7 +1113,7 @@ Here's the table on the mining sector page: [https://www.bls.gov/iag/tgs/iag21.h
 
 ### Task 36: Go to the web page linked above
 **Task** Visit the web page linked above. Briefly describe what you see there.
-**Answer**
+**Answer** Info on mining, quarrying and oil — NAICS 21.
 
 ### Task 37: Load image
 **Task** Run the following code to display an image showing what you should see on the web page.
@@ -1127,7 +1127,7 @@ And here's the table for the agriculture sector.
 
 ### Task 38: Go to the web page linked above
 **Task** Visit the web page linked above. Briefly describe what you see there.
-**Answer**
+**Answer** I see a similar webpage with less data for NAICS 11.
 
 ### Task 39: Load image
 **Task** Run the following code to display an image showing what you should see on the web page.
@@ -1141,7 +1141,7 @@ In the second row of this table, it has the unemployment rate. Nowhere on the pa
 
 ### Task 40: Run code to remove agriculture from table
 **Task** Run the following code to remove agriculture from table. Briefly describe the output that appears below the codeblock.
-**Answer**
+**Answer** It cuts our dataframe down to 19x3, eliminating agriculture. 
 
 ```{r}
 # remove the suspicious value for agriculture.
