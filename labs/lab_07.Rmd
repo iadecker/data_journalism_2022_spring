@@ -59,10 +59,10 @@ fraud_district_dataframe <- as_tibble(individual_districts)
 ```
 
 Q4. The website (https://www.justice.gov/criminal-fraud/cares-act-fraud) shows that the DOJ filed more cases in the Southern District of Florida than in any other district. One of those cases was filed against someone named "Diamond Blue Smith". Who is Smith, and what was he accused of, according to the criminal complaint? If you were an editor, would you have assigned a reporter to write a story about this case when the complaint was filed in court? Why or why not?
-A4. 
+A4. Diamond Blue Smith is a recording artist accused of defrauding lenders by submitting fraudulent loan applications for $24 million of Covid relief money, according to the criminal complaint. If I was an editor, I absolutely would assign a reporter to write a story about this case. Smith is a public figure, and while he is not the most high-profile producer, his status as a well-known figure in the music world makes this a newsworthy story. On top of that, he was part of a scheme that defrauded the PPP for over 20 million dollars. Even if he wasn't a public figure, that level of fraud would be newsworthy.  
 
 Q5. In what percentage of all judicial districts has the U.S. Department of Justice filed cases cases against people accused of fraud related to the PPP or EIDL loan program, according to the DOJ website listing those cases: https://www.justice.gov/criminal-fraud/cares-act-fraud? In answering this question, you should also produce a list of judicial districts where DOJ has NOT filed a case, according to this site.  Note: to answer this question, you will need to scrape a table of all district courts on this up-to-date Wikipedia page under the heading "Active Courts": https://en.wikipedia.org/wiki/List_of_United_States_district_and_territorial_courts  
-A5.
+A5. 33%
 
 
 ```{r}
@@ -81,10 +81,10 @@ the_answer <- 31/94*100
 
 ```
 Q6. What might explain why, according to this site, the DOJ has filed PPP-related fraud cases in less than half of the country's judicial districts?
-A6. 33%
+A6. One guess I have as to why the DOJ filed PPP-related fraud cases in less than half of the country's judicial districts is that they do not have the resources to track down every fraud case in the country. In other words, the DOJ might not have the man power to investigate every fraud claim; they just couldn't send people everywhere. Then, there's the issue working to get access in different jurisdictions in the country. Some might be more secreteive and protective of their files and records than others, maing it hard to look into the claims.
 
 Q7. Which state had the most approved PPP loans per 100,000 population? [This web page](https://dwillis.github.io/jour472files/ppp_scraping_example/index.html) has links to 52 individual web pages, one for each state (plus Washington, D.C. and Puerto Rico). Each of those web pages contains a one-row html table that has the name of the state, the number of approved loans, and the 2019 population. Here's an example for [Alabama](https://dwillis.github.io/jour472files/ppp_scraping_example/states/alabama.html). You'll need to loop over the individual state urls, scrape each individual page and combine the information on each page into a single dataframe to answer this question. Don't forget to calculation the loans per 100,000.
-A7.
+A7. South Dakota
 ```{r}
 states_url <- "https://dwillis.github.io/jour472files/ppp_scraping_example/index.html"
 
