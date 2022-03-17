@@ -98,14 +98,22 @@ spanish_517 <- get_acs(geography = "county",
               state = "MD",
               year = 2019)
 
-spanish_517 <- spanish_517 %>% arrange((estimate)) 
+spanish_517 <- spanish_517 %>% arrange(desc(estimate)) 
 
 population_517 <- get_acs(geography = "county",
               variables = c(population = "B16007_002"),
               state = "MD",
               year = 2019)
 
-population_517 <- population_517 %>% arrange((estimate)) 
+population_517 <- population_517 %>% arrange(desc(estimate)) 
+
+spanish_517 %>%
+  inner_join(population_517, by=c("GEOID", "NAME")) %>%
+  rename(estimate2010=estimate.x, estimate2019=estimate.y) %>%
+  mutate(min2010 = estimate2010-moe.x, max2010 = estimate2010+moe.x, min2019 = estimate2019-moe.y, max2019 = estimate2019+moe.y) %>%
+  select(-variable.x, -variable.y, -moe.x, -moe.y) %>%
+  mutate(change = ((estimate2019-estimate2010)/estimate2010)*100) %>%
+  arrange(change)
 ```
 
 **Q4** Given the counties with the largest percentage of 5-17 year-olds that speak Spanish at home, what stands out to you about the data? How would you describe the top 5 counties? How would you describe Garrett County's numbers?
