@@ -118,10 +118,45 @@ spanish_517 %>%
 **Q4** Given the counties with the largest percentage of 5-17 year-olds that speak Spanish at home, what stands out to you about the data? How would you describe the top 5 counties? How would you describe Garrett County's numbers?
 **A4** Of the top five counties, two are the largest counties in the state, one is middle of the pack, and the other two are really small. 
 
-**Q5** Which 5-digit zip code had the most removed PPP applications, and what is the percentage of Black population in that zip code according to the ACS? To answer this question, you will need to create separate dataframes with ACS data on total population by zip code and Black population by zip code. In each dataframe, rename the `estimate` column and remove the `variable` column. You'll need to combine the two dataframes in order to calculate the percentage, and then you can combine it with the PPP data. Remember: the PPP data may not have only 5-digit zip codes!
+**Q5** Which 5-digit zip code had the most removed PPP applications, and what is the percentage of Black population in that zip code according to the ACS? 
+
+create separate dataframes with ACS data on total population by zip code and Black population by zip code. 
+
+In each dataframe, rename the `estimate` column and remove the `variable` column. 
+
+You'll need to combine the two dataframes in order to calculate the percentage, and then you can combine it with the PPP data. Remember: the PPP data may not have only 5-digit zip codes!
 **A5**
 
 ```{r}
+total_pop <- get_acs(geography = "zcta",
+              variables = c(total_pop = "B01003_001"),
+              year = 2019)
+
+total_pop <- total_pop %>% arrange(desc(estimate)) 
+
+black_pop <- get_acs(geography = "zcta",
+              variables = c(population = "B01001B_001"),
+              year = 2019)
+
+black_pop <- black_pop %>% arrange(desc(estimate)) 
+
+black_percentage <- black_pop %>%
+  inner_join(total_pop, by=c("GEOID", "NAME")) %>%
+  rename(black=estimate.x, population=estimate.y) %>%
+  mutate(percentage=(black/population)*100) %>%
+  select(-variable.x, -variable.y, -moe.x, -moe.y) %>%
+  arrange(desc(percentage))
+
+removed_ppp <- maryland_ppp %>%
+  mutate(zip5 = str_sub(zip, 1, 5)) %>%
+  group_by(zip5) %>%
+  summarise(total=n()) %>%
+  arrange(desc(total))
+
+removed_ppp %>% 
+  left_join(black_percentage, by=c('zip5'='GEOID')) %>%
+  arrange(desc(total))
+
 ```
 
 **Q6** How would you describe to an editor the top 10 zip codes with the most removed applications in terms of Black population? Where are they located, and what do they have in common? Are there any zip codes that seem different, and if so why?
