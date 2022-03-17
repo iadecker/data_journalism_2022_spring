@@ -58,7 +58,7 @@ maryland_ppp <- read_rds("data/lab_08.rds")
 ## Answer questions
 
 **Q1** What is the Maryland jurisdiction with the lowest median age, according to the ACS 2019 5-year estimates? You will need to find the variable for median age first in your list of ACS variables.
-**A1** 
+**A1** Baltimore City
 
 ```{r}
 md <- get_acs(geography = "county",
@@ -70,9 +70,15 @@ md <- md %>% arrange((estimate))
 ```
 
 **Q2** Which Maryland counties have a median age of at least 50? Write code to isolate just those jurisdictions.
-**A2**
+**A2** Talbot and Worcester
 
 ```{r}
+md <- get_acs(geography = "county",
+              variables = c(lowmedage = "B01002_001"),
+              state = "MD",
+              year = 2019)
+
+md <- md %>% arrange(desc(estimate)) 
 ```
 
 **Q3** Which Maryland counties have the highest percentage of 5-17 year-olds that speak Spanish at home? You'll need one dataframe with county-level data on the number of 5-17 year-olds that speak Spanish at home and a second dataframe with the total population of 5-17 year-olds by county. For each dataframe, rename the `estimate` column to a meaningful name you've given the ACS variable, remove the `variable` columns in each using select and then join them based on GEOID and NAME. Then you can add a column to calculate the percentage of the total 5-17 population that speaks Spanish at home.
