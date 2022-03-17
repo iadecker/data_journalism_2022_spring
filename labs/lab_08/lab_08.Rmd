@@ -90,11 +90,11 @@ second dataframe with the total population of 5-17 year-olds by county.
 For each dataframe, rename the `estimate` column to a meaningful name you've given the ACS variable, remove the `variable` columns in each using select and then join them based on GEOID and NAME. 
 
 Then you can add a column to calculate the percentage of the total 5-17 population that speaks Spanish at home.
-**A3**
+**A3** Prince George's and Montgomery.
 
 ```{r}
 spanish_517 <- get_acs(geography = "county",
-              variables = c(spanish = "B16003_007"),
+              variables = c(spanish = "B16007_004"),
               state = "MD",
               year = 2019)
 
@@ -109,15 +109,14 @@ population_517 <- population_517 %>% arrange(desc(estimate))
 
 spanish_517 %>%
   inner_join(population_517, by=c("GEOID", "NAME")) %>%
-  rename(estimate2010=estimate.x, estimate2019=estimate.y) %>%
-  mutate(min2010 = estimate2010-moe.x, max2010 = estimate2010+moe.x, min2019 = estimate2019-moe.y, max2019 = estimate2019+moe.y) %>%
+  rename(spanish=estimate.x, population=estimate.y) %>%
+  mutate(percentage=(spanish/population)*100) %>%
   select(-variable.x, -variable.y, -moe.x, -moe.y) %>%
-  mutate(change = ((estimate2019-estimate2010)/estimate2010)*100) %>%
-  arrange(change)
+  arrange(desc(percentage))
 ```
 
 **Q4** Given the counties with the largest percentage of 5-17 year-olds that speak Spanish at home, what stands out to you about the data? How would you describe the top 5 counties? How would you describe Garrett County's numbers?
-**A4**
+**A4** 
 
 **Q5** Which 5-digit zip code had the most removed PPP applications, and what is the percentage of Black population in that zip code according to the ACS? To answer this question, you will need to create separate dataframes with ACS data on total population by zip code and Black population by zip code. In each dataframe, rename the `estimate` column and remove the `variable` column. You'll need to combine the two dataframes in order to calculate the percentage, and then you can combine it with the PPP data. Remember: the PPP data may not have only 5-digit zip codes!
 **A5**
