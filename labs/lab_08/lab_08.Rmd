@@ -125,7 +125,7 @@ create separate dataframes with ACS data on total population by zip code and Bla
 In each dataframe, rename the `estimate` column and remove the `variable` column. 
 
 You'll need to combine the two dataframes in order to calculate the percentage, and then you can combine it with the PPP data. Remember: the PPP data may not have only 5-digit zip codes!
-**A5** 60620 (Chicago)
+**A5** 60620 (Chicago), Population: 95.7%.
 
 ```{r}
 total_pop <- get_acs(geography = "zcta",
@@ -160,7 +160,9 @@ removed_ppp %>%
 ```
 
 **Q6** How would you describe to an editor the top 10 zip codes with the most removed applications in terms of Black population? Where are they located, and what do they have in common? Are there any zip codes that seem different, and if so why?
-**A6**
+**A6** I would start by saying that 9 of the 10 are from one city — Chicago. Also, all of these zip codes are in predominantly black areas. The only zip code (30349) not located in the Chicago area is a suburb located south of Atlanta. These are also areas that tend to have a high popualtion density. The median househod income is also lower, which means these are poorer areas. In sum, the top 10 zip codes with the most removed applications in terms of Black population are mainly located in Chicago, are majority black and low income with a high population density.
 
 **Q7** What other columns from the PPP data could be useful in reporting on what happened to these removed loans?
-**A7**
+**A7** The first column that I would be interested in is business_type. It doesn't tell us a lot, but we can use it to get an idea about types of business (people) are asking for PPP loans. It would also help tell us whether or not the program, which was designed to help small businesses, was actually successful in that regard. I am also interested in the loan_status column, specifically concerning the field called "Exemption 4." Upon conuslting Google, an Exemption 4 is "intended to protect the interests of both the government and submitters of information." I am curious as to what these types of loans actually are. What is a loan that would be seneitive to government secrets and interests? We've talked a lot about address, but I want to reitereate that this could be a good place to start when investigating claims of fraud within the PPP.
+
+
