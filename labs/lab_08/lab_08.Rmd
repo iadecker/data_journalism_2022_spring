@@ -116,7 +116,7 @@ spanish_517 %>%
 ```
 
 **Q4** Given the counties with the largest percentage of 5-17 year-olds that speak Spanish at home, what stands out to you about the data? How would you describe the top 5 counties? How would you describe Garrett County's numbers?
-**A4** Of the top five counties, two are the largest counties in the state, one is middle of the pack, and the other two are really small. 
+**A4** Of the top five counties, two (PG, MoCo) are the largest counties in the state, one (Frederick) is middle of the pack, and the other two (Caroline, Talbot) are really small. PG and MoCo are close to DC, while is in the northern part of the state. The final two are on the Eastern Shore, which is interesting because that is a more conservative locale. Moreover, some of the counties are more conservative, while others are quite liberal. I'm surprised that there are only 4,078 people 5-17 living in GC. It is a small county, but just over 4,000 seems low.
 
 **Q5** Which 5-digit zip code had the most removed PPP applications, and what is the percentage of Black population in that zip code according to the ACS? 
 
@@ -125,7 +125,7 @@ create separate dataframes with ACS data on total population by zip code and Bla
 In each dataframe, rename the `estimate` column and remove the `variable` column. 
 
 You'll need to combine the two dataframes in order to calculate the percentage, and then you can combine it with the PPP data. Remember: the PPP data may not have only 5-digit zip codes!
-**A5**
+**A5** 60620 (Chicago)
 
 ```{r}
 total_pop <- get_acs(geography = "zcta",
