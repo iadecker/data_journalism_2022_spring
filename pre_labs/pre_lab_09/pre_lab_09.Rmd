@@ -160,7 +160,7 @@ First, you have to install and load a package that contains lots of extra themes
 
 ### Task 9: Run the following code
 **Task** Run the following code. 
-**Answer**
+**Answer** OKAY!
 
 ```{r}
 install.packages('ggthemes')
@@ -171,7 +171,7 @@ And now we'll apply the economist theme from that package with theme_economist()
 
 ### Task 10: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last version of the chart?
-**Answer**
+**Answer** This chart has a new theme — economist. Economist maked the background a gray-blue color.
 ```{r}
 maryland_ppp_top_counties %>%
   ggplot() +
@@ -184,7 +184,7 @@ Those axis titles are kind of a mess. Let's change "count" on the x axis to "tot
 
 ### Task 11: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock?
-**Answer**
+**Answer** We now have a title, a source, and both thhe x- and y-axis have been cleaned up with easier-to-read titles.
 
 ```{r}
 maryland_ppp_top_counties %>%
@@ -212,7 +212,7 @@ So, let's create a dataframe with a count of Maryland loans for each date in our
 
 ### Task 12: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. 
-**Answer** Loans sorted by the date they were approved
+**Answer** The code below shows us PPP loans sorted by the date they were approved.
 
 ```{r}
 
@@ -231,7 +231,7 @@ We'll put the date on the x axis and total loans on the y axis.
 
 ### Task 13: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. 
-**Answer**
+**Answer** We see a wonky chart that shows the spikes in PPP applications.
 
 ```{r}
 ppp_maryland_loans_by_date %>%
@@ -253,7 +253,7 @@ We'll set the date_breaks to appear for every month; if we wanted every week, we
 
 ### Task 14: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. 
-**Answer**
+**Answer** We see the same wonky chart, but this time it shows the spikes in PPP applications by individual months, although they are overlapping.
 
 ```{r}
 ppp_maryland_loans_by_date %>%
@@ -268,7 +268,7 @@ Those are a little hard to read, so we can turn them 45 degrees to remove the ov
 
 ### Task 15: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. 
-**Answer**
+**Answer** We now have a cleaned x-axis. The code  changed the angle of each month to 45 degrees so that each month would neatly fit on the x-axis.
 ```{r}
 ppp_maryland_loans_by_date %>%
   ggplot() + 
