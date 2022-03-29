@@ -50,7 +50,7 @@ First, we'll create a dataframe of those top 10, called maryland_ppp_top_countie
 
 ### Task 3: Create a dataframe of top 10 counties for PPP loans in Maryland
 **Task** Run the following code to create a dataframe of top 10 loans by county in Maryland. In the space below, explain what each step of the code below is doing in English.
-**Answer** The code below shows us the top 10 MD counties that received the most PPP loans.
+**Answer** The code below shows us the 10 MD counties that received the most PPP loans.
 
 ```{r}
 maryland_ppp_top_counties <- ppp_maryland %>%
@@ -101,7 +101,7 @@ After we've invoked the ggplot() function, you'll notice we're using a + symbol.
 
 ### Task 5: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below.
-**Answer** We see a graph that shows the Project_county_loan by the total count.
+**Answer** We see a graph that represents the Project_county_loan by the total count.
 
 ```{r}
 maryland_ppp_top_counties %>%
@@ -113,7 +113,7 @@ This is a very basic chart.  But it's hard to derive much meaning from this char
 
 ### Task 6: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock?
-**Answer**
+**Answer** The new graph is ordered from lowest county to highest.
 
 ```{r}
 maryland_ppp_top_counties %>%
@@ -125,7 +125,7 @@ This is a little more useful. But the bottom is kind of a mess, with overlapping
 
 ### Task 7: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock?
-**Answer**
+**Answer** The new chart swapped the x- and y-axis and made the county names more legible.
 
 ```{r}
 maryland_ppp_top_counties %>%
@@ -144,7 +144,7 @@ It's kind of like applying CSS to html. Here I'm changing the theme slightly to 
 
 ### Task 8: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. What has changed from the last codeblock?
-**Answer**
+**Answer** The new chart has a white background as opposed to a gray one.
 
 ```{r}
 maryland_ppp_top_counties %>%
