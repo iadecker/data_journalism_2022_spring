@@ -50,7 +50,7 @@ First, we'll create a dataframe of those top 10, called maryland_ppp_top_countie
 
 ### Task 3: Create a dataframe of top 10 counties for PPP loans in Maryland
 **Task** Run the following code to create a dataframe of top 10 loans by county in Maryland. In the space below, explain what each step of the code below is doing in English.
-**Answer**
+**Answer** The code below shows us the top 10 MD counties that received the most PPP loans.
 
 ```{r}
 maryland_ppp_top_counties <- ppp_maryland %>%
@@ -70,7 +70,7 @@ With ggplot, the first thing we'll always do is draw a blank canvas that will ho
 
 ### Task 4: Create an empty ggplot container
 **Task** Run the following code. Explain what you see after running the code in the space below.
-**Answer**
+**Answer** A blank, gray box.
 
 ```{r}
 maryland_ppp_top_counties %>%
@@ -101,7 +101,7 @@ After we've invoked the ggplot() function, you'll notice we're using a + symbol.
 
 ### Task 5: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below.
-**Answer**
+**Answer** We see a graph that shows the Project_county_loan by the total count.
 
 ```{r}
 maryland_ppp_top_counties %>%
@@ -178,6 +178,7 @@ maryland_ppp_top_counties %>%
   geom_bar(aes(x=reorder(project_county_name,total_loans), weight=total_loans)) +
   coord_flip() + 
   theme_economist()
+  
 ```
 Those axis titles are kind of a mess. Let's change "count" on the x axis to "total loans" and change "reorder(project_county_name,total_loans)" to "county".  And while we're at it, let's add a basic title and a source as a caption. We'll use a new function, labs(), which is short for labels.
 
@@ -211,7 +212,7 @@ So, let's create a dataframe with a count of Maryland loans for each date in our
 
 ### Task 12: Run the following code
 **Task** Run the following code. Explain what you see after running the code in the space below. 
-**Answer**
+**Answer** Loans sorted by the date they were approved
 
 ```{r}
 
