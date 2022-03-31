@@ -126,7 +126,7 @@ knitr::include_graphics(rep("images/chart_1.png"))
   labs(
     title="Top 10 States with Most PPP loans per 100,000 people",
     x = "State",
-    y = "Loan Amounts",
+    y = "Total Loans",
     caption = "Source: SBA PPP loan database"
     ) 
 ```
