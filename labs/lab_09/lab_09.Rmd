@@ -76,7 +76,7 @@ library(ggrepel)
     title="West Virginia PPP Loans Per Day in April 2020",
     x = "Approval Dates",
     y = "Total Loans",
-    caption = "source: SBA PPP loan database"
+    caption = "Source: SBA PPP loan database"
   ) +
   geom_text_repel(aes(label=total_loans))
 
@@ -96,6 +96,12 @@ knitr::include_graphics(rep("images/chart_1.png"))
 * Use the tidycensus API to get a table of total population by state from the American Community Survey (ACS). To do this, you'll use use the alphanumeric variable for total population, which has the following "label" and "concept": "Estimate!!Total:" and "SEX BY AGE".  
 * Use ggplot to make a horizontal bar chart that shows the top 10 states, with the length of the bar determined by the state's total PPP loans per 100,000 people. Give it an appropriate title, source, and x and y axis titles. 
 * Make the bars on the chart blue! I didn't show you how to do this in the prelab, so do some web sleuthing to figure it out.  
+
+```{r}
+  total_state_ppp <- read_csv("data/state_ppp_all.csv")
+
+
+```
 
 **A2.** 
 
