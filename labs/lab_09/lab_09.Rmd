@@ -100,6 +100,12 @@ knitr::include_graphics(rep("images/chart_1.png"))
 ```{r}
   total_state_ppp <- read_csv("data/state_ppp_all.csv")
 
+  # Write code here to load the ACS variables
+  ACS_2019 <- load_variables(2019, "acs5", cache = TRUE)
+  
+  state_pop <- get_acs(geography = "state",
+              variables = c(age = "B01001_001"),
+              year = 2019)
 
 ```
 
