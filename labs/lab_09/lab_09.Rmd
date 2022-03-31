@@ -161,6 +161,16 @@ filter(amount < 25000) %>%
     TRUE ~ forgiveness_amount
   ))
 
+wv_ppp_subset %>%
+  ggplot(aes(x=amount, y=forgiveness_amount)) + 
+  geom_point() +
+ labs(
+    title="PPP Loan Forgiveness",
+    x = "Loan Amount",
+    y = "Forgiveness Amount",
+    caption = "Source: SBA PPP loan database"
+    ) 
+  
 
 
 ```
