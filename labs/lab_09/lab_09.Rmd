@@ -155,10 +155,10 @@ To answer those questions, make a codeblock and do the following:
 
 ```{r}
 wv_ppp_subset <- wv_ppp_loan %>%
-filter(amount < 25,000) %>%
+filter(amount < 25000) %>%
   mutate(forgiveness_amount = case_when (
     is.na(forgiveness_amount) ~ 0,
-    TRUE ~ 
+    TRUE ~ forgiveness_amount
   ))
 
 
