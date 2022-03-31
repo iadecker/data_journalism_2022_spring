@@ -100,6 +100,12 @@ knitr::include_graphics(rep("images/chart_1.png"))
 ```{r}
   total_state_ppp <- read_csv("data/state_ppp_all.csv")
 
+ total_state_ppp <- total_state_ppp %>%
+  mutate(state = case_when (
+    state == "S Dakota" ~ "South Dakota",
+    state == "N Dakota" ~ "North Dakota",
+    TRUE ~ state))
+
   # Write code here to load the ACS variables
   ACS_2019 <- load_variables(2019, "acs5", cache = TRUE)
   
@@ -110,8 +116,19 @@ knitr::include_graphics(rep("images/chart_1.png"))
   state_ppp_pop <- state_pop %>%
   inner_join(total_state_ppp, by=c("NAME" = "state")) %>%
   mutate(loans_per_100000=(total_ppp_loans/estimate)*100000) %>%
-  arrange(desc(loans_per_100000))
+  arrange(desc(loans_per_100000)) %>%
+  head(10)
 
+  state_ppp_pop %>%
+  ggplot() +
+  geom_bar(aes(x=reorder(NAME,loans_per_100000), weight=loans_per_100000), fill="Blue") +
+  coord_flip() +
+  labs(
+    title="Top 10 States with Most PPP loans per 100,000 people",
+    x = "State",
+    y = "Loan Amounts",
+    caption = "Source: SBA PPP loan database"
+    ) 
 ```
 
 **A2.** 
