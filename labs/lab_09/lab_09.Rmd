@@ -153,6 +153,18 @@ To answer those questions, make a codeblock and do the following:
 4. Make a scatterplot. I didn't show you how to do this, so look it up! 
 5. In the answer space below, describe what you see and answer the questions posed above.  In a general sense, what do you think this means?  
 
+```{r}
+wv_ppp_subset <- wv_ppp_loan %>%
+filter(amount < 25,000) %>%
+  mutate(forgiveness_amount = case_when (
+    is.na(forgiveness_amount) ~ 0,
+    TRUE ~ 
+  ))
+
+
+
+```
+
 **A3.**  
 
 
