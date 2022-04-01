@@ -79,7 +79,6 @@ library(ggrepel)
     caption = "Source: SBA PPP loan database"
   ) +
   geom_text_repel(aes(label=total_loans))
-
 ```
 
 
@@ -170,12 +169,9 @@ wv_ppp_subset %>%
     y = "Forgiveness Amount",
     caption = "Source: SBA PPP loan database"
     ) 
-  
-
-
 ```
 
-**A3.**  
+**A3.**  According to the data used to make this scatterplot, there were a lot of people who had their loans fully forgiven. If we look at the diagonal bar, we can see that there were tons of loan applications that reeived full loan firgiveness. In a similar fashion, we can also see that there (sadly) were a lot of people who didn't have their loans forgiven. Just looking at the bottom solid line, we can see that it seems like there were more people who didn't get any kind of loan firgovenss. We can tell becasue the no forgiveness line is solid, while the full forgieness line is still a bit bumpy. In terms of people who had some who had some of the loan forgiven, this is the smallest group of the three. According to the scatterplot, there were some people who had part of their loan forgiven, but it is is difficult to tell whteher or not it is less than those in the group of either no or full forgiveness. Still, in the partial forgiveness group, most people got a majority of their loan forgien; most of the points on the scatterplot are near higher up on the y-axis, which is forgiveness amount. Therefore, we can tell that most people who received partial foirgiveness on their loan got most of it forgiven. In a general sense, this graph makes me think that the there were a lot of people who this program probably hurt more than it helped. There were a lot of people who got no forgiveness on loans of more than $5000, which is a lot of money in general. And then we have to remember that this was during covid, when a lot of businesses were not making a lot of money. Generally, it is also sad that more people got no forgiveness than were granted full forgiveness, although there still is a large group of people who did get full forgiveness, so we can't discount that, either.
 
 
 -30-
