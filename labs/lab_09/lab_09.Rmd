@@ -87,7 +87,7 @@ library(ggrepel)
 ```{r}
 knitr::include_graphics(rep("images/chart_1.png"))
 ```
-**A1.** April 28, 2020 (2381).
+**A1.** April 28, 2020 (2381 loans approved).
 
 **Q2.** What are the top 10 states that got the most PPP loans per 100,000 people? You MUST do the following things when answering this question:
 
@@ -131,7 +131,7 @@ knitr::include_graphics(rep("images/chart_1.png"))
     ) 
 ```
 
-**A2.** South Dakota, North Dakota, Nebraska, Georgia, Iowa, Illinois, Louisiana, Florida, Mississippi, Montana
+**A2.** South Dakota, North Dakota, Nebraska, Georgia, Iowa, Illinois, Louisiana, Florida, Mississippi, Montana.
 
 **Q3.**  A scatterplot is a type of chart that helps us see relationships between two variables. One variable goes on the x axis, the other on the y axis.  For each row/observation in our data, a scatterplot puts a circle (or a "point") where the two variables intersect on a grid. 
 
