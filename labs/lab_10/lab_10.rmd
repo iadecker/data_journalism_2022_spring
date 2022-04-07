@@ -106,6 +106,9 @@ all_kabbage_counties <- kabbage_counties %>%
   mutate(kabbage_loan_percentage=(kabbage_loans/total_loans)*100) %>%
   arrange(desc(kabbage_loan_percentage))
 
+county_fips <- read_csv("data/county_fips.csv")
+
+md_fips <- md_fips %>% mutate(fips_code = str_c(state_code, county_code))
 
 ```
 
