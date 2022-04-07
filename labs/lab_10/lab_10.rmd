@@ -95,6 +95,17 @@ You MUST do the following things when answering this question:
 
 **Q3.** The online lender Kabbage, Inc. is featured in the [ProPublica PPP fake farms story](https://www.propublica.org/article/ppp-farms). To show where Kabbage was lending money, make a county-level map that shows the percentage of loans in each county that were Kabbage loans. To do this, make a codeblock and do the following:
 
+```{r}
+kabbage_counties <- read_csv("data/kabbage_counties.csv")
+
+all_counties <- read_csv("data/all_counties.csv")
+
+all_kabbage_counties <- kabbage_counties %>%
+  inner_join(all_counties, by=c("project_county_name", "project_state"))
+
+
+```
+
 1. Load the `kabbage_counties.csv` and `all_counties.csv` files in the data folder.
 2. Join the two together, specifying the join columns, and rename the total columns to represent Kabbage loans and total loans. Save the output to a new dataframe.
 3. Calculate the percentage of loans in each county that were Kabbage loans and save the output to the existing dataframe.
