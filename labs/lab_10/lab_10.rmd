@@ -32,6 +32,7 @@ options(scipen=999)
 
 ```{r}
 library(tidyverse)
+library(tigris)
 ```
 
 **Task** Create a codeblock and load appropriate packages and settings for this lab.
@@ -56,8 +57,12 @@ undisbursed_amount <- barber_shops %>%
 
  barber_shop_undisbursed <- barber_shop_ppp %>%
    inner_join(undisbursed_amount, by=c("state")) %>%
-   rename(total_barber_loans=count.x, undisbursed_loans=count.y) %>%
+   rename(total_barber_loans=count.x, undisbursed_loans=count.y)
+ 
+  barber_shop_undusbursed_top_ten <- barber_shop_undisbursed %>%
    head(10)
+  
+  write_csv(barber_shop_undusbursed_top_ten, "data/barber_shop_undusbursed_top_ten.csv")
 ```
 
 You MUST do the following things when answering this question:
