@@ -56,7 +56,8 @@ undisbursed_amount <- barber_shops %>%
 
  barber_shop_undisbursed <- barber_shop_ppp %>%
    inner_join(undisbursed_amount, by=c("state")) %>%
-   rename(total_barber_loans=count.x, undisbursed_loans=count.y)
+   rename(total_barber_loans=count.x, undisbursed_loans=count.y) %>%
+   head(10)
 ```
 
 You MUST do the following things when answering this question:
