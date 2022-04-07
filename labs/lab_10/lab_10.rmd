@@ -25,16 +25,39 @@ options(scipen=999)
 ```
 
 ```{r echo=FALSE}
-census_api_key("1cc6052b8d53c607d6876a2e5a3c44b607a324d4", overwrite=TRUE)
+  census_api_key("1cc6052b8d53c607d6876a2e5a3c44b607a324d4", install=TRUE)
 ```
 
 ## Load libraries and establish settings
+
+```{r}
+library(tidyverse)
+```
 
 **Task** Create a codeblock and load appropriate packages and settings for this lab.
 
 ## Questions
 
 **Q1.** You got a tip that there are some unusual patterns among applicants listing barber shops as their occupation. Which state has the most PPP applications from barber shops, and how many of those have undisbursed amounts greater than $0? Which state has the most undisbursed applications?
+
+```{r}
+barber_shops <- read_csv("data/barber_shops_ppp.csv")
+
+barber_shop_ppp <- barber_shops %>%
+    group_by(state) %>%
+    summarise(count=n()) %>%
+    arrange(desc(count))
+
+undisbursed_amount <- barber_shops %>%
+    filter(undisbursed_amount > 0) %>%
+    group_by(state) %>%
+    summarise(count=n()) %>%
+    arrange(desc(count))
+
+ barber_shop_undisbursed <- barber_shop_ppp %>%
+   inner_join(undisbursed_amount, by=c("state")) %>%
+   rename(total_barber_loans=count.x, undisbursed_loans=count.y)
+```
 
 You MUST do the following things when answering this question:
 * Use the PPP loan data, which is in the data folder and is called `barber_shops_ppp.csv`.
