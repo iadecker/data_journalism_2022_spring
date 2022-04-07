@@ -101,7 +101,10 @@ kabbage_counties <- read_csv("data/kabbage_counties.csv")
 all_counties <- read_csv("data/all_counties.csv")
 
 all_kabbage_counties <- kabbage_counties %>%
-  inner_join(all_counties, by=c("project_county_name", "project_state"))
+  inner_join(all_counties, by=c("project_county_name", "project_state")) %>%
+  rename(kabbage_loans=total.x, total_loans=total.y) %>%
+  mutate(kabbage_loan_percentage=(kabbage_loans/total_loans)*100) %>%
+  arrange(desc(kabbage_loan_percentage))
 
 
 ```
