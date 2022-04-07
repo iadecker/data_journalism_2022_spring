@@ -91,7 +91,7 @@ You MUST do the following things when answering this question:
 
     write_csv(undisbursed_percentage, "data/undisbursed_percentage.csv")    
 ```
-**A2.**
+**A2.** https://datawrapper.dwcdn.net/TpKgS/1/
 
 **Q3.** The online lender Kabbage, Inc. is featured in the [ProPublica PPP fake farms story](https://www.propublica.org/article/ppp-farms). To show where Kabbage was lending money, make a county-level map that shows the percentage of loans in each county that were Kabbage loans. To do this, make a codeblock and do the following:
 
@@ -106,9 +106,13 @@ all_kabbage_counties <- kabbage_counties %>%
   mutate(kabbage_loan_percentage=(kabbage_loans/total_loans)*100) %>%
   arrange(desc(kabbage_loan_percentage))
 
+kabbage_test <-all_kabbage_counties %>%
+  rename(state_name=project_state, county=project_county_name)
+
 county_fips <- read_csv("data/county_fips.csv")
 
-md_fips <- md_fips %>% mutate(fips_code = str_c(state_code, county_code))
+combined_fips <- kabbage_test %>%
+  left_join(county_fips, by=c('state_name','county'))
 
 ```
 
