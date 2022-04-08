@@ -113,10 +113,10 @@ all_kabbage_counties <- kabbage_counties %>%
 county_fips <- read_csv("data/county_fips.csv")
 
 kabbage_test <-all_kabbage_counties %>%
-  rename(state_name=project_state, county=project_county_name)
+  rename(state=project_state, match_county=project_county_name)
 
 combined_fips <- kabbage_test %>%
-  left_join(county_fips, by=c('state_name','county'))
+  left_join(county_fips, by=c('state','match_county'))
 
 ```
 
