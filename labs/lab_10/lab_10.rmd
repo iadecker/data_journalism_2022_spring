@@ -93,7 +93,8 @@ https://datawrapper.dwcdn.net/zFJ36/1/.
 
     write_csv(undisbursed_percentage, "data/undisbursed_percentage.csv")    
 ```
-**A2.** As opposed to a bar chart, this is a scatterplot. The scatterplot allows us to see the correlation between various variables (undisbursed loans and total barber loans) than we'd be able to see in a bar chart. I decided to use a scatterplot because it allows us to 
+
+**A2.** As opposed to a bar chart, this graph is a scatterplot. The scatterplot allows us to see the correlation between various variables (in this case, undisbursed loans and total barber loans) in a more succinct way than we'd be able to see in a bar chart. A bar chart would have made visualizing the data difficult because a lot of the values would overlap, and it be difficult to discern what information related to which category in the graph. I decided to use a scatterplot because it allows us to clearly see what percentage of barber shops have yet to receive their PPP loan. The higher a point on the scatterplot is, the greater a percentage of barbers have yet to receive their full loan from that state.
 
 https://datawrapper.dwcdn.net/TpKgS/1/
 
