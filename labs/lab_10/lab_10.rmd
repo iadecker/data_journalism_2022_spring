@@ -118,6 +118,8 @@ kabbage_test <-all_kabbage_counties %>%
 combined_fips <- kabbage_test %>%
   left_join(county_fips, by=c('state','match_county'))
 
+write_csv(combined_fips, "data/combined_fips.csv")  
+
 ```
 
 1. Load the `kabbage_counties.csv` and `all_counties.csv` files in the data folder.
@@ -129,4 +131,6 @@ combined_fips <- kabbage_test %>%
 7. Make a county-level map using that exported CSV file that displays the percentage of Kabbage loans. Style it so that the tooltip displays the county and the percentage, and format all percentages shown on the map so that they appear with one decimal point (such as 3.4%). Follow the same general guidelines as above for the chart's visual elements, and give the map a title, description and source. Provide a legend caption and format the percentage in the same way as on the tooltips.
 8. In the answer space below, provide the URL for your published map and then describe where Kabbage loans are and are not found. Where are they more common? Look specifically at Florida in the data: are there counties on the map where no data is displayed? Why?
 
-**A3.**  
+**A3.**  provide the URL for your published map and then describe where Kabbage loans are and are not found. Where are they more common? Look specifically at Florida in the data: are there counties on the map where no data is displayed? Why?
+
+https://datawrapper.dwcdn.net/Ytjig/2/
