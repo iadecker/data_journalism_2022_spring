@@ -423,7 +423,7 @@ Okay, now let's visualize.  We're going to build a choropleth map, with the colo
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This gives us a choropleth map showing which MD counties have the higest number of hospital beds per 100,000 people.
 
 ```{r}
 ggplot() + 
@@ -435,7 +435,7 @@ This map is okay, but the color scale makes it hard to draw fine-grained differe
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This changes the color scheme of the choropleth map to "magma" so that we can better visualize which MD counties have the higest number of hospital beds per 100,000 people.
 
 ```{r}
 ggplot() + 
@@ -450,7 +450,7 @@ So let's change the color scale to a "log" scale, which will help us see those d
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below. What patterns do you see?
-**Answer**
+**Answer** This is the best choropleth map to date. This one gives us a clear picture of the fine-grained differences between MD counties, something the other maps did not do as well.
 
 ```{r}
 ggplot() + 
