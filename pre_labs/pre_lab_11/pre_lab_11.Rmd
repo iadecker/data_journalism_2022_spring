@@ -339,7 +339,7 @@ But there's a problem.  The column in our population data that has county names 
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This is just so we can see the two separate datasets md_county_population and md_beds_by_county.
 
 ```{r}
 
@@ -355,7 +355,7 @@ Let's clean the population table. We're going to rename the "NAME" column to "CO
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** Woah, Nelly, we're doing a lot here. In this code block we are changing md_county_population so that we can join it with md_beds_by_county.
 
 ```{r}
 md_county_population <- md_county_population %>%
@@ -374,7 +374,7 @@ Now we can join them.
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This is us joining md_county_population and md_beds_by_county together into a new dataset called md_beds_per_100k.
 
 ```{r}
 md_beds_per_100k <- md_county_population %>%
@@ -389,7 +389,7 @@ We have two NAs after we join, for Queen Anne's County and Carolina County.  Tha
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This is us making the N/As in Queen Anne's County and Carolina County values of 0.
 
 ```{r}
 md_beds_per_100k <- md_county_population %>%
@@ -404,7 +404,7 @@ Our final step before visualization, let's calculate the number of beds per 100,
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This is us calculating the number of beds per 100,000 for each MD county (mutate(beds_per_100k = total_beds/population*100000)). We also want to see it from largest to smallest (arrange(desc(beds_per_100k)))
 
 ```{r}
 md_beds_per_100k <- md_county_population %>%
