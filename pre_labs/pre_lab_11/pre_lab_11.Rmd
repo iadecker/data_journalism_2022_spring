@@ -53,7 +53,7 @@ When you do, it should look something like this:
 
 ### Task: Load image
 **Task** Run the following code to load an image. Describe what you see in the answer space below.
-**Answer**
+**Answer** We see a shapefile with various files within.
 
 ```{r, echo=FALSE}
 knitr::include_graphics(rep("images/geolayers2.png"))
@@ -63,7 +63,7 @@ Simlar to `readr`, the `sf` library has functions to read geographic data. In th
 
 ### Task: Load data
 **Task** Run the following code to load data. Describe what you see in the answer space below. What columns exist in this data?
-**Answer**
+**Answer** This dataset gives us general information about every hospital (7,581) in the United States. The columns provide information about each individual hospital, including size, location and type.
 
 ```{r}
 hospitals <- st_read("data/Hospitals/Hospitals.shp")
@@ -77,7 +77,7 @@ Let's look at just Maryland hospitals. Good news -- `sf` plays very nicely with 
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This bit of code is us telling R to provide hospitals from dataset but this time only give us those in Maryland (MD). From this, we learn that there  are 72 hospitals. 
 
 ```{r}
 md_hospitals <- hospitals %>% 
@@ -92,7 +92,7 @@ What kind of hospitals do we have?
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This code shows us the seven different types of hospitals in Maryland. They are: GENERAL ACUTE CARE, PSYCHIATRIC, MILITARY, CHRONIC DISEASE, LONG TERM CARE, REHABILITATION and SPECIAL.
 
 ```{r}
 md_hospitals %>%
@@ -107,7 +107,7 @@ Let's narrow our data to only look at the 50 "General Acute Care hospitals."
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** The code block below is us asking R to provide just the hospitals that fall under the "GENERAL ACUTE CARE" category in Maryland. 
 
 ```{r}
 
@@ -125,7 +125,7 @@ We can simply plot them on a longitude-latitude grid using ggplot.
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** We get a simple ggplot, but all we see are dots that sort of resemble the state of Maryland. The dots represent the 50 GENERAL ACUTE CARE hospitals and where they are geographically located in the state. But if you didn't know the exact shape of the state, you would be excused for not knowing what this jumble of dots was.
 
 ```{r}
 md_hospitals %>%
@@ -148,7 +148,7 @@ Then load it:
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This code block is us installing the package "tigris."
 
 ```{r}
 # install.packages('tigris')
