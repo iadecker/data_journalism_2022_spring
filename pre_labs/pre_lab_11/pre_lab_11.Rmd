@@ -206,7 +206,7 @@ We're also going to change things up a bit to put the datasets we want to displa
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This shows the same state map but with the 50 GENERAL ACUTE CARE hospitals. 
 
 ```{r}
 
@@ -225,7 +225,7 @@ We can get a sense of where the largest hospitals are, by changing the color of 
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** In this code block, we are getting a sense of which hospitals have the most beds. We are using color to show which ones have more. This shows us where in the state the largest hospitals are.
 
 ```{r}
 
@@ -248,7 +248,7 @@ First, let's load the libraries we'll need. We're also going to load tidycensus 
 
 ### Task: Load libraries
 **Task** Run the following code. Describe the output in the space below. Be sure to input your census api key.
-**Answer**
+**Answer** We are loading three libraries - sf, janitor, tidycensus - to help with our coding work. 
 
 ```{r}
 library(tidyverse)
@@ -264,7 +264,7 @@ And now let's load the dataframe of hospital information from the previous chapt
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This is the same data frame of the 50 GENERAL ACUTE CARE hospitals in MD.
 
 ```{r}
 md_hospitals <- st_read("data/Hospitals/Hospitals.shp") %>% 
@@ -281,7 +281,7 @@ Each hospital exists inside of a county, so we're going to first calculate the t
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This shows us how many hospital beds each MD county has. 
 
 ```{r}
 
@@ -302,7 +302,7 @@ Next, we'll go out and get population data for each county from tidycensus.  The
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This shows us the populations of each MD county. We can access this info through tidycensus using the population code B01001_001.
 
 ```{r}
 
@@ -318,7 +318,7 @@ Ultimately, we're going to join this county population table with our beds by co
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** This code is us pulling geometry info from tidycensus while also pulling in population data.
 
 ```{r}
 
