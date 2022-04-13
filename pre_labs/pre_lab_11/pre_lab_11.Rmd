@@ -159,7 +159,7 @@ Now, let's use the counties() function from tigris to pull down a shapefile of a
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** We get a dataframe with information from all the counties in the U.S.
 ```{r}
 
 counties <- counties() 
@@ -177,7 +177,7 @@ This county shapefile has all 3233 U.S. counties.  We only want the Maryland cou
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** We are filtering for just Maryland counties using the state's code: 24.
 
 ```{r}
 md_counties <- counties %>%
@@ -189,7 +189,7 @@ To see what this looks like, let's plot it out with ggplot. We can pretty clearl
 
 ### Task: Run code
 **Task** Run the following code. Describe the output in the space below.
-**Answer**
+**Answer** We see a ggplot of Maryland on a longitudinal-latitudinal, but interestingly enough, it has included the Chesapeake as part of the land of the state.
 
 ```{r}
 md_counties %>%
