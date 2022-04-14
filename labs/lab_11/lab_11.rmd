@@ -53,7 +53,6 @@ wv_county_population <- get_acs(geography = "county",
               state = "WV",
               geometry = TRUE)
 
-
 wv_county_population
 
 naics_21_only
@@ -69,14 +68,10 @@ wv_county_population <- wv_county_population %>%
   rename(project_county_name = COUNTY)
 
 wv_loans_21_per_100k <- wv_county_population %>%
-  left_join(naics_21_only)
-
-
-
-  mutate(beds_per_100k = project_county_name/naics_code*100000)
-  
-
-
+  left_join(naics_21_only) %>%
+  mutate(naics_code = replace_na(naics_code,0)) %>%
+  mutate(wv_loans_21_per_100k = amount/population*100000) %>%
+  arrange(desc(wv_loans_21_per_100k))
 
 
 ```
