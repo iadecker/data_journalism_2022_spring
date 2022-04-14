@@ -48,6 +48,14 @@ naics_two_digit <- wv_ppp %>%
 naics_21_only <- naics_two_digit %>%
   filter(naics_code == "21")
 
+wv_loans_by_county <- naics_21_only %>%
+  as_tibble() %>%
+  group_by(project_county_name) %>%
+  summarise(
+    loans_by_county = sum(amount)
+  ) %>%
+  arrange(desc(project_county_name))
+
 wv_county_population <- get_acs(geography = "county", 
               variables = c(population = "B01001_001"), 
               state = "WV",
@@ -68,12 +76,17 @@ wv_county_population <- wv_county_population %>%
   rename(project_county_name = COUNTY)
 
 wv_loans_21_per_100k <- wv_county_population %>%
-  left_join(naics_21_only) %>%
-  mutate(naics_code = replace_na(naics_code,0)) %>%
-  mutate(wv_loans_21_per_100k = amount/population*100000) %>%
-  arrange(desc(wv_loans_21_per_100k))
+  left_join(wv_loans_by_county) %>%
+  mutate(loans_by_county = replace_na(loans_by_county,0)) %>%
+  mutate(loans_per_100k = loans_by_county/population*100000) %>%
+  arrange(desc(loans_per_100k))
+```
 
-
+```{r}
+ggplot() + 
+  geom_sf(data=wv_loans_21_per_100k, aes(fill=loans_per_100k)) + 
+  theme_minimal() +
+  scale_fill_viridis_b(option="magma",trans = "log") 
 ```
 
 **Q1.** You are interested in doing some reporting on how West Virginia companies in the "Mining, Quarrying, and Oil and Gas Extraction" industry (https://www.naics.com/six-digit-naics/?code=21) used PPP loans during the pandemic (West Virginia is a big coal mining state).  
@@ -86,6 +99,11 @@ Then answer these questions:
 
 * Based on the map, what region of the state appears to have gotten more loans in this industry? What geographic pattern do you notice in the data?
 * Based on the table, what county got the highest total loan amount? What was the total amount per 100K population, the total amount of loans (not population adjusted), how many loans were there, and what's the population?
+
+```{r}
+wv_loans_21_per_100k %>%
+  arrange(desc(loans_by_county))
+```
 
 **A1.**
 
@@ -101,6 +119,21 @@ Make a map with a point for each one of these mine permits and put a blank map w
 
 What spatial pattern do you see? How does it compare to the spatial pattern in the first map you made?
 
+```{r}
+library(lubridate)
+```
+
+```{r}
+mining_permits <- st_read("https://tagis.dep.wv.gov/arcgis/rest/services/WVDEP_enterprise/mining_reclamation/MapServer/0/query?where=1%3D1&outFields=*&geometry=&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=4326&f=json")
+
+mining_permits <- mining_permits %>%
+  mutate(expiredate = ymd(expiredate)) %>%
+  
+
+
+
+```
+
 **A2.**
 
 **Q3.** To confirm the spatial comparison you identified in question 2, let's create a new map that layers the mine location points on top of our PPP choropleth map we created in question 1. What do you notice about the number of mines in the county that has the highest total loan amount per 100K?
@@ -108,6 +141,14 @@ What spatial pattern do you see? How does it compare to the spatial pattern in t
 **A3.**
 
 **Q4.** Starting from the original WV ppp dataframe, examine the loans to companies in "Mining, Quarrying, and Oil and Gas Extraction" in the county with the highest total loan amount per 100K (you can use the table you created in question 1 to identify the top county).
+
+```{r}
+ritchie <- wv_ppp %>%
+    mutate(naics_2 = str_sub(naics_code, start=1L, end=2L)) %>%
+    filter(naics_2 == "21") %>%
+    filter(project_county_name == "RITCHIE") %>%
+    arrange(desc(amount))
+```
 
 * What single company accounts for the biggest chunk of the total loan amount?
 * What specific industry are they in, based on their 6-digit NAICS code? Look them up on the web. What services do they provide?
