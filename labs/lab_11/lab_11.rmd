@@ -41,6 +41,19 @@ wv_ppp <- read_rds("data/lab_11.rds")
 
 ## Questions
 
+```{r}
+naics_two_digit <- wv_ppp %>%
+  mutate(naics_code = str_sub(naics_code, start=1L, end=2L))
+  
+naics_21_only <- naics_two_digit %>%
+  filter(naics_code == "21")
+
+
+
+
+
+```
+
 **Q1.** You are interested in doing some reporting on how West Virginia companies in the "Mining, Quarrying, and Oil and Gas Extraction" industry (https://www.naics.com/six-digit-naics/?code=21) used PPP loans during the pandemic (West Virginia is a big coal mining state).  
 
 Then produce a choropleth map that shows West Virginia counties shaded according to the total amount of loans to that industry per 100,000 population.
