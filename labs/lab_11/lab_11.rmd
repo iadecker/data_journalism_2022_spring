@@ -48,6 +48,27 @@ naics_two_digit <- wv_ppp %>%
 naics_21_only <- naics_two_digit %>%
   filter(naics_code == "21")
 
+wv_county_population <- get_acs(geography = "county", 
+              variables = c(population = "B01001_001"), 
+              state = "WV",
+              geometry = TRUE)
+
+
+wv_county_population
+
+naics_21_only
+
+wv_county_population <- wv_county_population %>%
+  rename(COUNTY = NAME) %>%
+  mutate(COUNTY = toupper(str_remove_all(COUNTY,", West Virginia|County"))) %>%
+  mutate(COUNTY = str_trim(COUNTY,side="both")) %>%
+  rename(population = estimate) %>%
+  select(COUNTY, population, geometry)
+
+
+
+  mutate(beds_per_100k = project_county_name/naics_code*100000)
+  
 
 
 
