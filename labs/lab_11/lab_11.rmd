@@ -25,9 +25,19 @@ library(sf)
 library(tigris)
 ```
 
+**Task** set your API Key
+
+```{r echo=FALSE}
+census_api_key("1cc6052b8d53c607d6876a2e5a3c44b607a324d4", overwrite=TRUE)
+```
+
 ## Load data
 
 **Task** Create a codeblock and load the WV slice of the PPP loan data, which is in the data folder and is called lab_11.rds.
+
+```{r}
+wv_ppp <- read_rds("data/lab_11.rds")
+```
 
 ## Questions
 
