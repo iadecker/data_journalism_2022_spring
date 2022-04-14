@@ -65,6 +65,12 @@ wv_county_population <- wv_county_population %>%
   rename(population = estimate) %>%
   select(COUNTY, population, geometry)
 
+wv_county_population <- wv_county_population %>%
+  rename(project_county_name = COUNTY)
+
+wv_loans_21_per_100k <- wv_county_population %>%
+  left_join(naics_21_only)
+
 
 
   mutate(beds_per_100k = project_county_name/naics_code*100000)
