@@ -142,7 +142,7 @@ ggplot() +
   theme_minimal()
 ```
 
-**A2.** The spatial pattern I see is that a vast majority of the mines with permits that are set to expire after Sept. 1, 2021. are found in the southern-central part of the state. Moreover, there are virtually no expiring permits in the western part of the state. Compared to the first map, this map's spacial pattern shows that the southern-central part of the state is in serious trouble in the coming years. West Virginia is heavily dependent on mining, so the fact that a majority of its mine permits are set to expire will negatively impact the job market and the state's GDP. It's also interesting to note that this area had a relatively high rate of PPP loans per 100k people in the first map, but it's possible those funds weren't enough if these mines have not yet renewed their permits. Still, it's possible that some mines have the money, they just have yet to renew their permit. For example, there are some permits that won't expire until 2027.
+**A2.** The spatial pattern I see is that a vast majority of the mines with permits that are set to expire after Sept. 1, 2021. are found in the southern-central part of the state. Moreover, there are virtually no expiring permits in the western part of the state. Compared to the first map, this map's spacial pattern shows that the southern-central part of the state is in serious trouble in the coming years. West Virginia is heavily dependent on mining, so the fact that a majority of its mine permits are set to expire will negatively impact the job market and the state's GDP.
 
 **Q3.** To confirm the spatial comparison you identified in question 2, let's create a new map that layers the mine location points on top of our PPP choropleth map we created in question 1. What do you notice about the number of mines in the county that has the highest total loan amount per 100K?
 
@@ -156,7 +156,7 @@ ggplot() +
 
 ```
 
-**A3.**
+**A3.** One thing I think is interesting to note about the number of mines in the county that had the highest total loan amount per 100K is that they have a relatively low expiry rate for their permits. This is primarily true in the north-central part of the state, where very few mines are set to expire. However, if we were to look at the bottom of the state, there is an inordinate amount of mines set to expire. Now, I wouldn't say this is too big of an issue at the moment because some mines might have an expiry date five years down the road. I other words, just because a permit is expiring does not mean the mine will fail to get/apply for a new permit to keep operating.
 
 **Q4.** Starting from the original WV ppp dataframe, examine the loans to companies in "Mining, Quarrying, and Oil and Gas Extraction" in the county with the highest total loan amount per 100K (you can use the table you created in question 1 to identify the top county).
 
