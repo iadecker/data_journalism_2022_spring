@@ -131,6 +131,7 @@ mining_permits <- st_read("https://tagis.dep.wv.gov/arcgis/rest/services/WVDEP_e
 
 mining_permits <- mining_permits %>%
   mutate(expiredate = ymd(expiredate)) %>%
+  filter(expiredate > "2021-09-01")
   
 
 
