@@ -159,15 +159,14 @@ ritchie <- wv_ppp %>%
 * What specific industry are they in, based on their 6-digit NAICS code? 
     Drilling Oil and Gas Wells (213111)
 *What services do they provide?
-    -Water Hauling
-    -Casing, Tubing & Drill Steel Hauling
-    -Production Equipment Hauling (including : Heaters, Tanks, Meters, GPU's, etc...)
-    -Rig Moving
-    -Heavy Equipment Hauling
-    -Stone & Gravel Hauling
+    -Trucking
+    -Drilling
+    -Product Installation
+    -Construction
+    -Roustabout Services
 * How many jobs did they save, according to the data?
     387
 * What's your hypothesis for why a company in their specific industry would need to seek a PPP loan during the pandemic?
-    
+    It's curious. There are several services that you would think would still be around during the pandemic, specifically           trucking. People were ordering a lot of goods during the pandemic, so I feel like trucking would still be a key need during     the pandemic to transport products. On the other hand, I have to assume that not many people were having people come in and     install equipment in their homes, so the product installation service would have been hit hard. This company also works with     a lot of expensive equipment, so they probably needed the loans to keep up with the maintenance costs of pricey equipment.
 
 -30-
