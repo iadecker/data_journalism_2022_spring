@@ -105,7 +105,7 @@ wv_loans_21_per_100k %>%
   arrange(desc(loans_by_county))
 ```
 
-**A1.** * Based on the map, the north central region of West Virginia appears to have gotten the most loans in the industry. That region also has the county (Ritchie) with the most loans per industry per 100,000 in the state. The geographic pattern I notice in the data is that we can essentially break the state into four geographic regions - east, central, northwest and southwest. The eastern portion of the state was the section that had the lowest amount loans - there even were ome fields that we changed to zero in the data becasue they were N/A. The central region seems to be the most uniform one. Almost all of the loans in the central region fall within the orange block, which is the second highest in terms of loans per 100,000K. Then the northwest is the region with the most loans per 100k, while the southwest is the opposite of its northern neighbor and is mostly in the lower portion of the map in terms of loans per 100k.
+**A1.** * Based on the map, the north central region of West Virginia appears to have gotten the most loans in the industry. That region also has the county (Ritchie) with the most loans per industry per 100,000 in the state. The geographic pattern I notice in the data is that we can essentially break the state into four geographic regions - east, central, northwest and southwest. The eastern portion of the state was the section that had the lowest amount loans - there even were ome fields that we changed to zero in the data becasue they were N/A. The central region seems to be the most uniform one. Almost all of the loans in the central region fall within the orange block, which is the second highest in terms of loans per 100,000K. Then the northwest is the region with the most loans per 100k, while the southwest is the opposite of its northern neighbor and is mostly in the lower portion of the map in terms of loans per 100k. From this, we can understand that a majority of the state's mines are in the central and northwestern part of the state.
 
 
 Based on the table, the county that got the highest total loan amount was Harrison. The total amount per 100K population is 14,607,650, the total amount of loans is 9,919,763 and the population is 67,908  
@@ -140,13 +140,21 @@ ggplot() +
   geom_sf(data=wv_counties) + 
   geom_sf(data=mining_permits) +
   theme_minimal()
-
-
 ```
 
-**A2.**
+**A2.** The spatial pattern I see is that a vast majority of the mines with permits that are set to expire after Sept. 1, 2021. are found in the southern-central part of the state. Moreover, there are virtually no expiring permits in the western part of the state. Compared to the first map, this map's spacial pattern shows that the southern-central part of the state is in serious trouble in the coming years. West Virginia is heavily dependent on mining, so the fact that a majority of its mine permits are set to expire will negatively impact the job market and the state's GDP. It's also interesting to note that this area had a relatively high rate of PPP loans per 100k people in the first map, but it's possible those funds weren't enough if these mines have not yet renewed their permits. Still, it's possible that some mines have the money, they just have yet to renew their permit. For example, there are some permits that won't expire until 2027.
 
 **Q3.** To confirm the spatial comparison you identified in question 2, let's create a new map that layers the mine location points on top of our PPP choropleth map we created in question 1. What do you notice about the number of mines in the county that has the highest total loan amount per 100K?
+
+```{r}
+ggplot() + 
+  geom_sf(data=wv_counties) + 
+  geom_sf(data=wv_loans_21_per_100k, aes(fill=loans_per_100k)) +
+  geom_sf(data=mining_permits) +
+  theme_minimal() +
+  scale_fill_viridis_b(option="magma",trans = "log") 
+
+```
 
 **A3.**
 
