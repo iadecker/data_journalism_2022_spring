@@ -133,7 +133,13 @@ mining_permits <- mining_permits %>%
   mutate(expiredate = ymd(expiredate)) %>%
   filter(expiredate > "2021-09-01")
   
+wv_counties <- counties %>%
+  filter(STATEFP == "54")
 
+ggplot() + 
+  geom_sf(data=wv_counties) + 
+  geom_sf(data=mining_permits) +
+  theme_minimal()
 
 
 ```
