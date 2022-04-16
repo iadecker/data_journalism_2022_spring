@@ -207,3 +207,57 @@ head_chefs <- dc_all_years %>%
 ```
 
 
+
+```{r}
+sea_all_years <- tibble()
+
+for (year in 2011:2021){
+  next_year <- read_csv(str_c("data/SEA/sea_may_", year, ".csv"))
+  next_year <- next_year %>% 
+    mutate(YEAR = year)
+  sea_all_years <- sea_all_years %>% bind_rows(next_year)
+}
+
+sea_all_years %>% 
+  write_csv("data/SEA/sea_all_years.csv")
+
+```
+
+```{r}
+sea_all_years <- sea_all_years %>% 
+  clean_names() %>% 
+  mutate(tot_emp = as.numeric(tot_emp)) %>% 
+  mutate(jobs_1000 = as.numeric(jobs_1000)) %>% 
+  mutate(h_mean = as.numeric(h_mean)) %>% 
+  mutate(a_mean = as.numeric(a_mean)) %>% 
+  mutate(mean_prse = as.numeric(mean_prse)) %>% 
+  mutate(h_pct10 = as.numeric(h_pct10)) %>% 
+  mutate(h_pct25 = as.numeric(h_pct25)) %>% 
+  mutate(h_pct10 = as.numeric(h_pct10)) %>% 
+  mutate(h_median = as.numeric(h_median)) %>% 
+  mutate(h_pct75 = as.numeric(h_pct75)) %>% 
+  mutate(h_pct90 = as.numeric(h_pct90)) %>% 
+  mutate(a_pct10 = as.numeric(a_pct10)) %>% 
+  mutate(a_pct25 = as.numeric(a_pct25)) %>% 
+  mutate(a_pct10 = as.numeric(a_pct10)) %>% 
+  mutate(a_median = as.numeric(a_median)) %>% 
+  mutate(a_pct75 = as.numeric(a_pct75)) %>% 
+  mutate(a_pct90 = as.numeric(a_pct90))
+```
+
+
+
+```{r}
+head_chefs <- sea_all_years %>% 
+  filter(OCC_TITLE == "Chefs and Head Cooks") %>% 
+  group_by(YEAR) %>% 
+  summarise(
+    h_pct10,
+    h_pct25,
+    h_median,
+    h_pct75,
+    h_pct90,
+    h_mean,
+    tot_emp
+  )
+```
