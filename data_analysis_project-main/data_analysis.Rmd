@@ -245,12 +245,76 @@ sea_all_years <- sea_all_years %>%
   mutate(a_pct90 = as.numeric(a_pct90))
 ```
 
-
-
+#Data frames for restaurant occupations
 ```{r}
+bartenders <- sea_all_years %>% 
+  filter(occ_title== "Bartenders") %>% 
+  group_by(year) %>% 
+  summarise(
+    h_pct10,
+    h_pct25,
+    h_median,
+    h_pct75,
+    h_pct90,
+    h_mean,
+    tot_emp
+  )
+
+servers <- sea_all_years %>% 
+  filter(occ_title== "Waiters and Waitresses") %>% 
+  group_by(year) %>% 
+  summarise(
+    h_pct10,
+    h_pct25,
+    h_median,
+    h_pct75,
+    h_pct90,
+    h_mean,
+    tot_emp
+  )
+
+counter_service <- sea_all_years %>% 
+  filter(occ_title== "Counter Attendants, Cafeteria, Food Concession, and Coffee Shop") %>% 
+  group_by(year) %>% 
+  summarise(
+    h_pct10,
+    h_pct25,
+    h_median,
+    h_pct75,
+    h_pct90,
+    h_mean,
+    tot_emp
+  )
+
+dishwashers <- sea_all_years %>% 
+  filter(occ_title== "Dishwashers") %>% 
+  group_by(year) %>% 
+  summarise(
+    h_pct10,
+    h_pct25,
+    h_median,
+    h_pct75,
+    h_pct90,
+    h_mean,
+    tot_emp
+  )
+
+cooks <- sea_all_years %>% 
+  filter(occ_title== "Cooks, Restaurant") %>% 
+  group_by(year) %>% 
+  summarise(
+    h_pct10,
+    h_pct25,
+    h_median,
+    h_pct75,
+    h_pct90,
+    h_mean,
+    tot_emp
+  )
+
 head_chefs <- sea_all_years %>% 
-  filter(OCC_TITLE == "Chefs and Head Cooks") %>% 
-  group_by(YEAR) %>% 
+  filter(occ_title == "Chefs and Head Cooks") %>% 
+  group_by(year) %>% 
   summarise(
     h_pct10,
     h_pct25,
