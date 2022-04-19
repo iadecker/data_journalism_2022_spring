@@ -211,7 +211,8 @@ head_chefs <- dc_all_years %>%
 ```{r}
 sea_all_years <- tibble()
 
-for (year in 2011:2021){
+for (year in 2011:2017){
+  print(year)
   next_year <- read_csv(str_c("data/SEA/sea_may_", year, ".csv"))
   next_year <- next_year %>% 
     mutate(YEAR = year)
