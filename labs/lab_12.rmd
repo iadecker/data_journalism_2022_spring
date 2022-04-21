@@ -58,6 +58,12 @@ last_month <- wv_crime_log %>%
 wvu_incident <- last_month %>%
   filter(title == latest_date$title)
 
+total_incidents <- wvu_incident %>%
+  nrow()
+
+description <- paste("The most recent crime incidents on WVU's campus on ", format(wvu_incidente$title, format="%B %d"), " ", direction, " was ", changetext, " total incidents of this crime", sep="")
+
+
 
 ```
 
