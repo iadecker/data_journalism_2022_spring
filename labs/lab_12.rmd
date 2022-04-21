@@ -47,8 +47,10 @@ wv_crime_log <- wv_crime_log %>%
 wv_crime_log <- wv_crime_log %>%
   mutate(date = date(datetime)) %>%
   mutate(hour = hour(datetime)) %>%
-  mutate(day_of_week = wday(date))
+  mutate(day_of_week = wday(date)) %>%
+  arrange(desc(datetime))
 
+latest_date <- wv_crime_log %>% slice(1)
 
 
 
