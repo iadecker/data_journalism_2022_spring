@@ -62,7 +62,8 @@ total_incidents <- wvu_incident %>%
   nrow()
 
 assist_police <- wv_crime_log %>%
-  filter(title == "ASSIST POLICE POLICE") %>%
+  filter(title == latest_date$title) %>%
+  filter(date >= latest_date$date - 30) %>%
   summarise(count = n())
 
 #construct a paragraph about the data described above comparing the most recent data to the previous date and the most recent previous date for the same day of the week.
