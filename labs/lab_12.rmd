@@ -61,7 +61,18 @@ wvu_incident <- last_month %>%
 total_incidents <- wvu_incident %>%
   nrow()
 
-description <- paste("The most recent crime incidents on WVU's campus on ", format(latest_date$date, format="%B %d"), " was", latest_date$total direction, " was total incidents of this crime ", total_incidents, sep="")
+assist_police <- wv_crime_log %>%
+  filter(title == "ASSIST POLICE POLICE") %>%
+  summarise(count = n())
+
+#construct a paragraph about the data described above comparing the most recent data to the previous date and the most recent previous date for the same day of the week.
+
+#The most recent crime incident on WVU's campus was assist police on April 21 and there have been a total of 
+
+
+description <- paste("The most recent crime incident on WVU's campus on ", format(latest_date$date, format="%B %d"), " was ", latest_date$title, ".", " There were ", assist_police$count, " total incidents of this crime.", sep="")
+
+description
 ```
 
 **Q1.** You are interested in tracking police incidents around the West Virginia University campus over time, with the goal of surfacing interesting incidents and patterns. In particular, you want to know whether the latest incident titles are relatively new/novel compared to previous reports and whether an incident has happened before in the past 30 days.
