@@ -90,12 +90,16 @@ Then write code that will construct a paragraph about the data described above c
 Put your sentence in the answer below, along with one other question you could ask of this data.
 
 **A1.** 
-Sentence: XXX. 
+Sentence: "The most recent crime incident on WVU's campus on April 21 was ASSIST POLICE POLICE. There were 3 total incidents of this crime." 
 
 Question: Is there a spike in certain crimes on holidays? Thinking about a holiday like Halloween, what are the msot common crimes that happen? Are carjackings popular? Do buglaries go up? Homicides? Assaults?
 
 ```{r}
+vax_by_zip <- read_csv("https://raw.githubusercontent.com/state-of-maryland/VaccineCSVs/master/Vax_ZIP_CODE_FirstSecondSingle_Totals_Raw.csv")
 
+vax_by_zip <- vax_by_zip %>%
+  clean_names() %>%
+  mutate(today = today())
 
 ```
 
