@@ -45,7 +45,7 @@ Now let's load the data we'll be using. It has five fields:
 
 ### Task 2: Read in data
 **Task** Run the following code and describe the dataframe it outputs.
-**Answer**
+**Answer** It shows the top states that received the percent of the state's small business that received a loan compared with how that state voted in 2016.
 ```{r}
 
 reveal_data <- read_rds("data/reveal_data.rds")
@@ -62,7 +62,7 @@ Let's start by plotting them to get a sense of the pattern.
 
 ### Task 3: Plot data
 **Task** Run the following code. Describe the plot. What do you see?
-**Answer**
+**Answer** We see a graph that shows there does see to be some correlation between small businesses in states that voted more strongly for Trump getting loans at higher rates than small businesses in Democratic states. It's not the steepest line, but it is more than a horizontal slope. 
 ```{r}
 
 reveal_data %>%
@@ -77,7 +77,7 @@ Let's test another variable, the average amount of money provided by PPP per sma
 
 ### Task 4: Plot data
 **Task** Run the following code. Describe the plot. What do you see?
-**Answer**
+**Answer** While there does still seem to be a relationship between trump states and the average amount of money provided by PPP per small business employee in the state, it is less pronounced than the previous graph, which means that there is even less correlation with this assertion than thre previous one.
 ```{r}
 
 reveal_data %>%
@@ -102,7 +102,7 @@ We can calculate r with a function from the corrr package called "correlate()". 
 
 ### Task 5: Correlate data
 **Task** Run the following code. Describe the table output. What do you see?
-**Answer**
+**Answer** We see that the ppe_amount_per_employee by pct_trump is .22 on the -1 to 1 scale, which shows some correlation but not a lot. In the businesses_receiving_ppe_pct by pct_trump, we see the correlation coefficient is .52, showing a bit more correlation. In other words, the correlation coefficient here is shwoing us numerically what the graph showed us visually.
 ```{r}
 reveal_data %>%
   select(-state_name, -vote_2016) %>%

@@ -34,6 +34,7 @@ library(lubridate)
 library(ggrepel)
 library(sf)
 library(tidycensus)
+library(tigris)
 ```
 
 ## Questions
@@ -153,21 +154,30 @@ md_zip_population <- get_acs(geography = "zcta",
 md_zip_code_and_pop <- md_zip_population %>%
   left_join(maryland_zip, by = c("zip_code" = "GEOID")
             
+            
 md_zip_code_and_pop <- md_zip_code_and_pop %>%
-  
+  mutate(percentage_fully_vax = fully_vaccinated/population*100000)
 
 #% formula
 
 less_fifty_percent <- md_zip_code_and_pop %>%
-  filter(percentage < 50)
+  filter(percentage_fully_vax < 50)
   
 #new dataframe filter(percentage of fully vax < 50%)
 
 
 ggplot() + 
-  geom_sf(data=md_beds_per_100k, aes(fill=beds_per_100k)) + 
+  geom_sf(data=less_fifty_percent, aes(fill=less_fifty_percent)) + 
   theme_minimal() +
   scale_fill_viridis_b(option="magma",trans = "log") 
+
+md_counties <- counties %>%
+  filter(STATEFP == "24")
+
+ggplot() + 
+  geom_sf(data=md_counties) + 
+  geom_sf(data=less_fifty_percent) +
+  theme_minimal()
 
 ```
 
