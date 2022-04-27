@@ -102,7 +102,7 @@ We can calculate r with a function from the corrr package called "correlate()". 
 
 ### Task 5: Correlate data
 **Task** Run the following code. Describe the table output. What do you see?
-**Answer** We see that the ppe_amount_per_employee by pct_trump is .22 on the -1 to 1 scale, which shows some correlation but not a lot. In the businesses_receiving_ppe_pct by pct_trump, we see the correlation coefficient is .52, showing a bit more correlation. In other words, the correlation coefficient here is shwoing us numerically what the graph showed us visually.
+**Answer** We see that the ppe_amount_per_employee by pct_trump is .22 on the -1 to 1 scale, which shows some correlation but not a lot. In the businesses_receiving_ppe_pct by pct_trump, we see the correlation coefficient is .52, showing a bit more correlation. In other words, the correlation coefficient here is showing us numerically what the graph showed us visually.
 ```{r}
 reveal_data %>%
   select(-state_name, -vote_2016) %>%
@@ -119,7 +119,7 @@ The relationship between businesses in a state receiving ppe and the state's Tru
 
 ### Task 6: Correlate data
 **Task** Run the following code. Describe the model output. What do you see?
-**Answer**
+**Answer** It shows us the p-value of 0.00008607, which is quite low. This means that the chance that this is a statistical aberration, what the p-value measures, of our data is very low. We also see again the the correlation coefficient r value of 0.5218038 
 ```{r}
 
 cor.test(reveal_data$pct_trump, reveal_data$businesses_receiving_ppe_pct)
@@ -132,7 +132,7 @@ Now let's test the other one, the relationship between the pct_trump and the ppe
 
 ### Task 7: Correlate data
 **Task** Run the following code. Describe the model output. What do you see?
-**Answer**
+**Answer** Here, the p-value is 0.1189, meaning that it is more likely that our conclusion is statistical aberration. We also see again the correlation coefficient r value of 0.221133 
 ```{r}
 
 cor.test(reveal_data$pct_trump, reveal_data$ppe_amount_per_employee)
