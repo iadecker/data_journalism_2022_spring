@@ -92,7 +92,7 @@ Put your sentence in the answer below, along with one other question you could a
 **A1.** 
 Sentence: "The most recent crime incident on WVU's campus on April 21 was ASSIST POLICE POLICE. There were 3 total incidents of this crime." 
 
-Question: Is there a spike in certain crimes on holidays? Thinking about a holiday like Halloween, what are the msot common crimes that happen? Are carjackings popular? Do buglaries go up? Homicides? Assaults?
+Question: Is there a spike in certain crimes on holidays? Thinking about a holiday like Halloween, what are the most common crimes that happen? Are carjackings popular? Do burglaries go up? Homicides? Assaults?
 
 ```{r}
 vax_by_zip <- read_csv("https://raw.githubusercontent.com/state-of-maryland/VaccineCSVs/master/Vax_ZIP_CODE_FirstSecondSingle_Totals_Raw.csv")
@@ -139,7 +139,10 @@ To do that, you will need to:
 
 Google the top 2-3 zip codes from both Maryland and non-Maryland results and describe them in your answer.
 
-**A2.**
+**A2.** 
+The top three Maryland zip codes by fully vaccinated people are 20906 (Silver Spring), 20878 (Gaithersburg) and 20874 (Germantown). These three zip codes house mostly high-income, well-educated left-leaning people. Statistically speaking, those are the people who were getting vaccinated against the coronavirus, so it makes sense that these are the three zip codes with the highest rate of fully vaccinated residents. 
+
+The top three non Maryland zip codes by fully vaccinated people are 20011 (DC - Brightwood Park), 20002 (DC - Ivy City), 20009 (DC - Kalorama Heights). It makes sense that DC residents would be included in the Maryland vaccination because of their neighbor status. The DC zips are either located in northeast or west DC, which is minutes away from the Maryland border. It is clear that thousands of people made appointments at Maryland pharmacies to get covid vaccines, so the fact that the top three non Maryland zip codes with the highest numbers of fully vaccinated people come from DC tracks.
 
 ```{r}
 md_zip_population <- get_acs(geography = "zcta", 
