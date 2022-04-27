@@ -141,7 +141,7 @@ To do that, you will need to:
 Google the top 2-3 zip codes from both Maryland and non-Maryland results and describe them in your answer.
 
 **A2.** 
-The top three Maryland zip codes by fully vaccinated people are 20906 (Silver Spring), 20878 (Gaithersburg) and 20874 (Germantown). These three zip codes house mostly high-income, well-educated left-leaning people. Statistically speaking, those are the people who were getting vaccinated against the coronavirus, so it makes sense that these are the three zip codes with the highest rate of fully vaccinated residents. 
+The top three Maryland zip codes by fully vaccinated people are 20906 (Silver Spring), 20878 (Gaithersburg) and 20874 (Germantown). These three zip codes - all of which are in Montgomery County, which has high vaccination rates - house mostly high-income, well-educated left-leaning people. Statistically speaking, those are the people who were getting vaccinated against the coronavirus, so it makes sense that these are the three zip codes with the highest rate of fully vaccinated residents. 
 
 The top three non Maryland zip codes by fully vaccinated people are 20011 (DC - Brightwood Park), 20002 (DC - Ivy City), 20009 (DC - Kalorama Heights). It makes sense that DC residents would be included in the Maryland vaccination because of their neighbor status. The DC zips are either located in northeast or west DC, which is minutes away from the Maryland border. It is clear that thousands of people made appointments at Maryland pharmacies to get covid vaccines, so the fact that the top three non Maryland zip codes with the highest numbers of fully vaccinated people come from DC tracks.
 
@@ -184,4 +184,4 @@ You WILL need to ensure that the columns you use to join the two dataframes are 
 
 Describe the output of the map below, and say what you think the most interesting areas are.
 
-**A3.**
+**A3.** The map we get shows that the counties that have less than 50% of people fully vaccinated are primarily on the Eastern Shore and in the Northwestern part of the state. With the exception of some areas in Baltimore, PG and Anne Arundel County, the suburbs of DC and counties that generally are more liberal tend to have higher vaccination rates than areas farther away from the nation's capital and that are predominantly right-leaning. Another thing to note is that the areas with lower vaccination rates also tend to be more rural than those with higher rates, which are urban. That said, there are some counties Frederick and Carroll that are farther out from DC but still have vaccination rates above 50%. In sum, the farther away from the cities you get, the lower the fully vaccinated population gets. This is not true across the board, but it can tell us general trends about certain areas.
