@@ -150,10 +150,17 @@ md_zip_population <- get_acs(geography = "zcta",
               state = "MD",
               geometry = TRUE)
 
-#join with maryland_zip on zip_code, GEOID
+md_zip_code_and_pop <- md_zip_population %>%
+  left_join(maryland_zip, by = c("zip_code" = "GEOID")
+            
+md_zip_code_and_pop <- md_zip_code_and_pop %>%
+  
 
 #% formula
 
+less_fifty_percent <- md_zip_code_and_pop %>%
+  filter(percentage < 50)
+  
 #new dataframe filter(percentage of fully vax < 50%)
 
 
