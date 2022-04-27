@@ -103,8 +103,25 @@ vax_by_zip <- vax_by_zip %>%
 
 vax_by_zip_code <- vax_by_zip %>%
   drop_na(fully_vaccinated) %>%
-  mutate(zip5 = str_sub(zip, 1, 5))
+  mutate(zip_code = str_sub(zip_code, 1, 5)) %>%
+  mutate(zip_code = as.numeric(zip_code)) %>%
+  filter(zip_code > 9999)
 
+maryland_zip <- vax_by_zip_code %>%
+  filter(zip_code >= 20588 & zip_code <= 21930) %>%
+  arrange(desc(fully_vaccinated))
+
+non_md_zip <- vax_by_zip_code %>%
+  filter(zip_code < 20588 | zip_code > 21930) %>%
+  arrange(desc(fully_vaccinated))
+
+file_name <- paste("maryland_zip_", str_replace_all(today(), "-", ""), ".csv",  sep="")
+
+write_csv(maryland_zip, file_name)
+
+file_name_2 <- paste("non_maryland_zip_", str_replace_all(today(), "-", ""), ".csv",  sep="")
+
+write_csv(non_md_zip, file_name_2)
 ```
 
 **Q2.** Maryland produces a [CSV file](https://raw.githubusercontent.com/state-of-maryland/VaccineCSVs/master/Vax_ZIP_CODE_FirstSecondSingle_Totals_Raw.csv) showing the total number of vaccinations by zip code and -- interestingly -- it includes non-Maryland zip codes (as well as some zip codes that seem to be bad data). write a script that reads the CSV file, making the columns more readable and adding today's date. Then output the top 25 Maryland zip codes and top 25 non-Maryland zip codes based on number of people fully vaccinated, and write both dataframes out to CSV files, using the following name formats:
@@ -125,6 +142,23 @@ Google the top 2-3 zip codes from both Maryland and non-Maryland results and des
 **A2.**
 
 ```{r}
+md_zip_population <- get_acs(geography = "zcta", 
+              variables = c(population = "B01001_001"), 
+              state = "MD",
+              geometry = TRUE)
+
+#join with maryland_zip on zip_code, GEOID
+
+#% formula
+
+#new dataframe filter(percentage of fully vax < 50%)
+
+
+ggplot() + 
+  geom_sf(data=md_beds_per_100k, aes(fill=beds_per_100k)) + 
+  theme_minimal() +
+  scale_fill_viridis_b(option="magma",trans = "log") 
+
 ```
 
 **Q3.** Maryland has had one of the more successful vaccination rates, but you want to understand where a significant portion of the population remains less than fully vaccinated. Make a dataframe of all Maryland zip codes from the vaccination data you used in Q2 and join it to Maryland zip code population data from the Census API. Calculate the percentage of fully vaccinated for each zip code and then make a map showing the zip codes with less than 50 percent fully vaccinated. Put a blank map with the outline of Maryland counties (which you can get from Tigris) behind it for context. Add a label to the map describing what the data is and include the date from the vaccination data (programmatically, so you can run it every day).
