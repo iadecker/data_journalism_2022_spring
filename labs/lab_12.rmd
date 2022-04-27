@@ -152,11 +152,12 @@ md_zip_population <- get_acs(geography = "zcta",
               geometry = TRUE)
 
 md_zip_code_and_pop <- md_zip_population %>%
-  left_join(maryland_zip, by = c("zip_code" = "GEOID")
+  mutate(GEOID = as.numeric(GEOID)) %>%
+  left_join(maryland_zip, by=c("GEOID"="zip_code"))
             
             
 md_zip_code_and_pop <- md_zip_code_and_pop %>%
-  mutate(percentage_fully_vax = fully_vaccinated/population*100000)
+  mutate(percentage_fully_vax = fully_vaccinated/estimate*100)
 
 #% formula
 
@@ -165,18 +166,14 @@ less_fifty_percent <- md_zip_code_and_pop %>%
   
 #new dataframe filter(percentage of fully vax < 50%)
 
-
-ggplot() + 
-  geom_sf(data=less_fifty_percent, aes(fill=less_fifty_percent)) + 
-  theme_minimal() +
-  scale_fill_viridis_b(option="magma",trans = "log") 
+counties <- counties()
 
 md_counties <- counties %>%
   filter(STATEFP == "24")
 
 ggplot() + 
   geom_sf(data=md_counties) + 
-  geom_sf(data=less_fifty_percent) +
+  geom_sf(data=less_fifty_percent, aes(fill=percentage_fully_vax)) +
   theme_minimal()
 
 ```
