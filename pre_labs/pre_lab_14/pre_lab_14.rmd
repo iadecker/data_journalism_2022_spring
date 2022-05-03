@@ -19,7 +19,6 @@ Turning unstructured text into data to analyze is a whole course in and of itsel
 
 To do this, we'll need a new library -- [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html), which you can guess by the name plays very nicely with the tidyverse. So install it with `install.packages("tidytext")` and we'll get rolling.
 
-
 ### Task 1: Load libraries and settings
 **Task** Run the following code in the gray-colored codeblock below to load the libraries we'll use.
 
@@ -58,7 +57,7 @@ If you are trying to create a list of unique words, R will treat differences in 
 
 ### Task 4: Trying out unique
 **Task** Run the following code and describe what the `unique` function does to the original list of words.
-**Answer** It gives us just one eaxmple of each unique thing. This helps us analyze each unique word.
+**Answer** It gives us just one example of each unique thing. This helps us analyze each unique word.
 
 ```{r}
 a_list_of_words <- c("Dog", "dog", "dog", "cat", "cat", ",")
@@ -182,7 +181,7 @@ So this block is is going to do the following:
 
 ### Task 11: Create a dataframe with the top 10 two-word phrases for 2020
 **Task** Run the following code and describe the results.
-**Answer** It gives us a dataframe with the top 10 bigrams - two words found back-to-back - from our list of tweets in 2020.
+**Answer** It gives us a dataframe with the top 10 bigrams - two words found back-to-back - from our list of tweets in 2020. Unsurprisingly, most of the terminology is covid-related. 
 
 ```{r}
 covid_tweets %>%
@@ -224,7 +223,7 @@ So far, we've only looked at the entire set of tweets, not any characteristics o
 
 ### Task 13: Create a dataframe with the top 10 two-word phrases in 2020 for both Democrats and Republicans
 **Task** Run the following code and describe the results.
-**Answer** We get two dataframes showing us the top 10 bigrams for Democrats and Republicans. There are more tweets on the Democratic side
+**Answer** We get two dataframes showing us the top 10 bigrams for Democrats and Republicans. There are more tweets on the Democratic side, but both sides seem to be talking about covid in similar ways (resepctfully), at least early in the pandemic. It seems like both sides had similar thought processes in early 2020.
 
 ```{r}
 covid_tweets %>%
@@ -256,7 +255,7 @@ Now we can begin to see some differences between the parties. We also could do t
 
 ### Task 14: Create a dataframe with the top 10 two-word phrases in 2020 and 2021 for Republican House candidates
 **Task** Run the following code and describe the results.
-**Answer** This gives us a dataframe with the top 10 bigrams used by Republicans in 2020 and 2021. Trump goes away, but that probably has to do with him leaving office. Social distancing goes away in 2021, which makes sense, but god bless drops off, which is a bit surprising. Words like illegal immigrants and vaccine mandates and Joe Biden appear.
+**Answer** This gives us a dataframe with the top 10 bigrams used by Republicans in 2020 and 2021. Trump goes away, but that probably has to do with him leaving office. Social distancing goes away in 2021, which makes sense, but god bless drops off, which is a bit surprising - religion seems to be important to many politicians. Words like illegal immigrants and vaccine mandates and Joe Biden appear.
 
 ```{r}
 covid_tweets %>%
@@ -292,7 +291,7 @@ Another popular use of text analysis is to measure the sentiment of a word - whe
 
 ### Task 15: Load the bing lexicon and produce sentiments for our 2020 and 2021 unique words
 **Task** Run the following code and describe the results. Do any of the sentiments seem incorrect or counter-intuitive?
-**Answer** We get two dataframes (2020) and (2021) showing the sentiment of words using the function "get_sentiments." This is a cool function, but we run into the issue of certain words having both negative and positive connotations. For example, NEGATIVE could be a negative word, but if someone is covid negative, that is a good thing. The same can be said for the word POSITIVE. 
+**Answer** We get two dataframes (2020) and (2021) showing the sentiment of words using the function "get_sentiments." This is a cool function, but we run into the issue of certain words having both negative and positive connotations. For example, NEGATIVE most likely would be a negative word, but if someone is covid negative, that is a good thing. The same can be said for the word POSITIVE. 
 
 ```{r}
 bing <- get_sentiments("bing")
