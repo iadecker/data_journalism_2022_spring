@@ -19,6 +19,7 @@ Turning unstructured text into data to analyze is a whole course in and of itsel
 
 To do this, we'll need a new library -- [tidytext](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html), which you can guess by the name plays very nicely with the tidyverse. So install it with `install.packages("tidytext")` and we'll get rolling.
 
+
 ### Task 1: Load libraries and settings
 **Task** Run the following code in the gray-colored codeblock below to load the libraries we'll use.
 
