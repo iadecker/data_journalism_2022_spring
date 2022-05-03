@@ -201,7 +201,7 @@ And we already have a different, more nuanced result. Health was among the top s
 
 ### Task 12: Create a dataframe with the top 10 two-word phrases for 2021
 **Task** Run the following code and describe the results.
-**Answer** It gives us a dataframe with the top 10 bigrams from our list of tweets in 2021. It looks like health care and public health have slipped, while vaccine and relief have become more frequent.
+**Answer** It gives us a dataframe with the top 10 bigrams from our list of tweets in 2021. It looks like health care and public health have slipped, while vaccine and relief have become more frequent. This tells us that as vaccines became more readily available, politicians started talking about them at a commensurate rate.
 
 ```{r}
 covid_tweets %>%
@@ -223,7 +223,7 @@ So far, we've only looked at the entire set of tweets, not any characteristics o
 
 ### Task 13: Create a dataframe with the top 10 two-word phrases in 2020 for both Democrats and Republicans
 **Task** Run the following code and describe the results.
-**Answer**
+**Answer** We get two dataframes showing us the top 10 bigrams for Democrats and Republicans. There are more tweets on the Democratic side
 
 ```{r}
 covid_tweets %>%
@@ -255,7 +255,7 @@ Now we can begin to see some differences between the parties. We also could do t
 
 ### Task 14: Create a dataframe with the top 10 two-word phrases in 2020 and 2021 for Republican House candidates
 **Task** Run the following code and describe the results.
-**Answer**
+**Answer** This gives us a dataframe with the top 10 bigrams used by Republicans in 2020 and 2021. Trump goes away, but that probably has to do with him leaving office. Social distancing goes away in 2021, which makes sense, but god bless drops off, which is a bit surprising. Words like illegal immigrants and vaccine mandates and Joe Biden appear.
 
 ```{r}
 covid_tweets %>%
@@ -291,7 +291,7 @@ Another popular use of text analysis is to measure the sentiment of a word - whe
 
 ### Task 15: Load the bing lexicon and produce sentiments for our 2020 and 2021 unique words
 **Task** Run the following code and describe the results. Do any of the sentiments seem incorrect or counter-intuitive?
-**Answer**
+**Answer** We get two dataframes (2020) and (2021) showing the sentiment of words using the function "get_sentiments." This is a cool function, but we run into the issue of certain words having both negative and positive connotations. For example, NEGATIVE could be a negative word, but if someone is covid negative, that is a good thing. The same can be said for the word POSITIVE. 
 
 ```{r}
 bing <- get_sentiments("bing")
