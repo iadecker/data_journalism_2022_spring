@@ -25,10 +25,20 @@ library(sf)
 library(tigris)
 library(rvest)
 library(lubridate)
+```
 
+```{r}
 ohio_ppp <- read_csv('/Users/Ian/Downloads/ohio_ppp.csv')
 
+ohio_ppp_5_zip <- ohio_ppp %>%
+  mutate(zip = str_sub(zip, 1, 5)) %>%
+  mutate(city = str_to_title(city)) %>%
+  mutate(address = str_to_title(address))
 
+ohio_cities <- ohio_ppp_5_zip %>%
+  group_by(city) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
 ```
 
 ## Initial Exploration
