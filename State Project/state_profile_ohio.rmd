@@ -39,6 +39,11 @@ ohio_cities <- ohio_ppp_5_zip %>%
   group_by(city) %>%
   summarise(count = n()) %>%
   arrange(desc(count))
+
+ohio_counties <- ohio_ppp_5_zip %>%
+  group_by(project_county_name) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
 ```
 
 ## Initial Exploration
