@@ -18,11 +18,14 @@ The deliverable will be this R Markdown notebook and a data folder that you will
 **Task** Create a codeblock and load appropriate packages and settings for this assignment.
 
 ```{r}
-library()
+library(tidycensus)
+library(tidyverse)
+library(janitor)
+library(sf)
+library(tigris)
+library(rvest)
+library(lubridate)
 
-```
-
-```{r}
 ohio_ppp <- read_csv('/Users/Ian/Downloads/ohio_ppp.csv')
 
 
