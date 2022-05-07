@@ -48,9 +48,10 @@ ohio_cities <- ohio_ppp_5_zip %>%
   arrange(desc(count))
 
 ohio_counties <- ohio_ppp_5_zip %>%
-  group_by(project_county_name) %>%
-  summarise(count = n()) %>%
-  arrange(desc(count))
+  group_by(project_county_name, state) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
+  arrange(desc(count)) %>%
+  filter(count > 19)
 
 cuyahoga <- ohio_ppp_5_zip %>%
   filter(project_county_name == "CUYAHOGA") %>%
@@ -59,23 +60,11 @@ cuyahoga <- ohio_ppp_5_zip %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 
-cleaned_cuyahoga_ppp <- west_virginia_ppp %>%
-  filter(project_county_name == "CUYAHOGA") %>%
-  mutate(city = str_to_title(city)) %>%
-  clean_names() %>%
-  mutate(city = case_when(
-    city == "Charelston" ~ "Charleston", 
-    city == "Balle" ~ "Belle",
-    city == "Crosslanes" ~ "Cross Lanes",
-    city == "Elkveiw" ~ "Elkview",
-    city == "So Charleston" ~ "South Charleston",
-    city == "S Charleston" ~ "South Charleston",
-    city == "Saint Albans" ~ "St. Albans",
-    str_detect(city,"^St") ~ "St. Albans",
-    TRUE ~ city)) %>%
-  group_by (city) %>%
-  summarise(total = n()) %>%
-  arrange((city))
+
+zip code data frame
+
+naics code data frame
+
 ```
 
 ## Geographic Analysis
@@ -100,6 +89,8 @@ Does the distribution of PPP applications by the top 10 industries (by number of
 Create a county-level map showing the differences between the PPP applications and the Census business data for one of the top 10 industry codes. You can do this either using ggplot or Datawrapper (if the latter, publish that map and include the URL below).
 
 **A4.** 
+
+PRE LAB TEN
 
 ## Summary
 
