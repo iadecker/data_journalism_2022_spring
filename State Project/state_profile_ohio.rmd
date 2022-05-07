@@ -27,6 +27,13 @@ library(rvest)
 library(lubridate)
 ```
 
+## Initial Exploration
+
+**Q1.**. Write R code that generates some basic descriptive statistics that allows you to describe the applications from your state. This code should produce results that describe the data in different ways: how many applications there are, along with ways to understand the typical and most frequent values for columns you find interesting or newsworthy. You should produce at least five (5) descriptive statistics and write up a summary of the data using them.
+
+**A1.** 
+
+
 ```{r}
 ohio_ppp <- read_csv('/Users/Ian/Downloads/ohio_ppp.csv')
 
@@ -70,13 +77,6 @@ cleaned_cuyahoga_ppp <- west_virginia_ppp %>%
   summarise(total = n()) %>%
   arrange((city))
 ```
-
-## Initial Exploration
-
-**Q1.**. Write R code that generates some basic descriptive statistics that allows you to describe the applications from your state. This code should produce results that describe the data in different ways: how many applications there are, along with ways to understand the typical and most frequent values for columns you find interesting or newsworthy. You should produce at least five (5) descriptive statistics and write up a summary of the data using them.
-
-**A1.** 
-
 
 ## Geographic Analysis
 
