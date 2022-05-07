@@ -44,6 +44,31 @@ ohio_counties <- ohio_ppp_5_zip %>%
   group_by(project_county_name) %>%
   summarise(count = n()) %>%
   arrange(desc(count))
+
+cuyahoga <- ohio_ppp_5_zip %>%
+  filter(project_county_name == "CUYAHOGA") %>%
+  mutate(city = str_to_title(city)) %>%
+  group_by (city) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+cleaned_cuyahoga_ppp <- west_virginia_ppp %>%
+  filter(project_county_name == "CUYAHOGA") %>%
+  mutate(city = str_to_title(city)) %>%
+  clean_names() %>%
+  mutate(city = case_when(
+    city == "Charelston" ~ "Charleston", 
+    city == "Balle" ~ "Belle",
+    city == "Crosslanes" ~ "Cross Lanes",
+    city == "Elkveiw" ~ "Elkview",
+    city == "So Charleston" ~ "South Charleston",
+    city == "S Charleston" ~ "South Charleston",
+    city == "Saint Albans" ~ "St. Albans",
+    str_detect(city,"^St") ~ "St. Albans",
+    TRUE ~ city)) %>%
+  group_by (city) %>%
+  summarise(total = n()) %>%
+  arrange((city))
 ```
 
 ## Initial Exploration
