@@ -74,6 +74,11 @@ ppp_lenders <- ohio_ppp_5_zip %>%
   summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count))
 
+ohio_franchise <- ohio_ppp_5_zip %>%
+  group_by(franchise_name) %>%
+  summarise(count=n()) %>%
+  arrange(desc(count))
+
 #I was just interested in Cuyahoga. There isn't anything particularly revelatory here.
 cuyahoga <- ohio_ppp_5_zip %>%
   filter(project_county_name == "CUYAHOGA") %>%
