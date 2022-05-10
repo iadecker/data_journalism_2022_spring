@@ -65,8 +65,7 @@ ohio_zip <- ohio_ppp_5_zip %>%
 
 ohio_address <- ohio_ppp_5_zip %>%
   group_by(address) %>%
-  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
-  select(jobs_retained) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount), total_jobs_retained = sum(jobs_retained)) %>%
   arrange(desc(count))
 
 ppp_lenders <- ohio_ppp_5_zip %>%
@@ -78,6 +77,10 @@ ohio_franchise <- ohio_ppp_5_zip %>%
   group_by(franchise_name) %>%
   summarise(count=n()) %>%
   arrange(desc(count))
+
+na_naics <- ohio_ppp_5_zip %>%
+  filter(is.na(naics_code)) %>%
+  arrange(desc(amount))
 
 #I was just interested in Cuyahoga. There isn't anything particularly revelatory here.
 cuyahoga <- ohio_ppp_5_zip %>%
@@ -95,11 +98,29 @@ licking <- ohio_ppp_5_zip %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 
+granville <- ohio_ppp_5_zip %>%
+  mutate(city = str_to_title(city)) %>%
+  filter(city == "Granville")
+
+granville_naics <- granville %>%
+  group_by (naics_code) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+  
 #This is where Oberlin College (where my brother goes) is located.
 lorain <- ohio_ppp_5_zip %>%
   filter(project_county_name == "LORAIN") %>%
   mutate(city = str_to_title(city)) %>%
   group_by (city) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
+oberlin <- ohio_ppp_5_zip %>%
+  mutate(city = str_to_title(city)) %>%
+  filter(city == "Oberlin")
+
+oberlin_naics <- oberlin %>%
+  group_by (naics_code) %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 
