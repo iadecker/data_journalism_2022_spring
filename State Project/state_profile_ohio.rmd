@@ -166,6 +166,11 @@ ohio_ppp_zip_with_ohio_pop <- ohio_counties %>%
   mutate(loans_per_10k = total/population*10000) %>%
   arrange(desc(loans_per_10k))
 
+ggplot() + 
+  geom_sf(data=ohio_ppp_zip_with_ohio_pop, aes(fill=loans_per_10k, geometry=geometry)) + 
+  theme_minimal() +
+  scale_fill_viridis_b(option="magma",trans = "log") 
+
 ```
 
 ## Lender Analysis
