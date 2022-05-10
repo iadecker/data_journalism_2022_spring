@@ -82,6 +82,7 @@ cuyahoga <- ohio_ppp_5_zip %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 
+#This is the county where Denison University (my undergrad) is located!
 licking <- ohio_ppp_5_zip %>%
   filter(project_county_name == "LICKING") %>%
   mutate(city = str_to_title(city)) %>%
