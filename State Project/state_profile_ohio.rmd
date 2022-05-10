@@ -172,8 +172,8 @@ ggplot() +
   scale_fill_viridis_b(option="magma",trans = "log") 
 
 #Code for zip code map
-ohio_ppp_zip_with_ohio_pop <- ohio_zip %>%
-  left_join(ohio_zip_population, by=c("project_county_name" = "county")) %>%
+ohio_ppp_zip_with_ohio_pop <- ohio_zip_population %>%
+  left_join(ohio_zip, by=c("GEOID" = "zip")) %>%
   rename(population = estimate) %>%
   mutate(loans_per_10k = total/population*10000) %>%
   arrange(desc(loans_per_10k))
