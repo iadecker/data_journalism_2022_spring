@@ -202,16 +202,12 @@ ppp_lenders <- ohio_ppp_5_zip %>%
   arrange(desc(count))
 
 ppp_lenders %>% 
-ggplot(aesx=count, y=amount) + 
+ggplot(aes(x=amount, y=count)) + 
   geom_point() +
-  geom_line() +
-  theme(
-    axis.text.x = element_text(angle = 45,  hjust=1)
-  ) +
 labs(
  title="Ohio Loans by Lender",
-    x = "Total Loans",
-    y = "Average Loan Amount",)
+    x = "Average Loan Amount",
+    y = "Total Loans",)
 ```
 
 ## Industry Analysis
@@ -225,6 +221,12 @@ Create a county-level map showing the differences between the PPP applications a
 **A4.** 
 
 PRE LAB TEN
+```{r}
+
+
+
+
+```
 
 ## Summary
 
