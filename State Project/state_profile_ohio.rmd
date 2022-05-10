@@ -129,7 +129,7 @@ oberlin_naics <- oberlin %>%
 
 **Q2.** Write R code that examines geographic patterns for PPP loans in your state, using Census population information to calculate a per-capita figure for the state and counties and zip codes. 
 
-Then, make a county map using ggplot showing the per-capita data and 
+Then, make a county map using ggplot showing the per-capita data. 
 
 Make a zip code map showing the difference from the statewide per-capita figure. 
 
@@ -187,7 +187,11 @@ ggplot() +
 
 ## Lender Analysis
 
-**Q3.** Write R code to examine which lenders had the most approved applications in your state (and include summary statistics such as total amount and average loan amount). Generate dataframes that show the number and total amount of all loans and undisbursed loans per lender. For those lenders who had any undisbursed loans, make a graphic showing the relationship between the total amount of loans and the total undisbursed amount. Describe the most noticeable outlier lenders on that graphic below.
+**Q3.** Write R code to examine which lenders had the most approved applications in your state (and include summary statistics such as total amount and average loan amount). 
+
+Generate dataframes that show the number and total amount of all loans and undisbursed loans per lender. For those lenders who had any undisbursed loans, make a graphic showing the relationship between the total amount of loans and the total undisbursed amount. 
+
+Describe the most noticeable outlier lenders on that graphic below.
 
 **A3.** 
 
