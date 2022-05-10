@@ -53,13 +53,6 @@ ohio_counties <- ohio_ppp_5_zip %>%
   arrange(desc(count)) %>%
   filter(count > 19)
 
-cuyahoga <- ohio_ppp_5_zip %>%
-  filter(project_county_name == "CUYAHOGA") %>%
-  mutate(city = str_to_title(city)) %>%
-  group_by (city) %>%
-  summarise(total = n()) %>%
-  arrange(desc(total))
-
 naics <- ohio_ppp_5_zip %>%
   group_by(naics_code) %>%
   summarise(count = n()) %>%
@@ -75,7 +68,18 @@ ohio_address <- ohio_ppp_5_zip %>%
   summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count))
 
+ppp_lenders <- ohio_ppp_5_zip %>%
+  group_by(lender) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
+  arrange(desc(count))
 
+#I was just interested in Cuyahoga. There isn't anything particularly revelatory here.
+cuyahoga <- ohio_ppp_5_zip %>%
+  filter(project_county_name == "CUYAHOGA") %>%
+  mutate(city = str_to_title(city)) %>%
+  group_by (city) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
 
 ```
 
