@@ -69,7 +69,7 @@ ohio_address <- ohio_ppp_5_zip %>%
   arrange(desc(count))
 
 ppp_lenders <- ohio_ppp_5_zip %>%
-  group_by(lender) %>%
+  group_by(lender, initial_approval_amount, current_approval_amount) %>%
   summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count))
 
@@ -182,7 +182,6 @@ ggplot() +
   geom_sf(data=ohio_ppp_zip_with_ohio_pop, aes(fill=loans_per_10k, geometry=geometry)) + 
   theme_minimal() +
   scale_fill_viridis_b(option="magma",trans = "log")
-
 ```
 
 ## Lender Analysis
