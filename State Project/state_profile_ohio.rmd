@@ -59,8 +59,8 @@ naics <- ohio_ppp_5_zip %>%
   arrange(desc(count))
 
 ohio_zip <- ohio_ppp_5_zip %>%
-  group_by(zip) %>%
-  summarise(count = n()) %>%
+  group_by(zip, state) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count))
 
 ohio_address <- ohio_ppp_5_zip %>%
@@ -123,7 +123,6 @@ oberlin_naics <- oberlin %>%
   group_by (naics_code) %>%
   summarise(total = n()) %>%
   arrange(desc(total))
-
 ```
 
 ## Geographic Analysis
@@ -156,12 +155,25 @@ ohio_zip_population <- get_acs(geography = "zcta",
               state = "OH",
        geometry = TRUE)
 
+#Code for county map
 ohio_county_population <- ohio_county_population %>%
   mutate(county = str_replace(NAME, " County, Ohio", "")) %>%
   mutate(county = str_to_upper(county))
 
-ohio_ppp_zip_with_ohio_pop <- ohio_counties %>%
+ohio_ppp_county_with_ohio_pop <- ohio_counties %>%
   left_join(ohio_county_population, by=c("project_county_name" = "county")) %>%
+  rename(population = estimate) %>%
+  mutate(loans_per_10k = total/population*10000) %>%
+  arrange(desc(loans_per_10k))
+
+ggplot() + 
+  geom_sf(data=ohio_ppp_county_with_ohio_pop, aes(fill=loans_per_10k, geometry=geometry)) + 
+  theme_minimal() +
+  scale_fill_viridis_b(option="magma",trans = "log") 
+
+#Code for zip code map
+ohio_ppp_zip_with_ohio_pop <- ohio_zip %>%
+  left_join(ohio_zip_population, by=c("project_county_name" = "county")) %>%
   rename(population = estimate) %>%
   mutate(loans_per_10k = total/population*10000) %>%
   arrange(desc(loans_per_10k))
@@ -169,7 +181,7 @@ ohio_ppp_zip_with_ohio_pop <- ohio_counties %>%
 ggplot() + 
   geom_sf(data=ohio_ppp_zip_with_ohio_pop, aes(fill=loans_per_10k, geometry=geometry)) + 
   theme_minimal() +
-  scale_fill_viridis_b(option="magma",trans = "log") 
+  scale_fill_viridis_b(option="magma",trans = "log")
 
 ```
 
