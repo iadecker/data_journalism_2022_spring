@@ -179,7 +179,7 @@ ohio_ppp_zip_with_ohio_pop <- ohio_zip_population %>%
   arrange(desc(loans_per_10k))
 
 ggplot() + 
-  geom_sf(data=ohio_ppp_zip_with_ohio_pop, aes(fill=loans_per_10k, geometry=geometry)) + 
+  geom_sf(data=ohio_ppp_zip_with_ohio_pop, aes(fill=loans_per_10k)) + 
   theme_minimal() +
   scale_fill_viridis_b(option="magma",trans = "log")
 ```
@@ -194,6 +194,17 @@ Describe the most noticeable outlier lenders on that graphic below.
 
 **A3.** 
 
+
+```{r}
+lenders_ohio_ppp <- ohio_ppp_5_zip %>% 
+    group_by(lender) %>% 
+    summarise(total_loans=n(), total_loan_amounts = sum(amount), total_undisbursed = sum(undisbursed_amount))%>% 
+    arrange(desc(total_undisbursed))
+
+
+
+
+```
 
 ## Industry Analysis
 
