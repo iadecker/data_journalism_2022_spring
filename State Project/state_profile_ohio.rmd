@@ -95,6 +95,14 @@ licking <- ohio_ppp_5_zip %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 
+#This is where Oberlin College (where my brother goes) is located.
+lorain <- ohio_ppp_5_zip %>%
+  filter(project_county_name == "LORAIN") %>%
+  mutate(city = str_to_title(city)) %>%
+  group_by (city) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+
 ```
 
 ## Geographic Analysis
