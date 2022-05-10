@@ -49,7 +49,7 @@ ohio_cities <- ohio_ppp_5_zip %>%
 
 ohio_counties <- ohio_ppp_5_zip %>%
   group_by(project_county_name, state) %>%
-  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount), most_frequent = mode(amount), median = median(amount)) %>%
   arrange(desc(count)) %>%
   filter(count > 19)
 
@@ -60,10 +60,22 @@ cuyahoga <- ohio_ppp_5_zip %>%
   summarise(total = n()) %>%
   arrange(desc(total))
 
+naics <- ohio_ppp_5_zip %>%
+  group_by(naics_code) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
 
-zip code data frame
+ohio_zip <- ohio_ppp_5_zip %>%
+  group_by(zip) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
 
-naics code data frame
+ohio_address <- ohio_ppp_5_zip %>%
+  group_by(address) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
+  arrange(desc(count))
+
+
 
 ```
 
