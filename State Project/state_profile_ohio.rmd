@@ -148,8 +148,7 @@ ohio_county_population <- get_acs(geography = "county",
 
 ohio_population <-  get_acs(geography = "state", 
               variables = "B01001_001",
-              year = 2019, 
-              geometry = TRUE) %>% 
+              year = 2019) %>%
               filter(NAME == "Ohio")
 
 ohio_zip_population <- get_acs(geography = "zcta", 
@@ -158,13 +157,14 @@ ohio_zip_population <- get_acs(geography = "zcta",
        geometry = TRUE)
 
 ohio_county_population <- ohio_county_population %>%
-  mutate(county = str_replace(NAME, "County, Ohio", "")) %>%
+  mutate(county = str_replace(NAME, " County, Ohio", "")) %>%
   mutate(county = str_to_upper(county))
 
-ohio_ppp_zip_with_ohio_pop <- ohio_ppp_5_zip %>%
+ohio_ppp_zip_with_ohio_pop <- ohio_counties %>%
   left_join(ohio_county_population, by=c("project_county_name" = "county")) %>%
-  mutate(county_pop_per_10k = amount/population*100000) %>%
-  arrange(desc(county_pop_per_10k))
+  rename(population = estimate) %>%
+  mutate(loans_per_10k = total/population*10000) %>%
+  arrange(desc(loans_per_10k))
 
 ```
 
