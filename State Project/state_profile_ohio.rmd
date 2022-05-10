@@ -69,7 +69,7 @@ ohio_address <- ohio_ppp_5_zip %>%
   arrange(desc(count))
 
 ppp_lenders <- ohio_ppp_5_zip %>%
-  group_by(lender, initial_approval_amount, current_approval_amount) %>%
+  group_by(lender) %>%
   summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count))
 
@@ -196,12 +196,10 @@ Describe the most noticeable outlier lenders on that graphic below.
 
 
 ```{r}
-lenders_ohio_ppp <- ohio_ppp_5_zip %>% 
-    group_by(lender) %>% 
-    summarise(total_loans=n(), total_loan_amounts = sum(amount), total_undisbursed = sum(undisbursed_amount))%>% 
-    arrange(desc(total_undisbursed))
-
-
+ppp_lenders <- ohio_ppp_5_zip %>%
+  group_by(lender, loan_number) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount), total_undisbursed = sum(undisbursed_amount)) %>%
+  arrange(desc(count))
 
 
 ```
