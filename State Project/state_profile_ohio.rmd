@@ -139,6 +139,10 @@ ohio_county_population <- get_acs(geography = "county",
               variables = c(population = "B01001_001"), 
               state = "OH")
 
+ohio_county_population <- ohio_county_population %>%
+  mutate(county = str_replace(NAME, "County, Ohio", "")) %>%
+  mutate(county = str_to_upper(county))
+
 
 ```
 
