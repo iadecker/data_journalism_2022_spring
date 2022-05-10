@@ -197,11 +197,21 @@ Describe the most noticeable outlier lenders on that graphic below.
 
 ```{r}
 ppp_lenders <- ohio_ppp_5_zip %>%
-  group_by(lender, loan_number) %>%
+  group_by(lender, amount) %>%
   summarise(count = n(), total = sum(amount), average = mean(amount), total_undisbursed = sum(undisbursed_amount)) %>%
   arrange(desc(count))
 
-
+ppp_lenders %>% 
+ggplot(aesx=count, y=amount) + 
+  geom_point() +
+  geom_line() +
+  theme(
+    axis.text.x = element_text(angle = 45,  hjust=1)
+  ) +
+labs(
+ title="Ohio Loans by Lender",
+    x = "Total Loans",
+    y = "Average Loan Amount",)
 ```
 
 ## Industry Analysis
