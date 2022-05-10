@@ -111,6 +111,16 @@ lorain <- ohio_ppp_5_zip %>%
 
 **A2.** 
 
+```{r}
+census_api_key("1cc6052b8d53c607d6876a2e5a3c44b607a324d4", overwrite=TRUE)
+
+ohio_county_population <- get_acs(geography = "county", 
+              variables = c(population = "B01001_001"), 
+              state = "OH")
+
+
+```
+
 ## Lender Analysis
 
 **Q3.** Write R code to examine which lenders had the most approved applications in your state (and include summary statistics such as total amount and average loan amount). Generate dataframes that show the number and total amount of all loans and undisbursed loans per lender. For those lenders who had any undisbursed loans, make a graphic showing the relationship between the total amount of loans and the total undisbursed amount. Describe the most noticeable outlier lenders on that graphic below.
