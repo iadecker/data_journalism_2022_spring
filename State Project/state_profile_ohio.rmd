@@ -48,6 +48,7 @@ ohio_cities <- ohio_ppp_5_zip %>%
   arrange(desc(count))
 
 ohio_counties <- ohio_ppp_5_zip %>%
+  
   group_by(project_county_name, state) %>%
   summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count)) %>%
@@ -193,12 +194,12 @@ Generate dataframes that show the number and total amount of all loans and undis
 Describe the most noticeable outlier lenders on that graphic below.
 
 **A3.** 
-
+Potential theory, do the lenders who stand, if they were lending throughout the life of the program
 
 ```{r}
 ppp_lenders <- ohio_ppp_5_zip %>%
   group_by(lender, amount) %>%
-  summarise(count = n(), total = sum(amount), average = mean(amount), total_undisbursed = sum(undisbursed_amount)) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount), total_undisbursed = sum(undisbursed_amount), min = min(), max = max(approval)) %>%
   filter(count > 100) %>%
   arrange(desc(count))
 
@@ -226,7 +227,58 @@ PRE LAB TEN
 all_fips <- fips_codes %>% as_tibble()
 ohio_fips <- all_fips %>% filter(state == 'OH')
 
+ohio_fips <- ohio_fips %>% mutate(fips_code = str_c(state_code, county_code)) %>%
+  mutate(county = str_replace(county, " County", "")) %>%
+  mutate(county = str_to_upper(county))
 
+ohio_counties_with_fips <- ohio_counties %>%
+  left_join(ohio_fips, by=c('project_county_name'='county'))
+
+top_10_industries <- ohio_ppp_5_zip %>%
+  group_by(naics_code) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  top_n(10)
+
+all_cbp <- read_csv('/Users/Ian/Downloads/cbp19co.txt')
+ohio_cbp <- all_cbp %>% filter(fipstate == '39')
+
+ohio_cbp <- ohio_cbp %>%
+  filter(!str_detect(naics, "/")) %>%
+  filter(!str_detect(naics, "-"))
+
+top_10_cbp <- ohio_cbp %>%
+  group_by(naics) %>%
+  summarise(total_businesses = sum(est)) %>%
+  arrange(desc(total_businesses)) %>%
+  top_n(10)
+
+top_10_industries_limited <- ohio_ppp_5_zip %>%
+  filter(business_type != "Sole Proprietorship") %>%
+  filter(business_type != "Self-Employed Individuals") %>%
+  group_by(naics_code) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  top_n(10)
+  
+#cbp number of businesses the census bureau belies exist
+#top_10_limited is the number of PPP loans per industry
+
+#dataframe with 
+
+xxx <- ohio_ppp_5_zip %>%
+  filter(naics_code == "722513") %>%
+  group_by(project_county_name, state) %>%
+  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
+  arrange(desc(count))
+
+xxx <- 
+#dataframe with county and fips code in both cases, county name 
+  #in ohio_ppp_5_zip and ohio_cbp fips code
+  
+  
+
+write_csv(ohio_counties_with_fips, "data/ohio_counties.csv")
 
 ```
 
