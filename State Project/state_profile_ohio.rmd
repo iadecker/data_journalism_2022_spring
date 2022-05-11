@@ -223,7 +223,8 @@ Create a county-level map showing the differences between the PPP applications a
 
 PRE LAB TEN
 ```{r}
-
+all_fips <- fips_codes %>% as_tibble()
+ohio_fips <- all_fips %>% filter(state == 'OH')
 
 
 
