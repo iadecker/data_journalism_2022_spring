@@ -207,7 +207,7 @@ ggplot(aes(x=amount, y=count)) +
   geom_point() +
 labs(
  title="Ohio Loans by Lender",
-    x = "Average Loan Amount",
+    x = "Loan Amount",
     y = "Total Loans",)
 ```
 
