@@ -199,6 +199,7 @@ Describe the most noticeable outlier lenders on that graphic below.
 ppp_lenders <- ohio_ppp_5_zip %>%
   group_by(lender, amount) %>%
   summarise(count = n(), total = sum(amount), average = mean(amount), total_undisbursed = sum(undisbursed_amount)) %>%
+  filter(count > 100) %>%
   arrange(desc(count))
 
 ppp_lenders %>% 
