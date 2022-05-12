@@ -261,7 +261,6 @@ top_10_industries_limited <- ohio_ppp_5_zip %>%
 #cbp number of businesses the census bureau believes exist
 #top_10_limited is the number of PPP loans per industry
 
-
 primary_naics <- ohio_ppp_5_zip %>%
   filter(naics_code == "722513") %>%
   group_by(project_county_name, state, naics_code) %>%
@@ -275,12 +274,11 @@ primary_naics_in_cbp <- ohio_cbp %>%
   arrange(desc())
 
 #dataframe with county and fips code in both cases, county name 
-  #in ohio_ppp_5_zip and ohio_cbp fips code
+#in ohio_ppp_5_zip and ohio_cbp fips code
   
-  
-
 write_csv(ohio_counties_plus_fips, "data/ohio_counties_plus_fips.csv")
 
+#I'm sorry that I didn't generate a choropleth map and the csv never saved out. I have never felt more outside my comfort zone in a class or project. I wouldn't have completed a single step of this project without the help of others. The amount of hand-holding I have needed throughout this class is embarrassing. I'm sorry I couldn't be a better student for you. You are an excellent teacher who has been unbelievably supportinve this semester. Again, I truly apologize that I couldn't give you a better final project. Have a wonderful summer!
 ```
 
 ## Summary
