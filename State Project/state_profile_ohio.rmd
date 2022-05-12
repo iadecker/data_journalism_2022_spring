@@ -240,7 +240,7 @@ Does the distribution of PPP applications by the top 10 industries (by number of
 
 Create a county-level map showing the differences between the PPP applications and the Census business data for one of the top 10 industry codes. You can do this either using ggplot or Datawrapper (if the latter, publish that map and include the URL below).
 
-**A4.** 
+**A4.** Believe it or not, I really did try to figure out the last portion to this question. While I don't have a choropleth map for Ohio counties, I can try and make an educated guess as to what it would have looked like. Similarly to a lot of the other maps made for this project, I have a feeling that the hot spots would have been in the cities - Cleveland, Columbus and Cincinnati. The naics code chosen was for limited-service restaurants, and I have to imagine there are quite a few of those in the major metropolitan areas. 
 
 ```{r}
 all_fips <- fips_codes %>% as_tibble()
@@ -284,6 +284,7 @@ top_10_industries_limited <- ohio_ppp_5_zip %>%
 #cbp number of businesses the census bureau believes exist
 #top_10_limited is the number of PPP loans per industry
 
+#I did not know how to add fips_code to this dataframe so I could join it with naics_ohio_plus_fips.
 ohio_primary_naics_code <- ohio_ppp_5_zip %>% 
   filter(naics_code == "722513") %>% 
   group_by(project_county_name, fips_code) %>% 
