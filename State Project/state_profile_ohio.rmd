@@ -31,7 +31,7 @@ library(lubridate)
 
 **Q1.**. Write R code that generates some basic descriptive statistics that allows you to describe the applications from your state. This code should produce results that describe the data in different ways: how many applications there are, along with ways to understand the typical and most frequent values for columns you find interesting or newsworthy. You should produce at least five (5) descriptive statistics and write up a summary of the data using them.
 
-**A1.** 
+**A1.** Ohio had 352,010 PPP loan applications. I started by creating a separate dataframe that was a bit cleaner. That dataframe had standardized, five-digit zip codes and city and address names. With that dataframe, I started doing my analysis.I then started looking at specific categories. I started on a larger scale looking at Ohio cities. This wasn't a particularly interesting finding becasue the top three were predictably Columbus, Cleveland and Cincinnati. I then wanted to go deeper and look at counties. I ran into a similar issue with the cities dataframe; the top counties had the largest cities in them. The countie were CUYAHOGA (Cleveland), FRANKLIN (Columbus) and HAMILTON (Cincy). Where things did get a litte interesting was when we added an avergae PPP amount column. When we did that, HOLMES (111924.81) and TUSCARAWAS (105982.16) jumped to the front. Holmes was 61 of 88 counties in total laons and Tuscarawas was 32. The population of Holmes is about 44,000 and Tuscarawas is 92,000. The two largest industries in Tuscarawas are Manufacturing and Health Care & Social Assistance, according to https://datausa.io/profile/geo/tuscarawas-county-oh. Both are industries that were imapcted by the pandemic, so it's possible these industries applied for and got large loans. Holmes' top two industries were Manufacturing and Retail Trade. The explanation here in PPP loans is similar to that of Tuscarawas County. Another interesting data point to note is that the industry with the most loans was beauty salons (16,955). With people not going in to get beauty work, it makes sense why this industry would be applying for PPP loans. I also looked at the total loans and total amounts specific addresses received. This address - 4503 Marburg Ave - received 57 loans for $3,899,100.10. The business at this address is a Planet Fitness that, according to google, is temporarily closed. It's possible that this one gyme applied for over 3 million dollars in loans, but 57 separate applications is still a lot of loans. Thsi address is in a shopping area, so it's possible that there were other businesses that used this address. While a vast majority of the businesses in the state were non-franchise operations, there were some chains that received loans. Of the franchise businesses, Subway locations got 396 loans. McDonalds got 172 and General Motors got 85. The last bit I wanted to look at was towns where undergraduate institutions were located. For this, I picked Licking County (Denison University) and Lorain County (Oberlin College). I then looked at the the individual towns - Granville for Denisn and Lorain for Oberlin. Interestingly, neither college had a single PPP loan, according to the data. With colleges losing large amount of money because of the pandemic, nobody was paying room and board, I imagined they would be applying for PPP loans. One potential explanation for this is that both colleges have endowmnets over 900 million dollars, so maybe they used that to help during the pandemic. 
 
 
 ```{r}
@@ -48,7 +48,6 @@ ohio_cities <- ohio_ppp_5_zip %>%
   arrange(desc(count))
 
 ohio_counties <- ohio_ppp_5_zip %>%
-  
   group_by(project_county_name, state) %>%
   summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count)) %>%
@@ -76,7 +75,7 @@ ppp_lenders <- ohio_ppp_5_zip %>%
 
 ohio_franchise <- ohio_ppp_5_zip %>%
   group_by(franchise_name) %>%
-  summarise(count=n()) %>%
+  summarise(count=n(), total = sum(amount)) %>%
   arrange(desc(count))
 
 na_naics <- ohio_ppp_5_zip %>%
