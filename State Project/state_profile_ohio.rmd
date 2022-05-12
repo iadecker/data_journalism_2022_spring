@@ -300,11 +300,17 @@ primary_naics_in_cbp <- ohio_cbp %>%
   
 write_csv(ohio_counties_plus_fips, "data/ohio_counties_plus_fips.csv")
 
-#I'm sorry that I didn't generate a choropleth map and the csv never saved out. I have never felt more outside my comfort zone in a class or project. I wouldn't have completed a single step of this project without the help of others. The amount of hand-holding I have needed throughout this class is embarrassing. I'm sorry I couldn't be a better student for you. You are an excellent teacher who has been unbelievably supportinve this semester. Again, I truly apologize that I couldn't give you a better final project. Have a wonderful summer!
+#I'm sorry that I didn't generate a choropleth map and the csv never saved out. I have never felt more outside my comfort zone in a class or project. I wouldn't have completed a single step of this project without the help of others. The amount of hand-holding I have needed throughout this class is embarrassing. I'm sorry I couldn't be a better student for you. You are an excellent teacher who has been unbelievably supportive this semester. Again, I truly apologize that I couldn't give you a better final project. Have a wonderful summer!
 ```
 
 ## Summary
 
 **Q5.** What is the most promising story idea that you have found during this exploration? How would you approach reporting it out and what other information/data would you need to do that? What would be the minimum story you could get from this, and what would be the maximum story?
 
-**A5.** I also looked at the total loans and total amounts specific addresses received. This address - 4503 Marburg Ave - received 57 loans for $3,899,100.10. The business at this address is a Planet Fitness that, according to google, is temporarily closed. It's possible that this one gyme applied for over 3 million dollars in loans, but 57 separate applications is still a lot of loans. Thsi address is in a shopping area, so it's possible that there were other businesses that used this address.
+**A5.** The most promising story idea that I found during this exploration is that of multiple loans going to the same address. This is a great way to look at fraud, of which there was a lot over the course of this project. There were several Ohio businesses that got A LOT of loans, so that would be the starting point for a potential story.
+
+In terms of the reporting, I would want to go to the physical addresses to look at which businesses located were located at that spot. It could be that one address houses myriad different corporations, which would explain why one address got a lot of loans.
+
+If it was just one address, then I would start asking questions. It would be useful to talk to a manager or owner (if they would give you time), but former employees would also be good. It's possible that the company fired people even though it was getting loans. Talking to people who were impacted would be a great place to start. 
+
+In terms of the actual data, one address stood out. 4503 Marburg Ave received 57 loans for $3,899,100.10. The business at this address is a Planet Fitness that, according to google, is temporarily closed. It's possible that this one gym applied for over 3 million dollars in loans, but 57 separate applications is still a lot of loans. This address is in a shopping area, so it's possible that there were other businesses that used this address. Still, why would it be temporarily closed if it received millions in PPP loans? 
