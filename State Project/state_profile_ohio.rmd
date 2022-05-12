@@ -305,7 +305,7 @@ ohio_counties_plus_fips <- ohio_primary_naics_code %>%
   
 write_csv(ohio_counties_plus_fips, "data/ohio_counties_plus_fips.csv")
 
-#I'm sorry I didn't generate a choropleth map. I have never felt more outside my comfort zone in a class or project. I wouldn't have completed a single step of this project without the help of others. The amount of hand-holding I needed throughout this class is embarrassing. I'm sorry I couldn't be a better student for you. You are a kind teacher who has been unbelievably supportive this semester. Again, I apologize that I couldn't give you a better final project. Have a wonderful summer!
+#I'm sorry I didn't generate a choropleth map. I have never felt more outside my comfort zone in a class or project. I wouldn't have completed a single step of this project without the help of others. The amount of hand-holding I needed throughout this class is embarrassing. I'm sorry I couldn't be a better student for you. You are a kind teacher who has been unbelievably supportive this semester. Again, I apologize that I couldn't give you a better final project. Thank you for the hours you spent with me on zoom. Have a wonderful summer.
 ```
 
 ## Summary
