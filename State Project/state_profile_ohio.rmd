@@ -261,24 +261,28 @@ top_10_industries_limited <- ohio_ppp_5_zip %>%
   arrange(desc(count)) %>%
   top_n(10)
   
-#cbp number of businesses the census bureau belies exist
+#cbp number of businesses the census bureau believes exist
 #top_10_limited is the number of PPP loans per industry
 
-#dataframe with 
 
-xxx <- ohio_ppp_5_zip %>%
+primary_naics <- ohio_ppp_5_zip %>%
   filter(naics_code == "722513") %>%
-  group_by(project_county_name, state) %>%
+  group_by(project_county_name, state, naics_code) %>%
   summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
   arrange(desc(count))
 
-xxx <- 
+primary_naics_in_cbp <- ohio_cbp %>%
+  filter(naics_code == "722513") %>%
+  group_by(naics) %>%
+  summarise() %>%
+  arrange(desc())
+
 #dataframe with county and fips code in both cases, county name 
   #in ohio_ppp_5_zip and ohio_cbp fips code
   
   
 
-write_csv(ohio_counties_with_fips, "data/ohio_counties.csv")
+write_csv(ohio_counties_plus_fips, "data/ohio_counties_plus_fips.csv")
 
 ```
 
