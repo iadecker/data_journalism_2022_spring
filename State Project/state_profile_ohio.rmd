@@ -294,12 +294,11 @@ ohio_primary_naics_code <- ohio_ppp_5_zip %>%
 naics_ohio_plus_fips <- ohio_cbp %>%
   filter(naics == "722513") %>% 
   group_by(fips) %>% 
-  summarise(businesses = sum(est)) %>%
-  arrange(desc(businesses))
+  summarise(total_businesses = sum(est)) %>%
+  arrange(desc(total_businesses))
 
 ohio_counties_plus_fips <- ohio_primary_naics_code %>%
-  left_join(census_naics_ohio, by=c("fips")) %>%
-  mutate(difference = total-businesses)
+  left_join(naics_ohio_plus_fips, by=c("fips"))
 
 #dataframe with county and fips code in both cases, county name 
 #in ohio_ppp_5_zip and ohio_cbp fips code
