@@ -264,7 +264,8 @@ ohio_cbp <- all_cbp %>% filter(fipstate == '39')
 
 ohio_cbp <- ohio_cbp %>%
   filter(!str_detect(naics, "/")) %>%
-  filter(!str_detect(naics, "-"))
+  filter(!str_detect(naics, "-")) %>%
+  mutate(fips = str_c(fipstate, fipscty))
 
 top_10_cbp <- ohio_cbp %>%
   group_by(naics) %>%
@@ -283,24 +284,28 @@ top_10_industries_limited <- ohio_ppp_5_zip %>%
 #cbp number of businesses the census bureau believes exist
 #top_10_limited is the number of PPP loans per industry
 
-primary_naics <- ohio_ppp_5_zip %>%
-  filter(naics_code == "722513") %>%
-  group_by(project_county_name, state, naics_code) %>%
-  summarise(count = n(), total = sum(amount), average = mean(amount)) %>%
-  arrange(desc(count))
+ohio_primary_naics_code <- ohio_ppp_5_zip %>% 
+  filter(naics_code == "722513") %>% 
+  group_by(project_county_name, fips_code) %>% 
+  summarise(total=n()) %>% 
+  arrange(desc(total))
 
-primary_naics_in_cbp <- ohio_cbp %>%
-  filter(naics_code == "722513") %>%
-  group_by(naics) %>%
-  summarise() %>%
-  arrange(desc())
+census_naics_ohio <- ohio_cbp %>%
+  filter(naics == "722513") %>% 
+  group_by(fips) %>% 
+  summarise(businesses = sum(est)) %>%
+  arrange(desc(businesses))
+
+ohio_counties>plus_fips <- ohio_primary_naics_code %>%
+  left_join(census_naics_ohio, by=c("fips")) %>%
+  mutate(difference = total-businesses)
 
 #dataframe with county and fips code in both cases, county name 
 #in ohio_ppp_5_zip and ohio_cbp fips code
   
 write_csv(ohio_counties_plus_fips, "data/ohio_counties_plus_fips.csv")
 
-#I'm sorry that I didn't generate a choropleth map and the csv never saved out. I have never felt more outside my comfort zone in a class or project. I wouldn't have completed a single step of this project without the help of others. The amount of hand-holding I have needed throughout this class is embarrassing. I'm sorry I couldn't be a better student for you. You are an excellent teacher who has been unbelievably supportive this semester. Again, I truly apologize that I couldn't give you a better final project. Have a wonderful summer!
+#I'm sorry I didn't generate a choropleth map. I have never felt more outside my comfort zone in a class or project. I wouldn't have completed a single step of this project without the help of others. The amount of hand-holding I have needed throughout this class is embarrassing. I'm sorry I couldn't be a better student for you. You are an excellent teacher who has been unbelievably supportive this semester. Again, I apologize that I couldn't give you a better final project. Have a wonderful summer!
 ```
 
 ## Summary
@@ -311,6 +316,6 @@ write_csv(ohio_counties_plus_fips, "data/ohio_counties_plus_fips.csv")
 
 In terms of the reporting, I would want to go to the physical addresses to look at which businesses located were located at that spot. It could be that one address houses myriad different corporations, which would explain why one address got a lot of loans.
 
-If it was just one address, then I would start asking questions. It would be useful to talk to a manager or owner (if they would give you time), but former employees would also be good. It's possible that the company fired people even though it was getting loans. Talking to people who were impacted would be a great place to start. 
+If it was just one address, then I would start asking questions. It would be useful to talk to a manager or owner (if they would give you time), but former employees would also be good. It's possible that the company fired people even though it was getting loans. Talking to people who were impacted would be a great place to start when trying to get an understanding of the money that went to this one business. 
 
 In terms of the actual data, one address stood out. 4503 Marburg Ave received 57 loans for $3,899,100.10. The business at this address is a Planet Fitness that, according to google, is temporarily closed. It's possible that this one gym applied for over 3 million dollars in loans, but 57 separate applications is still a lot of loans. This address is in a shopping area, so it's possible that there were other businesses that used this address. Still, why would it be temporarily closed if it received millions in PPP loans? 
