@@ -1,0 +1,142 @@
+---
+title: "Summarization Exercises, Part 2"
+author: "Derek Willis"
+date: "6/24/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## More Summarization in R
+
+We use the `tidyverse` library to load and calculate basic summaries of data in R. These exercises are focused on two of the basic summary verbs: `group_by` and `summarize` from the tidyverse. Let's start by loading the tidyverse and some data using the `read_rds()` function.
+
+```{r}
+library(tidyverse)
+time_stats <- read_rds("data/time_stats.rds")
+```
+
+This data represents time of possession and lead statistics from Maryland women's basketball games from the 2014-15 season through the 2021-22 season. There are columns for time of possession (measured in minutes and seconds), the percentage of time that a team held the lead and the largest lead in points. These columns exist for the home and visiting teams, and there are additional columns for Maryland (regardless of it was the home or visiting team) and the opponent. Take a look at them to familiarize yourself with the columns and data.
+
+## More Summaries
+
+1. Which Maryland opponent had the largest average lead time? Which Big Ten opponent?
+
+##Answer: 
+Notre Dame (38.7 minutes), Ohio State (19.1 minutes)
+
+
+```{r}
+time_stats <- time_stats %>% 
+  mutate(opponent_lead_time = if_else(home=='Maryland',visitor_lead_time, home_lead_time))
+
+time_stats <- time_stats %>% 
+  mutate(opponent_largest_lead = if_else(home=='Maryland',visitor_largest_lead, home_largest_lead))
+
+opponent_avg_lead_time <- time_stats %>%
+  group_by(opponent) %>%
+  summarise(mean = mean(opponent_lead_time)/60) %>%
+  arrange(desc(mean))
+
+#Easy way to verify: type the team in the search bar in the dataframe to check the results.
+```
+
+2. Which Maryland opponents had the most games with double-digit leads?
+
+##Answer: 
+OSU (8), Iowa (5), Michigan (3)
+
+```{r}
+opponent_double_digit_lead <- time_stats %>%
+  filter(opponent_largest_lead > 9) %>%
+  group_by(opponent) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+# this one is to see every opponent 
+opponent_lead<- time_stats %>%
+  group_by(opponent) %>%
+  summarise(count = n()) %>%
+  arrange(opponent)
+```
+
+3. Which Maryland opponent had the most games with double-digit leads in a Maryland home game?
+
+##Answer: 
+Iowa: 3
+OSU: 2
+South Carolina: 2
+
+```{r}
+opponent_double_digit_lead_at_xfinity <- time_stats %>%
+  filter(visitor_largest_lead > 9, home == 'Maryland') %>%
+  group_by(visitor) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+```
+
+4. Conversely, against which team has Maryland had the most double-digit leads on the road?
+
+##Answer:
+Rutgers: 6
+Nebraska: 5
+Illinois: 4
+Indiana: 4
+Michigan: 4
+Minnesota: 4
+Northwestern: 4
+Wisconsin: 4
+
+```{r}
+md_double_digit_road_leads <- time_stats %>%
+  filter(visitor_largest_lead > 9, visitor == 'Maryland') %>%
+  group_by(home) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+# this is to see which years those road double-digit leads occurred. 
+md_double_digit_road_leads <- time_stats %>%
+  filter(visitor_largest_lead > 9, visitor == 'Maryland', home == 'Indiana') %>%
+  group_by(home, season) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+```
+
+5. Which season had the most games where a Maryland opponent never had the lead? Which season had the least?
+
+##Answer: 
+2015-16: 18
+2016-17: 14
+2020-21: 13
+2014-15: 11
+2018-19: 11
+17-18: 10
+19-20: 10
+21-22: 8
+
+```{r}
+lead_time_zero <- time_stats %>%
+  filter(opponent_lead_time == 00:00:00) %>%
+  group_by(season) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+```
+
+
+```{r}
+big_10 <- c('Nebraska', 'Northwestern', 'Iowa', 'Illinois', 'Ohio St.', 'Ohio State')
+ivy <- c('Princeton', 'Harvard')
+
+time_stats <- time_stats %>%
+mutate(conference = case_when(
+  opponent %in% big_10 ~ "Big Ten",
+  opponent %in% ivy ~ "Ivy",
+  TRUE ~ ''
+  ))
+
+#Logic: If opponent is one of the teams listed in big_10, then put 'Big 10' in the conference column. If it isn't, leave the conference column NA.
+```
+
+
