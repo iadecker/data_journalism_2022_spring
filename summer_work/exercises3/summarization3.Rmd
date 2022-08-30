@@ -1,0 +1,114 @@
+---
+title: "R Exercises, Part 3"
+author: "Derek Willis"
+date: "7/19/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## More Summarization in R
+
+We use the `tidyverse` library to load and calculate basic summaries of data in R. These exercises are focused on two of the basic summary verbs: `group_by` and `summarize` from the tidyverse, plus `filter` and `arrange`. Let's start by loading the tidyverse and some data using the `read_csv()` function.
+
+```{r}
+library(tidyverse)
+time_stats <- read_rds("data/players.rds")
+```
+
+This data season statistics for NCAA women's college basketball players in 2021-22. The data has both raw totals for things like points, rebounds and assists along with some calculated percentages and ratios. The column names should be pretty self-explanatory. These questions will have you using filter, group_by, summarize and arrange (maybe not all at the same time, though). And we'll try making a scatterplot, too!
+
+## Questions
+
+1. Which Big Ten players had an assist-to-turnover ratio of at least 2 and played at least 500 minutes (`mp`)?
+```{r}
+big_10_ast_tov_500_mins <- time_stats %>%  
+  filter(ncaa_conference == 'Big Ten', ast_tov_ratio >= 2.0, mp >= 500) %>%
+  group_by(player, team)
+```
+
+#A: 	
+Katie Benzan (Maryland), Gadiva Hubbard (Minnesota), Veronica Burton (Northwestern), Rikki Harris (OSU)
+
+2. Expand the above code to include players in any conference with an assist-to-turnover ratio of at least 2 and played at least 500 minutes and make a scatterplot, using assists and turnovers as your X & Y axis (you made a scatterplot [here](https://github.com/iadecker/data_journalism_2022_spring/blob/main/labs/lab_09/lab_09.Rmd#L163))
+
+```{r}
+all_conference_ast_tov_500_mins <- time_stats %>%  
+  filter(ast_tov_ratio >= 2, mp >= 500, ast >= 150) 
+
+#for line 39, ast >= 150 is to help clean up the scatterplot, makes it less busy.
+
+all_conference_ast_tov_500_mins %>%
+  ggplot(aes(x=ast, y=tov, label=player)) + 
+  geom_point() + 
+  geom_text() +
+ labs(
+    title="Players with assist-to-turnover ratio of at least 2 and at least 500 minutes",
+    x = "Assists",
+    y = "Turnovers",
+    caption = "Source: Derek Willis"
+    ) 
+```
+
+3. Let's identify pure shooters: among players who made at least 80 three-point field goals, who had the highest 3-pointers made per minute played? (You'll need to calculate 3 pointers made per minute.)
+
+```{r}
+pure_shooters <- time_stats %>%
+  mutate(made_threes_per_min = fg3m/mp) %>%
+  filter(fg3m >= 80) %>%
+  arrange(desc(made_threes_per_min))
+```
+
+4. Count how many players at each position played at least 200 minutes and never attempted a three-point shot?
+
+```{r}
+two_hundred_mp_w_no_threes <- time_stats %>%
+  filter(mp >= 200, fg3a == 0) %>%
+  group_by(position) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+#Just curious about who these three players are
+na <- time_stats %>%
+  filter(mp >= 200, fg3a == 0) %>%
+  filter(is.na(position))
+```
+
+#A:
+F: 186
+C: 67
+G: 11
+N/A: 3
+
+5. Who are the guards that did this? Are any from the Big Ten?
+
+```{r}
+guards <- two_hundred_mp_w_no_threes %>%
+  filter(position == 'G') %>%
+  group_by(ncaa_conference)
+
+#OR, we could have done this above!
+
+two_hundred_mp_w_no_threes <- time_stats %>%
+  filter(mp >= 200, fg3a == 0, position == 'G') %>%
+  group_by(player) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+```
+
+#A: 
+There were a total of 11 guards who fell under this category, with Sydney Hilliard of Wisconsin the only Big 10 player.
+
+Here are the others:
+Camille Gray (LIU)
+Camryn Brown (UCLA)
+Endia Holliday (Western Carolina)
+Grace Efosa-Aguebor (Providence)
+Jayla Ruffus-Milner (Pepperdine)
+Julia Blackshell-Fair (Houston)
+Liatu King (Pitt)
+Mar'shaun Bostic (Auburn)
+Mikayla Coombs (Georgia)
+Tayra Eke (LIU)
